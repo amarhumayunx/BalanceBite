@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">BalanceBite</string>
+    <string name="wave_one">Wave Upper</string>
+    <string name="logo_image">BalanceBite Logo</string>
+    <string name="wave_two">Wave Down</string>
+    <string name="sign_in_button_string">Sign In</string>
+    <string name="information_string">Please Login with your Account</string>
+    <string name="email_string">Email Address</string>
+    <string name="email_hint_string">Enter Your Email Address</string>
+    <string name="password_string">Password</string>
+    <string name="password_hint_string">Enter Your Password</string>
+    <string name="remember_me_string">Remember Me</string>
+    <string name="forgot_password_string">Forgot Password</string>
+    <string name="login_with_string">Login With</string>
+    <string name="app_layout_sign_in_des">Apps Sign in Logo</string>
+    <string name="wave_on_login">Wave_on_login</string>
+    <string name="child_image">Child image</string>
+    <string name="card_view_pop_up_name">Login Page</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_information">Please Sign Up with your Account</string>
+</resources>

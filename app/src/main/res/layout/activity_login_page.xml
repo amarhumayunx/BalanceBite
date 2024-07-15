@@ -1,0 +1,187 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".LoginPageActivity">
+
+    <ImageView
+        android:id="@+id/child_id"
+        android:layout_above="@+id/card_view"
+        android:layout_width="200dp"
+        android:layout_height="275dp"
+        android:src="@drawable/child"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/child_image"
+        />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="290dp"
+        android:layout_above="@+id/card_view"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/logo_image"
+        android:src="@drawable/image"
+        tools:ignore="ImageContrastCheck"
+        />
+
+    <RelativeLayout
+        android:id="@+id/Main_Screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7">
+
+        <ImageView
+            android:id="@+id/Wave_on_login_page"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:contentDescription="@string/wave_on_login"
+            android:src="@drawable/wave__1_"
+            tools:ignore="ImageContrastCheck"
+            />
+    </RelativeLayout>
+
+
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    app:cardCornerRadius="38dp"
+    android:backgroundTint="@color/white"
+    android:layout_marginBottom="0dp"
+    tools:ignore="VisualLintBounds">
+
+
+    <LinearLayout
+        android:id="@+id/card_view_popup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:id="@+id/app_name_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_view_pop_up_name"
+            android:textColor="@color/green"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            />
+
+        <TextView
+            android:id="@+id/information_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/information_string"
+            android:alpha="0.9"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            />
+
+        <TextView
+            android:id="@+id/email_address_id_on_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_string"
+            android:alpha="1.7"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/email_address_id_on_card_view_for_enter_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/email_icon"
+            android:hint="@string/email_hint_string"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            />
+
+        <TextView
+            android:id="@+id/password_id_on_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password_string"
+            android:alpha="1.7"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/password_id_on_card_view_for_enter_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="1.7"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/password_icon"
+            android:hint="@string/password_hint_string"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/check_box_on_card_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_me_string"
+                android:layout_centerVertical="true"
+                android:alpha="1.7"
+                />
+
+            <TextView
+                android:id="@+id/forgot_password_on_card_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_password_string"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:alpha="1.7"
+                android:textColorHint="#757575"
+                tools:ignore="RelativeOverlap"
+                />
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_on_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/green"
+            android:text="@string/sign_in_button_string"
+            android:textColor="#795548"
+            android:textsize="30dp"
+            app:cornerRadius="32dp"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+</RelativeLayout>

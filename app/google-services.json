@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "442385550226",
+    "project_id": "balancebite-b05a1",
+    "storage_bucket": "balancebite-b05a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442385550226:android:6e71452a1e8404d3360f4b",
+        "android_client_info": {
+          "package_name": "com.example.balancebite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpanvj0hzNFBsxvX1SL4K5WoEBgFlSqs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

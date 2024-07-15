@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/wave_one"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:contentDescription="@string/wave_one"
+        android:src="@drawable/wave__1_"
+        tools:ignore="ImageContrastCheck" />
+
+
+    <ImageView
+        android:id="@+id/image_one"
+        android:layout_width="wrap_content"
+        android:layout_height="320dp"
+        android:layout_below="@+id/wave_one"
+        android:contentDescription="@string/logo_image"
+        android:src="@drawable/image"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/wave_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_one"
+        android:contentDescription="@string/wave_two"
+        android:src="@drawable/wave"
+        tools:ignore="ImageContrastCheck" />
+
+</RelativeLayout>
