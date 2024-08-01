@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class LoginPageActivity : AppCompatActivity()
 {
+
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)

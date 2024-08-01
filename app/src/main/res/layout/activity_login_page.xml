@@ -176,7 +176,6 @@
             android:backgroundTint="@color/green"
             android:text="@string/sign_in_button_string"
             android:textColor="#795548"
-            android:textsize="30dp"
             app:cornerRadius="32dp"
             tools:ignore="VisualLintButtonSize" />
 
