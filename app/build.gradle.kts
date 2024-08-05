@@ -5,6 +5,10 @@ plugins {
 }
 
 android {
+
+    viewBinding {
+        enable = true
+    }
     namespace = "com.example.balancebite"
     compileSdk = 34
 
@@ -45,6 +49,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.runtime.android)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.firebase.analytics)
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
