@@ -31,7 +31,7 @@
     <ImageView
         android:id="@+id/Wave_on_login_page"
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_height="120dp"
         android:contentDescription="@string/wave_on_login"
         android:src="@drawable/wave__1_"
         tools:ignore="ImageContrastCheck"
@@ -163,6 +163,21 @@
                     tools:ignore="RelativeOverlap"
                     />
 
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessLeaf">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    android:indeterminate="true" />
 
             </RelativeLayout>
 
@@ -177,10 +192,20 @@
                 tools:ignore="VisualLintButtonSize"
                 />
 
+
+            <TextView
+                android:id="@+id/textViewSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="You don't Have An Account? Signup"
+                android:textColor="#4CAF50" />
+
         </LinearLayout>
 
     </ScrollView>
 
 </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

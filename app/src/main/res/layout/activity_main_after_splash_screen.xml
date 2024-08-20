@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,8 +36,9 @@
         android:textSize="16sp"
         android:textColor="#000000"/>
 
-
+    <!-- Button to move to LoginPageActivity -->
     <Button
+        android:id="@+id/buttonGetStarted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -46,10 +46,14 @@
         android:text="Get Started"
         android:textColor="#FFFFFF"/>
 
+    <!-- TextView to move to LoginPageActivity -->
+
+
     <TextView
+        android:id="@+id/textViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Already Have An Account? Log In"
+        android:text="You don't Have An Account? Signup"
         android:textColor="#4CAF50"/>
 </LinearLayout>

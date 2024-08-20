@@ -11,13 +11,14 @@
 
         <!-- Greeting Text -->
         <TextView
-            android:id="@+id/greetingText"
+            android:id="@+id/usernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello Shambhavi,"
-            android:textSize="24sp"
-            android:textColor="@android:color/holo_green_dark"
-            android:layout_marginBottom="8dp" />
+            android:text="Welcome, User!"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"/>
+
 
         <!-- Subtitle Text -->
         <TextView

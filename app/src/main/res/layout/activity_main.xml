@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="180dp"
         android:contentDescription="@string/wave_one"
-        android:src="@drawable/wave__1_"
+        android:src="@drawable/wave_for_layout"
         tools:ignore="ImageContrastCheck" />
 
 

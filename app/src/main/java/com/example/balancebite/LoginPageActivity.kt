@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.example.balancebite.databinding.ActivityLoginPageBinding
+import com.google.firebase.auth.FirebaseAuth
+import android.util.Patterns
 
 class LoginPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
@@ -33,7 +34,7 @@ class LoginPageActivity : AppCompatActivity() {
         }
 
         // Set up sign-up button click listener
-        binding.buttonOnCardView.setOnClickListener {
+        binding.textViewSignUp.setOnClickListener {
             navigateToSignUp()
         }
     }
@@ -47,11 +48,17 @@ class LoginPageActivity : AppCompatActivity() {
             return
         }
 
+        // Check if the email format is valid
+        if (!isValidEmail(email)) {
+            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, navigate to HomeActivity
-                    navigateToHome()
+                    // Sign in success, navigate to DashboardActivity
+                    navigateToDashboard()
                 } else {
                     // Sign in failed, check if user needs to be redirected to SignUpActivity
                     handleSignInFailure(task.exception?.message)
@@ -59,17 +66,36 @@ class LoginPageActivity : AppCompatActivity() {
             }
     }
 
+    // Function to check if the email format is valid
+    private fun isValidEmail(email: String): Boolean {
+        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
     private fun handleSignInFailure(errorMessage: String?) {
         // Display error message
         Toast.makeText(this, "Sign-In failed: $errorMessage", Toast.LENGTH_SHORT).show()
 
         // Navigate to SignUpActivity if the account does not exist
-        if (errorMessage != null && errorMessage.contains("There is no user record corresponding to this identifier")) {
-            navigateToSignUp()
+        if (errorMessage != null) {
+            when {
+                errorMessage.contains("There is no user record corresponding to this identifier") -> {
+                    Toast.makeText(this, "No account found. Redirecting to Sign-Up page...", Toast.LENGTH_SHORT).show()
+                    navigateToSignUp()
+                }
+                errorMessage.contains("The password is invalid") -> {
+                    Toast.makeText(this, "Invalid password. Please try again.", Toast.LENGTH_SHORT).show()
+                }
+                errorMessage.contains("The email address is already in use") -> {
+                    Toast.makeText(this, "Email already in use. Please try signing in.", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(this, "Sign-In failed: $errorMessage", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
-    private fun navigateToHome() {
+    private fun navigateToDashboard() {
         val intent = Intent(this, MainHomeScreen::class.java)
         startActivity(intent)
         finish() // Optional: Call finish() to close the sign-in activity
@@ -77,12 +103,6 @@ class LoginPageActivity : AppCompatActivity() {
 
     private fun navigateToSignUp() {
         val intent = Intent(this, activity_sign_up::class.java)
-        startActivity(intent)
-        finish() // Optional: Call finish() to close the sign-in activity
-    }
-
-    private fun navigateToDashboard() {
-        val intent = Intent(this, MainHomeScreen::class.java)
         startActivity(intent)
         finish() // Optional: Call finish() to close the sign-in activity
     }
