@@ -2,15 +2,19 @@ package com.example.balancebite
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.balancebite.databinding.ActivityLoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
-import android.util.Patterns
 
+@Suppress("DEPRECATION")
 class LoginPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +26,9 @@ class LoginPageActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Check if user is already signed in
-        if (auth.currentUser != null) {
-            // User is signed in, redirect to DashboardActivity
-            navigateToDashboard()
-        }
+        // Initialize ProgressBar
+        progressBar = binding.progressBar
+        progressBar.visibility = View.GONE
 
         // Set up sign-in button click listener
         binding.buttonOnCardView.setOnClickListener {
@@ -54,8 +56,14 @@ class LoginPageActivity : AppCompatActivity() {
             return
         }
 
+        // Show ProgressBar
+        progressBar.visibility = View.VISIBLE
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
+                // Hide ProgressBar
+                progressBar.visibility = View.GONE
+
                 if (task.isSuccessful) {
                     // Sign in success, navigate to DashboardActivity
                     navigateToDashboard()
@@ -105,5 +113,12 @@ class LoginPageActivity : AppCompatActivity() {
         val intent = Intent(this, activity_sign_up::class.java)
         startActivity(intent)
         finish() // Optional: Call finish() to close the sign-in activity
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Toast.makeText(this, "Back to Sign Up Page", Toast.LENGTH_SHORT).show()
+        navigateToSignUp()
     }
 }

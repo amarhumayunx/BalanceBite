@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 checkUserStatusAndNavigate()
-            }, 1000
+            }, 2000
         )
     }
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         } else {
             // User is not logged in, navigate to the login activity
-            val intent = Intent(this, LoginPageActivity::class.java)
+            val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
             Toast.makeText(this, "login to your account", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }

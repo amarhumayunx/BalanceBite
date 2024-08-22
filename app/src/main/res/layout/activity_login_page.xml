@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:contentDescription="@string/wave_on_login"
-        android:src="@drawable/wave__1_"
+        android:src="@drawable/wave_for_layout"
         tools:ignore="ImageContrastCheck"
         />
 
@@ -71,22 +71,12 @@
                 tools:ignore="TextContrastCheck"
                 />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"
-                />
-
             <TextView
                 android:id="@+id/information_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/information_string"
                 android:alpha="0.9"
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"
                 />
 
             <TextView
@@ -109,11 +99,6 @@
                 android:minHeight="48dp"
                 android:textColorHint="#757575"
                 tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize"
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"
                 />
 
             <TextView
@@ -165,6 +150,7 @@
 
             </RelativeLayout>
 
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -187,7 +173,7 @@
                 android:layout_height="60dp"
                 android:backgroundTint="@color/green"
                 android:text="@string/sign_in_button_string"
-                android:textColor="#795548"
+                android:textColor="@color/black"
                 app:cornerRadius="32dp"
                 tools:ignore="VisualLintButtonSize"
                 />
@@ -198,6 +184,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_gravity="center"
                 android:text="You don't Have An Account? Signup"
                 android:textColor="#4CAF50" />
 

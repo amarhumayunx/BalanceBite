@@ -5,7 +5,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
+    android:layout_weight="1"
     tools:context=".activity_sign_up">
+
+
+    <ImageView
+        android:id="@+id/Wave_on_login_page"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:contentDescription="@string/wave_on_login"
+        android:src="@drawable/wave__1_"
+        tools:ignore="ImageContrastCheck"
+
+        />
 
     <ImageView
         android:id="@+id/child_id"
@@ -14,6 +26,7 @@
         android:layout_height="290dp"
         android:src="@drawable/child"
         android:layout_alignParentEnd="true"
+        android:layout_above="@id/card_view"
         android:contentDescription="@string/child_image"
         />
 
@@ -22,19 +35,12 @@
         android:layout_height="290dp"
         android:layout_alignParentStart="true"
         android:contentDescription="@string/logo_image"
+        android:layout_above="@id/card_view"
         android:src="@drawable/image"
         android:layout_below="@id/Wave_on_login_page"
         tools:ignore="ImageContrastCheck"
         />
 
-        <ImageView
-            android:id="@+id/Wave_on_login_page"
-            android:layout_width="wrap_content"
-            android:layout_height="180dp"
-            android:contentDescription="@string/wave_on_login"
-            android:src="@drawable/wave__1_"
-            tools:ignore="ImageContrastCheck"
-            />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -67,22 +73,12 @@
                     tools:ignore="TextContrastCheck"
                     />
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
-                    />
-
                 <TextView
                     android:id="@+id/information_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sign_up_information"
                     android:alpha="0.9"
-                    />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
                     />
 
                 <TextView
@@ -126,11 +122,6 @@
                     android:minHeight="48dp"
                     android:textColorHint="#757575"
                     tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize"
-                    />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
                     />
 
                 <TextView
@@ -177,7 +168,7 @@
                     android:layout_height="60dp"
                     android:backgroundTint="@color/green"
                     android:text="@string/sign_up"
-                    android:textColor="#607D8B"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:cornerRadius="35dp"
                     tools:ignore="VisualLintButtonSize,TextSizeCheck,DuplicateSpeakableTextCheck" />
