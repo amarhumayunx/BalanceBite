@@ -3,6 +3,7 @@ package com.example.balancebite
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -46,6 +47,20 @@ class MainHomeScreen : AppCompatActivity() {
         val tapOnSupplements = findViewById<LinearLayout>(R.id.tap_on_supplements)
         tapOnSupplements.setOnClickListener {
             val intent = Intent(this, SupplementActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Set up readNowButton click listener
+        val readNowButton: Button = findViewById(R.id.readNowButton)
+        readNowButton.setOnClickListener {
+            val intent = Intent(this, FastFoodActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Set up viewNowButton click listener
+        val viewNowButton: Button = findViewById(R.id.viewNowButton)
+        viewNowButton.setOnClickListener {
+            val intent = Intent(this, ProgressActivity::class.java)
             startActivity(intent)
         }
     }
