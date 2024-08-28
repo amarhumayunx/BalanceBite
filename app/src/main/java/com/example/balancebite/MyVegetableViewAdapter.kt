@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class VegetableAdapter(private val vegetableList: List<Vegetable>) :
         return VegetableViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: VegetableViewHolder, position: Int) {
         val vegetable = vegetableList[position]
         holder.nameTextView.text = vegetable.name

@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class MyFruitViewAdapter(private val fruits: List<Fruit>) :
         private val fruitCalories = itemView.findViewById<TextView>(R.id.fruitCalories)
         private val fruitImage = itemView.findViewById<ImageView>(R.id.fruitImage)
 
+        @SuppressLint("SetTextI18n")
         fun bind(fruit: Fruit) {
             fruitName.text = fruit.name
             fruitDescription.text = fruit.description

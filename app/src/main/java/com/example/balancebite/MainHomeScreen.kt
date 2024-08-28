@@ -41,6 +41,13 @@ class MainHomeScreen : AppCompatActivity() {
             val intent = Intent(this, VegetableActivity::class.java)
             startActivity(intent)
         }
+
+        // Set up tap_on_supplements click listener
+        val tapOnSupplements = findViewById<LinearLayout>(R.id.tap_on_supplements)
+        tapOnSupplements.setOnClickListener {
+            val intent = Intent(this, SupplementActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchAndDisplayUsername() {

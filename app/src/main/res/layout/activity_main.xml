@@ -12,7 +12,7 @@
     <!-- Wave One Image -->
     <ImageView
         android:id="@+id/wave_one"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="180dp"
         android:contentDescription="@string/wave_one"
         android:src="@drawable/wave_for_layout"
@@ -25,8 +25,8 @@
     <!-- Logo Image -->
     <ImageView
         android:id="@+id/image_one"
-        android:layout_width="0dp"
-        android:layout_height="320dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/logo_image"
         android:src="@drawable/image"
         app:layout_constraintTop_toBottomOf="@id/wave_one"
@@ -38,15 +38,14 @@
     <!-- Wave Two Image -->
     <ImageView
         android:id="@+id/wave_two"
-        android:layout_width="0dp"
-        android:layout_height="230dp"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
         android:contentDescription="@string/wave_two"
         android:src="@drawable/wave"
-
-        app:layout_constraintTop_toBottomOf="@id/image_one"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_one"
         app:layout_constraintWidth_percent="1"
         tools:ignore="ImageContrastCheck" />
 
