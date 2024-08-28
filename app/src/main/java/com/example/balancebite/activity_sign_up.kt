@@ -6,14 +6,14 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.balancebite.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.example.balancebite.databinding.ActivitySignUpBinding
-import kotlinx.coroutines.runBlocking
 
 // Data class to represent the user
 data class User(val userId: String, val username: String, val email: String)
 
+@Suppress("DEPRECATION")
 class activity_sign_up : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var auth: FirebaseAuth
