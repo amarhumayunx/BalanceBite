@@ -40,7 +40,7 @@
                     android:layout_width="350dp"
                     android:layout_height="90dp"
                     android:src="@drawable/wave_on_home_screen"
-                    android:contentDescription="Image"
+                    android:contentDescription="@string/wave_on_home_screen_image_description"
                     >
 
                 </ImageView>
@@ -75,7 +75,7 @@
                         android:layout_height="55dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="16dp"
-                        android:text="Welcome, User"
+                        android:text="@string/user_name_on_home_screen"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="30sp" />
@@ -92,7 +92,7 @@
                     android:id="@+id/subtitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Find, track and eat healthy food."
+                    android:text="@string/line_below_user_name_on_home_screen"
                     android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="16dp" />
@@ -113,7 +113,7 @@
                         android:id="@+id/articleTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="The pros and cons of fast food."
+                        android:text="@string/pros_and_cons_of_fast_food"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"
@@ -123,7 +123,7 @@
                         android:id="@+id/readNowButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Read Now"
+                        android:text="@string/read_now_button_text_on_dashboard"
                         android:layout_gravity="center_horizontal"
                         android:backgroundTint="@color/green" />
                 </LinearLayout>

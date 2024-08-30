@@ -20,5 +20,10 @@
     <string name="sign_up_information">Please Sign Up with your Account</string>
     <string name="user_name_string">Name</string>
     <string name="user_name_hint_string">Enter Your Name</string>
+    <string name="user_name_on_home_screen">Welcome, User</string>
+    <string name="wave_on_home_screen_image_description">Wave Image description</string>
+    <string name="line_below_user_name_on_home_screen">Find, track and eat healthy food.</string>
+    <string name="pros_and_cons_of_fast_food">The pros and cons of fast food.</string>
+    <string name="read_now_button_text_on_dashboard">Read Now</string>
 
 </resources>
