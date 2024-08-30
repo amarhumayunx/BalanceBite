@@ -51,6 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="38dp"
+        app:cardElevation="0dp"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

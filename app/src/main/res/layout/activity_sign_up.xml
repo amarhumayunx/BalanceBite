@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:cardCornerRadius="38dp"
+        app:cardElevation="0dp"
         tools:ignore="VisualLintBounds"
         app:layout_constraintBottom_toBottomOf="parent">
 
