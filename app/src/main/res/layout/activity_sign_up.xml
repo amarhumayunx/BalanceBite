@@ -32,7 +32,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="290dp"
-        android:src="@drawable/image"
+        android:src="@drawable/appimage"
         android:contentDescription="@string/logo_image"
         tools:ignore="ImageContrastCheck"
         app:layout_constraintTop_toBottomOf="@id/Wave_on_login_page"
@@ -44,18 +44,19 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:cardCornerRadius="38dp"
-        app:cardElevation="0dp"
+        app:cardElevation="4dp"
         tools:ignore="VisualLintBounds"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="300dp">
 
             <LinearLayout
                 android:id="@+id/card_view_popup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical"
                 android:padding="25dp">
 

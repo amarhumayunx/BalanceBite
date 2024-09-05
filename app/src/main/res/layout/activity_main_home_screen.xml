@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="38dp"
-            app:cardElevation="0dp">
+            app:cardElevation="4dp">
 
 
             <LinearLayout
@@ -72,7 +72,7 @@
                     <TextView
                         android:id="@+id/usernameTextView"
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="16dp"
                         android:text="@string/user_name_on_home_screen"
@@ -159,7 +159,7 @@
                     android:id="@+id/chooseFavoritesText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Choose Your Favorites"
+                    android:text="Nutrition Sources"
                     android:layout_gravity="center_horizontal"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -254,7 +254,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/nav_round_corner"
-        android:elevation="0dp"
+        android:elevation="4dp"
         app:menu="@menu/nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

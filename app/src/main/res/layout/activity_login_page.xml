@@ -37,7 +37,7 @@
         android:id="@+id/logo_on_home_screen"
         android:layout_width="0dp"
         android:layout_height="290dp"
-        android:src="@drawable/image"
+        android:src="@drawable/appimage"
         android:contentDescription="@string/logo_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/child_id"
@@ -51,7 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="38dp"
-        app:cardElevation="0dp"
+        app:cardElevation="4dp"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +99,7 @@
                     android:id="@+id/email_address_id_on_card_view_for_enter_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="Email"
                     android:drawableEnd="@drawable/email_icon"
                     android:hint="@string/email_hint_string"
                     android:inputType="textEmailAddress"
@@ -119,6 +120,7 @@
                     android:id="@+id/password_id_on_card_view_for_enter_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="Password"
                     android:drawableEnd="@drawable/password_icon"
                     android:hint="@string/password_hint_string"
                     android:inputType="textPassword"
@@ -148,7 +150,7 @@
                         android:layout_centerVertical="true"
                         android:alpha="1.7"
                         android:textColorHint="#757575"
-                        />
+                        tools:ignore="RelativeOverlap" />
 
                 </RelativeLayout>
 

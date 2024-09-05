@@ -1,73 +1,89 @@
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="20dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="16dp">
 
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="115dp">
-    </View>
-
-    <TextView
-        android:id="@+id/app_name_on_activity_after_splash_screen"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/app_name"
-        android:textColor="@color/green"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck,TextContrastCheck" />
-
-    <ImageView
-        android:id="@+id/image_on_activity_after_splash_screen"
-        android:src="@drawable/image_for_screen"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:id="@+id/text_view_activity_after_splash_screen"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Eat Healthy"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
+        android:layout_margin="16dp"
+        android:padding="20dp"
+        app:cardCornerRadius="38dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/line_on_activity_after_splash_screen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Maintaining good health should be the primary focus of everyone."
-        android:textSize="16sp"
-        android:textColor="#000000"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:background="@color/light_white"
+            android:padding="20dp">
 
-    <!-- Button to move to LoginPageActivity -->
-    <Button
-        android:id="@+id/buttonGetStarted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/green"
-        android:text="Get Started"
-        android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/app_name_on_activity_after_splash_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/app_name"
+                android:textColor="@color/green"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck,TextContrastCheck" />
 
-    <!-- TextView to move to LoginPageActivity -->
+            <ImageView
+                android:id="@+id/image_on_activity_after_splash_screen"
+                android:src="@drawable/image_for_screen"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="20dp" />
 
+            <TextView
+                android:id="@+id/text_view_activity_after_splash_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Eat Healthy"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="You don't Have An Account? Signup"
-        android:textColor="@color/green"/>
+            <TextView
+                android:id="@+id/line_on_activity_after_splash_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Maintaining good health should be the primary focus of everyone."
+                android:textSize="16sp"
+                android:textColor="#000000" />
 
-</LinearLayout>
+            <!-- Button to move to LoginPageActivity -->
+            <Button
+                android:id="@+id/buttonGetStarted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/green"
+                android:text="Get Started"
+                android:textColor="@color/white" />
+
+            <!-- TextView to move to LoginPageActivity -->
+            <TextView
+                android:id="@+id/textViewSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="You don't Have An Account? Signup"
+                android:textColor="@color/green" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
