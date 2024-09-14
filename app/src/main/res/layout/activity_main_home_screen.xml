@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="38dp"
-            app:cardElevation="4dp">
+            android:layout_margin="10dp"
+            app:cardElevation="6dp">
 
 
             <LinearLayout
@@ -66,7 +67,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:cardCornerRadius="60dp"
-                    app:cardElevation="0dp"
+                    android:layout_margin="16dp"
+                    app:cardElevation="8dp"
                     app:cardBackgroundColor="@color/green">
 
                     <TextView
@@ -74,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="16dp"
+                        android:layout_margin="10dp"
                         android:text="@string/user_name_on_home_screen"
                         android:textAlignment="center"
                         android:textColor="@color/white"
@@ -123,6 +125,7 @@
                         android:id="@+id/readNowButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
                         android:text="@string/read_now_button_text_on_dashboard"
                         android:layout_gravity="center_horizontal"
                         android:backgroundTint="@color/green" />
@@ -141,6 +144,7 @@
                         android:id="@+id/trackProgressText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:text="Track Your Weekly Progress"
                         android:textSize="16sp"
@@ -150,6 +154,7 @@
                         android:id="@+id/viewNowButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
                         android:text="View Now"
                         android:backgroundTint="@color/green" />
                 </LinearLayout>
@@ -179,10 +184,11 @@
 
                     <LinearLayout
                         android:id="@+id/tap_on_fruits"
-                        android:layout_width="0dp"
+                        android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:orientation="vertical"
+                        android:layout_margin="10dp"
                         android:padding="8dp"
                         android:gravity="center"
                         tools:ignore="UseCompoundDrawables">
@@ -201,10 +207,11 @@
 
                     <LinearLayout
                         android:id="@+id/tap_on_vegetables"
-                        android:layout_width="0dp"
+                        android:layout_width="14dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:orientation="vertical"
+                        android:layout_margin="10dp"
                         android:padding="8dp"
                         android:gravity="center">
 
@@ -222,10 +229,11 @@
 
                     <LinearLayout
                         android:id="@+id/tap_on_supplements"
-                        android:layout_width="0dp"
+                        android:layout_width="26dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:orientation="vertical"
+                        android:layout_margin="10dp"
                         android:padding="8dp"
                         android:gravity="center">
 
@@ -237,6 +245,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+
                             android:text="Supplements"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -254,11 +263,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/nav_round_corner"
-        android:elevation="4dp"
+        android:elevation="10dp"
+        android:layout_margin="0dp"
         app:menu="@menu/nav_menu"
+        app:layout_constraintBaseline_toBottomOf="@id/card_view_on_dashboard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="NotSibling" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

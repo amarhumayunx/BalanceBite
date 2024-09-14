@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/vegetableImageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="8dp"
         />
 
@@ -23,7 +23,7 @@
             android:id="@+id/vegetableNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             />
 

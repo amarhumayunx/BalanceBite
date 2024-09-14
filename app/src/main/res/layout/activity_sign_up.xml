@@ -23,7 +23,7 @@
         android:id="@+id/child_id"
         android:layout_width="200dp"
         android:layout_height="290dp"
-        android:src="@drawable/child"
+        android:src="@drawable/childimagetwo"
         android:contentDescription="@string/child_image"
         app:layout_constraintTop_toBottomOf="@id/Wave_on_login_page"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,15 +42,18 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="380dp"
         app:cardCornerRadius="38dp"
-        app:cardElevation="4dp"
+        android:layout_margin="10dp"
+        app:cardElevation="18dp"
         tools:ignore="VisualLintBounds"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/card_view_popup"
@@ -149,6 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:backgroundTint="@color/green"
+                    android:layout_margin="10dp"
                     android:text="@string/sign_up"
                     android:textColor="@color/white"
                     android:textSize="20sp"
