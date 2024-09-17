@@ -8,6 +8,7 @@
     android:background="@color/white"
     tools:context=".activity_sign_up">
 
+    <!-- Wave image on login page -->
     <ImageView
         android:id="@+id/Wave_on_login_page"
         android:layout_width="wrap_content"
@@ -19,146 +20,154 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:id="@+id/child_id"
-        android:layout_width="200dp"
-        android:layout_height="290dp"
-        android:src="@drawable/childimagetwo"
-        android:contentDescription="@string/child_image"
-        app:layout_constraintTop_toBottomOf="@id/Wave_on_login_page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/card_view" />
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="290dp"
-        android:src="@drawable/appimage"
-        android:contentDescription="@string/logo_image"
-        tools:ignore="ImageContrastCheck"
-        app:layout_constraintTop_toBottomOf="@id/Wave_on_login_page"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/card_view" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+    <!-- ScrollView starts here -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        app:cardCornerRadius="38dp"
-        android:layout_margin="10dp"
-        app:cardElevation="18dp"
-        tools:ignore="VisualLintBounds"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/Wave_on_login_page"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
+            <!-- First image (child image) -->
             <LinearLayout
-                android:id="@+id/card_view_popup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="25dp">
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="290dp"
+                    android:src="@drawable/appimage"
+                    android:contentDescription="@string/logo_image"
+                    android:layout_gravity="start"
+                    tools:ignore="ImageContrastCheck" />
+                <ImageView
+                    android:id="@+id/child_id"
+                    android:layout_width="180dp"
+                    android:layout_height="290dp"
+                    android:src="@drawable/childimagetwo"
+                    />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/app_name_card_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sign_up"
-                    android:textColor="@color/green"
-                    android:textSize="35sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck" />
 
-                <TextView
-                    android:id="@+id/information_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sign_up_information"
-                    android:alpha="0.9" />
+            <!-- CardView with form fields and button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="38dp"
+                android:layout_margin="10dp"
+                app:cardElevation="18dp">
 
-                <TextView
-                    android:id="@+id/user_name_id_on_card_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_name_string"
-                    android:alpha="1.7"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/user_name_for_email"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/user_name_hint_string"
-                    android:minHeight="48dp"
-                    android:textColorHint="#757575"
-                    tools:ignore="TextFields,VisualLintTextFieldSize" />
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="25dp">
 
-                <TextView
-                    android:id="@+id/email_address_id_on_card_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email_string"
-                    android:alpha="1.7"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/email_address_id_on_card_view_for_enter_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email_hint_string"
-                    android:inputType="textEmailAddress"
-                    android:minHeight="48dp"
-                    android:textColorHint="#757575"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-
-                <TextView
-                    android:id="@+id/password_id_on_card_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/password_string"
-                    android:alpha="1.7"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/password_id_on_card_view_for_enter_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password_hint_string"
-                    android:inputType="textPassword"
-                    android:minHeight="48dp"
-                    android:textColorHint="#757575"
-                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="UselessLeaf">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
+                    <TextView
+                        android:id="@+id/app_name_card_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:visibility="gone"
-                        android:indeterminate="true" />
-                </RelativeLayout>
+                        android:text="@string/sign_up"
+                        android:textColor="@color/green"
+                        android:textSize="35sp"
+                        android:textStyle="bold"
+                        tools:ignore="TextContrastCheck" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_on_card_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/green"
-                    android:layout_margin="10dp"
-                    android:text="@string/sign_up"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:cornerRadius="35dp"
-                    tools:ignore="VisualLintButtonSize,TextSizeCheck,DuplicateSpeakableTextCheck" />
-            </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/information_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_up_information"
+                        android:alpha="0.9" />
+
+                    <TextView
+                        android:id="@+id/user_name_id_on_card_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_name_string"
+                        android:alpha="1.7"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/user_name_for_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/user_name_hint_string"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+                    <TextView
+                        android:id="@+id/email_address_id_on_card_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email_string"
+                        android:alpha="1.7"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/email_address_id_on_card_view_for_enter_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email_hint_string"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+
+                    <TextView
+                        android:id="@+id/password_id_on_card_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/password_string"
+                        android:alpha="1.7"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/password_id_on_card_view_for_enter_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password_hint_string"
+                        android:inputType="textPassword"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="UselessLeaf">
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:visibility="gone"
+                            android:indeterminate="true" />
+                    </RelativeLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_on_card_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:backgroundTint="@color/green"
+                        android:layout_margin="10dp"
+                        android:text="@string/sign_up"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:cornerRadius="35dp"
+                        tools:ignore="VisualLintButtonSize,TextSizeCheck,DuplicateSpeakableTextCheck" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

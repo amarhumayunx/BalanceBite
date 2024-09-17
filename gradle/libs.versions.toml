@@ -1,6 +1,8 @@
 [versions]
 agp = "8.6.0"
+appcompatVersion = "1.7.0"
 chipNavigationBar = "1.4.0"
+drawerlayout = "1.2.0"
 firebaseBom = "33.1.2"
 googleServices = "4.4.2"
 junitJunit = "4"
@@ -23,7 +25,9 @@ firebaseFirestoreKtx = "25.0.0"
 firebaseDatabase = "21.0.0"
 
 [libraries]
+androidx-appcompat-v170 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayout" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 chip-navigation-bar = { module = "com.github.ismaeldivita:chip-navigation-bar", version.ref = "chipNavigationBar" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }

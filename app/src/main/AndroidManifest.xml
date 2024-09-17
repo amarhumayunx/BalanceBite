@@ -15,6 +15,15 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".HealthExercisesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DietPlansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProgressActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
@@ -56,6 +65,7 @@
             android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

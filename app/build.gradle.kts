@@ -59,4 +59,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation (libs.androidx.recyclerview)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation (libs.androidx.appcompat.v170)
+    implementation (libs.androidx.drawerlayout)
+
 }

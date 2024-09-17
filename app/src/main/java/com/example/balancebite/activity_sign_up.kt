@@ -10,7 +10,7 @@ import com.example.balancebite.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-// Data class to represent the user
+// Data class to represent the user for authentication purposes
 data class User(val userId: String, val username: String, val email: String)
 
 @Suppress("DEPRECATION")
@@ -54,7 +54,6 @@ class activity_sign_up : AppCompatActivity() {
         Toast.makeText(this, "Signing up...", Toast.LENGTH_SHORT).show()
 
         // Create a new user with Firebase Authentication
-
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 binding.progressBar.visibility = View.GONE // Hide ProgressBar when done
@@ -83,9 +82,9 @@ class activity_sign_up : AppCompatActivity() {
         // Store the user information in the database under the userId node
         database.child(userId).setValue(user).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                Toast.makeText(this, "Sign-Up successful!", Toast.LENGTH_SHORT).show()
-                // Move to MainHomeScreen after successful sign-up
-                val intent = Intent(this, MainHomeScreen::class.java)
+                Toast.makeText(this, "Sign-Up successful! Please enter your personal information.", Toast.LENGTH_SHORT).show()
+                // Move to UserInfoActivity after successful sign-up
+                val intent = Intent(this, UserInfoActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
@@ -94,7 +93,6 @@ class activity_sign_up : AppCompatActivity() {
             }
         }
     }
-
 
     // Function to handle sign-up failure
     private fun handleSignUpFailure(exception: Exception?) {
@@ -116,26 +114,17 @@ class activity_sign_up : AppCompatActivity() {
     }
 
     // Function to navigate back to the activity after splash screen
-
-    private fun navigateBackToActivityAfterSplashScreen()
-    {
-        val intent = Intent(this,MainActivityAfterSplashScreen::class.java)
+    private fun navigateBackToActivityAfterSplashScreen() {
+        val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
         startActivity(intent)
         finish() // Optional: close the current activity
     }
 
-    // Function to navigate back to the login activity
-    private fun navigateBackToLogin() {
-        val intent = Intent(this, LoginPageActivity::class.java)
-        startActivity(intent)
-        finish() // Optional: Close the current activity
-    }
-
-    // Handle the back button press to navigate back to login activity
+    // Handle the back button press to navigate back to the activity after splash screen
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
-        Toast.makeText(this,"Back to Get Started Activity",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Back to Get Started Activity", Toast.LENGTH_SHORT).show()
         navigateBackToActivityAfterSplashScreen()
     }
 }

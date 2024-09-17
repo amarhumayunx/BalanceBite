@@ -25,5 +25,8 @@
     <string name="line_below_user_name_on_home_screen">Find, track and eat healthy food.</string>
     <string name="pros_and_cons_of_fast_food">The pros and cons of fast food.</string>
     <string name="read_now_button_text_on_dashboard">Read Now</string>
+    <string name="open">Open Drawer</string>
+    <string name="close">Close Drawer</string>
+
 
 </resources>

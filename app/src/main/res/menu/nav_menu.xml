@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nar_bar"
-        android:icon="@drawable/baseline_person_24"
-        android:title="Dashboard"
-        android:iconTint="@color/green"
-        />
+        android:id="@+id/nav_about"
+        android:title="About" />
 
     <item
-        android:id="@+id/nav_setting"
-        android:icon="@drawable/baseline_settings_24"
-        android:title="Settings"
-        android:iconTint="@color/green"
-        />
+        android:id="@+id/nav_user_info"
+        android:title="User Information" />
 
+    <item
+        android:id="@+id/nav_diet_plans"
+        android:title="Diet Plans" />
 
-
-
+    <item
+        android:id="@+id/nav_health_exercises"
+        android:title="Health Exercises" />
 
 </menu>
