@@ -101,6 +101,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/user_name_hint_string"
                         android:minHeight="48dp"
+                        android:drawableEnd="@drawable/name_of_user"
+                        android:drawableTint="@color/gray"
                         android:textColorHint="#757575"
                         tools:ignore="TextFields,VisualLintTextFieldSize" />
 
@@ -117,6 +119,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/email_hint_string"
+                        android:drawableEnd="@drawable/email_icon"
+                        android:drawableTint="@color/gray"
                         android:inputType="textEmailAddress"
                         android:minHeight="48dp"
                         android:textColorHint="#757575"
@@ -136,6 +140,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/password_hint_string"
                         android:inputType="textPassword"
+                        android:drawableEnd="@drawable/password_icon"
+                        android:drawableTint="@color/gray"
                         android:minHeight="48dp"
                         android:textColorHint="#757575"
                         tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
