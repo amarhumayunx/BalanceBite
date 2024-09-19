@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.balancebite.databinding.ActivityMainAfterSplashScreenBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -18,8 +19,7 @@ class MainActivityAfterSplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
         // Initialize the binding variable using the layout inflater
         binding = ActivityMainAfterSplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)

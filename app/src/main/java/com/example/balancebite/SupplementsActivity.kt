@@ -2,6 +2,7 @@ package com.example.balancebite
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -10,7 +11,7 @@ class SupplementActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_supplements)
-
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
         val supplementList = listOf(
             Supplement("Protein Powder", "A supplement for muscle growth", 120, R.drawable.protein),
             Supplement("Vitamin C", "A supplement for immune support", 0, R.drawable.vitamin),

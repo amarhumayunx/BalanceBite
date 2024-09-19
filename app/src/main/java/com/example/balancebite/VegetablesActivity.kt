@@ -2,6 +2,7 @@ package com.example.balancebite
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -10,7 +11,7 @@ class VegetableActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vegetables)
-
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
         val vegetableList = listOf(
             Vegetable("Carrot", "A crunchy orange vegetable", 41, R.drawable.carrots),
             Vegetable("Broccoli", "A green vegetable rich in fiber", 55, R.drawable.broccoli),

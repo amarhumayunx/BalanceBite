@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.balancebite.databinding.ActivityMainHomeScreenBinding
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -23,7 +23,7 @@ class MainHomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_home_screen)
-
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference.child("Users")
@@ -78,7 +78,7 @@ class MainHomeScreen : AppCompatActivity() {
     private fun handleBottomNavigation(item: MenuItem) {
         when (item.itemId) {
             R.id.nav_diet_plan -> {
-                val intent = Intent(this, DietPlansActivity::class.java)
+                val intent = Intent(this, PlanSelectionActivity::class.java)
                 startActivity(intent)
             }
             /*R.id.nav_chat_bot -> {

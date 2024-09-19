@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.balancebite.databinding.ActivityLoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,6 +20,7 @@ class LoginPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
         // Inflate the binding class for activity_sign_in.xml
         binding = ActivityLoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)

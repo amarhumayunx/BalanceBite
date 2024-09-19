@@ -1,0 +1,11 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_diet"
+        android:icon="@drawable/ic_diet"
+        android:title="Diet Plan" />
+    <item
+        android:id="@+id/nav_exercise"
+        android:icon="@drawable/ic_exercise"
+        android:title="Exercises" />
+</menu>
