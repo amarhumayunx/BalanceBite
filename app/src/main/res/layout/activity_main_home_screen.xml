@@ -37,7 +37,7 @@
                 <!-- Spacer View -->
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="95dp"
+                    android:layout_height="90dp"
                     android:src="@drawable/wave_on_home_screen"
                     android:contentDescription="@string/wave_on_home_screen_image_description" />
 
@@ -260,6 +260,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/nav_round_corner"
+        app:itemIconTint="@color/green"
         android:elevation="0dp"
         android:layout_margin="10dp"
         app:menu="@menu/nav_menu"

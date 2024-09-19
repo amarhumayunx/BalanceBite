@@ -89,10 +89,10 @@ class MainHomeScreen : AppCompatActivity() {
                 val intent = Intent(this, ProfileShownActivity::class.java)
                 startActivity(intent)
             }
-            /*R.id.nav_settings -> {
-                val intent = Intent(this, SettingsActivity::class.java)
+            R.id.nav_settings -> {
+                val intent = Intent(this, AppSettingsActivity::class.java)
                 startActivity(intent)
-            }*/
+            }
             else -> {
                 Toast.makeText(this, "Unknown option selected", Toast.LENGTH_SHORT).show()
             }
