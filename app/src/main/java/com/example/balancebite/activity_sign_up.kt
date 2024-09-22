@@ -11,11 +11,9 @@ import com.example.balancebite.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-// Data class to represent the user for authentication purposes
-data class User(val userId: String, val username: String, val email: String)
 
 @Suppress("DEPRECATION")
-class activity_sign_up : AppCompatActivity() {
+class ActivitySignUP : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var auth: FirebaseAuth
 
@@ -34,8 +32,11 @@ class activity_sign_up : AppCompatActivity() {
         binding.buttonOnCardView.setOnClickListener {
             signUpNewUser()
         }
+
     }
 
+
+    // Function to sign up a new user
     private fun signUpNewUser() {
         val email = binding.emailAddressIdOnCardViewForEnterEmail.text.toString().trim()
         val password = binding.passwordIdOnCardViewForEnterPassword.text.toString().trim()

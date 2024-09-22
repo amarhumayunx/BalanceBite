@@ -24,7 +24,8 @@ class MainHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_home_screen)
         window.statusBarColor = ContextCompat.getColor(this, R.color.green)
-        // Initialize Firebase Auth
+
+        // Initialize Firebase Auth and database reference
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference.child("Users")
         usernameTextView = findViewById(R.id.usernameTextView)
@@ -32,7 +33,7 @@ class MainHomeScreen : AppCompatActivity() {
         // Fetch and display the username
         fetchAndDisplayUsername()
 
-        // Set up listeners for different sections
+        // Set up section listeners
         setUpSectionListeners()
 
         // Initialize BottomNavigationView and set up item selection
@@ -94,7 +95,7 @@ class MainHomeScreen : AppCompatActivity() {
                 startActivity(intent)
             }
             else -> {
-                Toast.makeText(this, "Unknown option selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "This Option is under Development.", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 checkUserStatusAndNavigate()
-            }, 2000
+            }, 1000
         )
     }
 

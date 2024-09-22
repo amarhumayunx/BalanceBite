@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activity_sign_up">
+    tools:context=".ActivitySignUP">
 
     <!-- Wave image on login page -->
     <ImageView
@@ -17,11 +17,13 @@
         android:src="@drawable/wave__1_"
         tools:ignore="ImageContrastCheck"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- ScrollView starts here -->
     <ScrollView
+        android:id="@+id/scrollview_on_signup"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/Wave_on_login_page"

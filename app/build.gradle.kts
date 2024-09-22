@@ -56,11 +56,22 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.database)
     implementation(libs.androidx.preference)
+    implementation(libs.androidx.ui.graphics.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     implementation (libs.androidx.recyclerview)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.androidx.appcompat.v170)
     implementation (libs.androidx.drawerlayout)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.firebase.storage)
+    implementation (libs.glide)
+    implementation (libs.picasso)
+    implementation (libs.circleimageview)
+    implementation (libs.picasso.v28)
+
+
+
 
 }

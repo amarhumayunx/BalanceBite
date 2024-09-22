@@ -48,7 +48,7 @@ class MainActivityAfterSplashScreen : AppCompatActivity() {
     }
 
     private fun navigateToSignUpPage(){
-        val intent = Intent(this,activity_sign_up::class.java)
+        val intent = Intent(this,ActivitySignUP::class.java)
         startActivity(intent)
         finish()
     }

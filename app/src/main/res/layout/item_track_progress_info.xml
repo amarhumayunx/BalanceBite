@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="16dp">
+
+        <!-- Day's title -->
+        <TextView
+            android:id="@+id/progressDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day 1"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <!-- Calories intake -->
+        <TextView
+            android:id="@+id/progressCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calories: 2000" />
+
+        <!-- Water consumption -->
+        <TextView
+            android:id="@+id/progressWater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Water: 8 glasses" />
+
+        <!-- Exercise time -->
+        <TextView
+            android:id="@+id/progressExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exercise Time: 30 min" />
+
+        <!-- Weight -->
+        <TextView
+            android:id="@+id/progressWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight: 70 kg" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

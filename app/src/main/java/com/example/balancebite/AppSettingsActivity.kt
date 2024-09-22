@@ -1,25 +1,45 @@
 package com.example.balancebite
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapShader
+import android.graphics.Canvas
+import android.graphics.Shader
+import android.graphics.Paint
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
 
 class AppSettingsActivity : AppCompatActivity() {
+
+    private lateinit var profileImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app_settings)
 
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
+
         val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
         val buttonChangePassword = findViewById<Button>(R.id.buttonChangePassword)
         val buttonAbout = findViewById<Button>(R.id.buttonAbout)
         val buttonDeleteProfile = findViewById<Button>(R.id.buttonDeleteProfile)
+        val buttonShowProgress = findViewById<Button>(R.id.buttonShowProgress)
+        val buttonLogout = findViewById<Button>(R.id.buttonLogout)
+        profileImageView = findViewById(R.id.profile_image)
+
+        // Load profile picture
+        loadProfilePicture()
 
         // Handle "Change Password" button click
         buttonChangePassword.setOnClickListener {
@@ -40,6 +60,48 @@ class AppSettingsActivity : AppCompatActivity() {
         buttonDeleteProfile.setOnClickListener {
             deleteProfile()
         }
+
+        // Handle "Show Progress Information" button click
+        buttonShowProgress.setOnClickListener {
+            val intent = Intent(this, TrackProgressInfoShowActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Handle "Logout" button click
+        buttonLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+
+            // Redirect to Login Activity
+            val intent = Intent(this, LoginPageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    // Load profile picture from Firebase Realtime Database
+    private fun loadProfilePicture() {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(it.uid).child("profile").child("profilePictureUrl")
+            databaseRef.get().addOnSuccessListener { snapshot ->
+                val profilePictureUrl = snapshot.getValue(String::class.java)
+                Log.d("ProfilePicture", "Retrieved URL: $profilePictureUrl") // Log the URL
+                if (!profilePictureUrl.isNullOrEmpty()) {
+                    Picasso.get()
+                        .load(profilePictureUrl)
+                        .transform(CircularImageTransformation()) // Apply circular transformation
+                        .into(profileImageView)
+                } else {
+                    Log.e("ProfilePicture", "No profile picture URL found")
+                }
+            }.addOnFailureListener { e ->
+                Log.e("ProfilePicture", "Failed to load profile picture: ${e.message}")
+            }
+        } ?: run {
+            Log.e("ProfilePicture", "No user is currently logged in")
+        }
     }
 
     private fun changePassword(newPassword: String) {
@@ -55,7 +117,7 @@ class AppSettingsActivity : AppCompatActivity() {
 
     private fun showAboutInfo() {
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
-        val developerName = "Humayun Amar" // Or fetch from a resource file
+        val developerName = "Humayun Amar"
 
         AlertDialog.Builder(this)
             .setTitle("About This App")
@@ -67,30 +129,70 @@ class AppSettingsActivity : AppCompatActivity() {
     private fun deleteProfile() {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
-            // Reference to user data in Firebase Realtime Database
             val databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(it.uid)
 
-            // Remove user data from the database
+            // First, remove user data from the Firebase Realtime Database
             databaseRef.removeValue().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // After user data is removed, delete the user account
+                    // If database data removal is successful, delete the Firebase Authentication account
                     it.delete().addOnCompleteListener { deleteTask ->
                         if (deleteTask.isSuccessful) {
-                            // Notify the user and redirect to login screen
+                            // Account deletion success
                             Toast.makeText(this, "Profile deleted successfully", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
+
+                            // Redirect to sign-up activity after account deletion
+                            val intent = Intent(this, ActivitySignUP::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear activity stack
                             startActivity(intent)
-                            finish() // Close the current activity
+                            finish()
                         } else {
-                            // Notify the user of the failure in deleting the account
+                            // Handle failure to delete the Firebase Authentication account
+                            Log.e("DeleteProfile", "Failed to delete account: ${deleteTask.exception?.message}")
                             Toast.makeText(this, "Failed to delete account", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
-                    // Notify the user of the failure in deleting the user data
+                    // Handle failure to delete the data from the Firebase Realtime Database
+                    Log.e("DeleteProfile", "Failed to delete user data: ${task.exception?.message}")
                     Toast.makeText(this, "Failed to delete user data", Toast.LENGTH_SHORT).show()
                 }
             }
+        } ?: run {
+            // If no user is logged in, notify and return
+            Toast.makeText(this, "No user is currently logged in", Toast.LENGTH_SHORT).show()
         }
+    }
+
+}
+
+// CircularImageTransformation.kt
+class CircularImageTransformation : Transformation {
+    override fun transform(source: Bitmap): Bitmap {
+        val size = Math.min(source.width, source.height)
+
+        val x = (source.width - size) / 2
+        val y = (source.height - size) / 2
+
+        val squaredBitmap = Bitmap.createBitmap(source, x, y, size, size)
+        if (squaredBitmap != source) {
+            source.recycle()
+        }
+
+        val bitmap = Bitmap.createBitmap(size, size, source.config)
+        val canvas = Canvas(bitmap)
+
+        val paint = Paint()
+        val shader = BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+        paint.isAntiAlias = true
+        paint.shader = shader
+
+        canvas.drawCircle(size / 2f, size / 2f, size / 2f, paint)
+
+        squaredBitmap.recycle()
+        return bitmap
+    }
+
+    override fun key(): String {
+        return "circle"
     }
 }

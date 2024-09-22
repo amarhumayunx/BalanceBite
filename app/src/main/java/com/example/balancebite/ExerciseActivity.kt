@@ -38,17 +38,17 @@ class ExerciseActivity : AppCompatActivity() {
             ),
             Exercise(
                 "12 to 18 Years (Adolescents)",
-                "Sports like football, basketball\nRunning, cycling, swimming\nStrength training\nYoga or Pilates\nDancing, aerobics\nHIT",
+                "Sports like football, basketball\nRunning, cycling, swimming\nStrength training\nYoga or Pilates\nDancing, aerobics\n",
                 "At least 60 minutes of moderate to vigorous physical activity daily"
             ),
             Exercise(
                 "18 to 24 Years",
-                "Running, cycling, swimming\nStrength training\nHIT\nYoga or Pilates\nSports\nHiking or group fitness classes",
+                "Running, cycling, swimming\nStrength training\nYoga or Pilates\nSports\nHiking or group fitness classes",
                 "At least 150 minutes of moderate aerobic activity weekly"
             ),
             Exercise(
                 "24 to 34 Years",
-                "Weight training 2-3 times a week\nCardio exercises\nHIT\nSports\nYoga, stretching, or Pilates",
+                "Weight training 2-3 times a week\nCardio exercises\nSports\nYoga, stretching, or Pilates",
                 "150 minutes of moderate-intensity aerobic activity weekly"
             ),
             Exercise(
