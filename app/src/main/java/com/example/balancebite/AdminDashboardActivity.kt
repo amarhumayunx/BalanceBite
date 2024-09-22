@@ -1,9 +1,11 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -23,6 +25,8 @@ class AdminDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_dashboard)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
 
         recyclerViewUsers = findViewById(R.id.recyclerViewUsers)
         recyclerViewUsers.layoutManager = LinearLayoutManager(this)
@@ -50,6 +54,7 @@ class AdminDashboardActivity : AppCompatActivity() {
 
     private fun fetchUsersFromDatabase() {
         database.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()
                 for (userSnapshot in snapshot.children) {

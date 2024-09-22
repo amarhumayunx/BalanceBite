@@ -82,13 +82,39 @@ class LoginPageActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
-                    // Sign in success, check user info
-                    checkUserInfoAndNavigate()
+                    // Sign in success, check if the user is an admin
+                    checkAdminStatus(auth.currentUser?.uid ?: "")
                 } else {
                     // Sign in failed, handle the error
                     handleSignInFailure(task.exception?.message)
                 }
             }
+    }
+
+    // Check if the user is an admin
+    private fun checkAdminStatus(userId: String) {
+        val database = FirebaseDatabase.getInstance().getReference("Users").child(userId)
+
+        database.child("email").get().addOnSuccessListener { snapshot ->
+            val email = snapshot.value.toString()
+
+            // Check if the email is that of the admin
+            if (email == "amarhumayun@outlook.com")
+            {
+                // Navigate to Admin Dashboard
+                val intent = Intent(this, AdminDashboardActivity::class.java)
+                startActivity(intent)
+                finish()
+                Toast.makeText(this, "Humayun Amar is the admin of this app", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                // Navigate to regular user dashboard or handle non-admin case
+                checkUserInfoAndNavigate()
+            }
+        }.addOnFailureListener {
+            Toast.makeText(this, "Error fetching data", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Check if the user's personal information exists in the database
@@ -128,7 +154,6 @@ class LoginPageActivity : AppCompatActivity() {
             Toast.makeText(this, "User is not logged in", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     // Navigate to the dashboard activity
     private fun navigateToDashboard(name: String) {

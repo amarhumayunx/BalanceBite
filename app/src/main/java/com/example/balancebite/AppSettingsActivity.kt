@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
@@ -7,6 +8,7 @@ import android.graphics.Canvas
 import android.graphics.Shader
 import android.graphics.Paint
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -22,6 +24,7 @@ import com.squareup.picasso.Transformation
 
 class AppSettingsActivity : AppCompatActivity() {
 
+    private val adminPassword = "[&#X0a;160700]"
     private lateinit var profileImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +40,7 @@ class AppSettingsActivity : AppCompatActivity() {
         val buttonShowProgress = findViewById<Button>(R.id.buttonShowProgress)
         val buttonLogout = findViewById<Button>(R.id.buttonLogout)
         profileImageView = findViewById(R.id.profile_image)
+        val buttonAdmin = findViewById<Button>(R.id.adminLoginButton)
 
         // Load profile picture
         loadProfilePicture()
@@ -61,6 +65,8 @@ class AppSettingsActivity : AppCompatActivity() {
             deleteProfile()
         }
 
+
+
         // Handle "Show Progress Information" button click
         buttonShowProgress.setOnClickListener {
             val intent = Intent(this, TrackProgressInfoShowActivity::class.java)
@@ -78,6 +84,38 @@ class AppSettingsActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        buttonAdmin.setOnClickListener{
+            showAdminLoginDialog()
+        }
+    }
+
+    private fun showAdminLoginDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Admin Login")
+
+        // Set up the input field
+        val input = EditText(this)
+        input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        builder.setView(input)
+
+        // Set up dialog buttons
+        builder.setPositiveButton("Log In", DialogInterface.OnClickListener { dialog, which ->
+            val enteredPassword = input.text.toString()
+            if (enteredPassword == adminPassword) {
+                // Correct password, navigate to Admin Dashboard
+                val intent = Intent(this, AdminDashboardActivity::class.java)
+                startActivity(intent)
+                finish()
+                Toast.makeText(this, "Welcome, Admin!", Toast.LENGTH_SHORT).show()
+            } else {
+                // Incorrect password
+                Toast.makeText(this, "Incorrect admin password", Toast.LENGTH_SHORT).show()
+            }
+        })
+        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+
+        builder.show()
     }
 
     // Load profile picture from Firebase Realtime Database

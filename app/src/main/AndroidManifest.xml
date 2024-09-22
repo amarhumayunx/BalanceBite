@@ -23,93 +23,65 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
-
         <activity
             android:name=".EditUserActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".AdminDashboardActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".TrackProgressInfoShowActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
         <receiver android:name=".ReminderReceiver" />
 
         <activity
             android:name=".AppSettingsActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".PlanSelectionActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".ExerciseActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".ProfileShownActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".DietPlanActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".UserInfoActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".ProgressActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".FastFoodActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".SupplementActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".VegetableActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".FruitActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".ActivitySignUP"
             android:exported="false"

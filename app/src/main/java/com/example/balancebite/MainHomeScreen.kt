@@ -109,15 +109,16 @@ class MainHomeScreen : AppCompatActivity() {
             return
         }
 
-        database.child(userId).child("username").addListenerForSingleValueEvent(object : ValueEventListener {
+        // Change the path to point to profile/name
+        database.child(userId).child("profile").child("name").addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    val username = dataSnapshot.getValue(String::class.java)
-                    username?.let {
-                        usernameTextView.text = "Welcome, $username"
+                    val name = dataSnapshot.getValue(String::class.java)
+                    name?.let {
+                        usernameTextView.text = "Welcome, $name"
                     } ?: run {
-                        Toast.makeText(this@MainHomeScreen, "Username not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainHomeScreen, "Name not found", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(this@MainHomeScreen, "Data does not exist", Toast.LENGTH_SHORT).show()
@@ -125,10 +126,11 @@ class MainHomeScreen : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@MainHomeScreen, "Error fetching username: ${databaseError.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainHomeScreen, "Error fetching name: ${databaseError.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
+
 
     private fun navigateToLogin() {
         val intent = Intent(this, LoginPageActivity::class.java)
@@ -136,6 +138,7 @@ class MainHomeScreen : AppCompatActivity() {
         finish()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         Toast.makeText(this, "Back to Login Page", Toast.LENGTH_SHORT).show()

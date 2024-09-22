@@ -3,8 +3,8 @@ package com.example.balancebite
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.balancebite.databinding.ActivityEditUserBinding
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -16,6 +16,8 @@ class EditUserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
 
         // Initialize ViewBinding
         binding = ActivityEditUserBinding.inflate(layoutInflater)

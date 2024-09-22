@@ -18,6 +18,7 @@ class UserAdapter(private val userList: List<User>, private val listener: OnUser
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val userName: TextView = itemView.findViewById(R.id.textViewUserName)
+        val userEmail: TextView = itemView.findViewById(R.id.textViewUserEmail)
         val editButton: Button = itemView.findViewById(R.id.buttonEdit)
         val deleteButton: Button = itemView.findViewById(R.id.buttonDelete)
     }
@@ -30,6 +31,7 @@ class UserAdapter(private val userList: List<User>, private val listener: OnUser
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
         holder.userName.text = user.name
+        holder.userEmail.text = user.email // Set the email
 
         holder.editButton.setOnClickListener {
             listener.onEditClick(user)
