@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,14 +41,26 @@ class TrackProgressInfoShowActivity : AppCompatActivity() {
 
     private fun fetchProgressData() {
         database.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 progressList.clear()
+
+                // Loop through the "Progress" node
                 for (snapshot in dataSnapshot.children) {
-                    val progressEntry = snapshot.getValue(ProgressEntry::class.java)
-                    if (progressEntry != null) {
-                        progressList.add(progressEntry)
-                    }
+                    val calories = snapshot.child("Calories").getValue(Int::class.java) ?: 0
+                    val day = snapshot.child("Day").getValue(String::class.java) ?: ""
+                    val exerciseTime = snapshot.child("Exercise Time").getValue(Int::class.java) ?: 0
+                    val water = snapshot.child("Water").getValue(Int::class.java) ?: 0
+                    val weight = snapshot.child("Weight").getValue(Int::class.java) ?: 0
+
+                    // Create a ProgressEntry object from the fetched data
+                    val progressEntry = ProgressEntry(calories, day, exerciseTime, water, weight)
+
+                    // Add to list
+                    progressList.add(progressEntry)
                 }
+
+                // Notify the adapter that data has changed
                 progressAdapter.notifyDataSetChanged()
             }
 
@@ -57,6 +70,3 @@ class TrackProgressInfoShowActivity : AppCompatActivity() {
         })
     }
 }
-
-
-

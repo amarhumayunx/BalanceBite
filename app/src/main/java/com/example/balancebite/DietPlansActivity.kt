@@ -45,18 +45,6 @@
                                         "Lunch: Vegetable khichdi\n" +
                                         "Snack: Soft cheese or yogurt\n" +
                                         "Dinner: Chicken stew with soft roti"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Porridge with fruit puree\n" +
-                                            "Lunch: Rice with mashed vegetable curry\n" +
-                                            "Snack: Soft fruit slices\n" +
-                                            "Dinner: Lentil soup with soft roti"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Scrambled egg with soft bread\n" +
-                                            "Lunch: Chicken biryani (mild spices)\n" +
-                                            "Snack: Mashed fruit bowl\n" +
-                                            "Dinner: Soft roti with paneer curry\n"
                                 )
                             )
                         ),
@@ -80,18 +68,6 @@
                                             "Lunch: Chicken kebabs with rice\n" +
                                             "Snack: Smoothie with yogurt and fruit\n" +
                                             "Dinner: Dal makhani with roti"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Oats porridge with chopped nuts\n" +
-                                            "Lunch: Keema (minced meat) with rice\n" +
-                                            "Snack: Cheese cubes\n" +
-                                            "Dinner: Fish curry with rice"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Scrambled eggs with whole wheat toast\n" +
-                                            "Lunch: Chicken biryani with cucumber salad\n" +
-                                            "Snack: Fresh fruit slices\n" +
-                                            "Dinner: Vegetable curry with roti"
                                 )
                             )
                         ),
@@ -114,18 +90,6 @@
                                             "Lunch: Chicken karahi with naan\n" +
                                             "Snack: Yogurt with honey\n" +
                                             "Dinner: Fish curry with roti"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Chilla (gram flour pancake)\n" +
-                                            "Lunch: Keema with rice and cucumber salad\n" +
-                                            "Snack: Cheese sandwich\n" +
-                                            "Dinner: Paneer curry with naan"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Upma with peas\n" +
-                                            "Lunch: Chicken kebabs with a side of rice\n" +
-                                            "Snack: Fruit smoothie\n" +
-                                            "Dinner: Aloo gobi (potato and cauliflower curry) with roti"
                                 )
                             )
                         ),
@@ -148,18 +112,6 @@
                                             "Lunch: Chicken keema with rice\n" +
                                             "Snack: Mixed fruit salad\n" +
                                             "Dinner: Fish curry with rice"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Scrambled eggs with toast\n" +
-                                            "Lunch: Vegetable biryani with cucumber salad\n" +
-                                            "Snack: Cheese cubes\n" +
-                                            "Dinner: Dal makhani with naan\n"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Oats with milk and chopped nuts\n" +
-                                            "Lunch: Chicken kebabs with naan\n" +
-                                            "Snack: Fruit smoothie\n" +
-                                            "Dinner: Vegetable stew with rice"
                                 )
                             )
                         ),
@@ -182,18 +134,6 @@
                                             "Lunch: Keema with rice and a side of salad\n" +
                                             "Snack: Fresh fruit slices\n" +
                                             "Dinner: Fish curry with rice and a side of sautéed greens\n"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Oatmeal with honey and nuts\n" +
-                                            "Lunch: Mixed vegetable pulao with raita\n" +
-                                            "Snack: Fresh fruit\n" +
-                                            "Dinner: Chicken stew with naan"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Masala omelette with whole wheat bread\n" +
-                                            "Lunch: Chicken kebabs with a side of rice\n" +
-                                            "Snack: Yogurt with honey\n" +
-                                            "Dinner: Dal makhani with roti"
                                 )
                             )
                         ),
@@ -216,15 +156,6 @@
                                             "Lunch: Vegetable pulao with raita\n" +
                                             "Snack: Cheese sandwich\n" +
                                             "Dinner: Paneer tikka with naan\n"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Scrambled eggs with toast\n" +
-                                            "Lunch: Chicken kebabs with rice\n" +
-                                            "Snack: Yogurt with honey\n" +
-                                            "Dinner: Vegetable stew with rice"
-                                ),
-                                DietPlan("Day 5",
-                                    ""
                                 )
                             )
                         ),
@@ -247,12 +178,6 @@
                                             "Lunch: Vegetable biryani with salad\n" +
                                             "Snack: Fresh fruit slices\n" +
                                             "Dinner: Paneer curry with roti"
-                                ),
-                                DietPlan("Day 4",
-                                    ""
-                                ),
-                                DietPlan("Day 5",
-                                    ""
                                 )
                             )
                         ),
@@ -275,12 +200,6 @@
                                             "Lunch: Chicken kebabs with rice\n" +
                                             "Snack: Fruit smoothie\n" +
                                             "Dinner: Dal makhani with naan"
-                                ),
-                                DietPlan("Day 4",
-                                    ""
-                                ),
-                                DietPlan("Day 5",
-                                    ""
                                 )
                             )
                         ),
@@ -303,30 +222,6 @@
                                             "Lunch: Dal khichdi (rice and lentils) with cucumber raita\n" +
                                             "Snack: Mixed nuts or fresh fruit salad\n" +
                                             "Dinner: Chicken stew with whole wheat chapati"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Multigrain porridge with nuts and seeds\n" +
-                                            "Lunch: Chana pulao (chickpea rice) with a side of yogurt\n" +
-                                            "Snack: Smoothie with spinach, apple, and yogurt\n" +
-                                            "Dinner: Baingan bharta (roasted eggplant) with a side of chapati and salad"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Besan chilla (gram flour pancake) with a side of curd\n" +
-                                            "Lunch: Palak dal (spinach lentil soup) with brown rice\n" +
-                                            "Snack: Dates and almonds\n" +
-                                            "Dinner: Grilled chicken with sautéed spinach and roti"
-                                ),
-                                DietPlan("Day 6",
-                                    "Breakfast: Vegetable upma with a glass of milk\n" +
-                                            "Lunch: Mutton curry (light) with quinoa or whole wheat roti\n" +
-                                            "Snack: Fresh fruit (pear, guava)\n" +
-                                            "Dinner: Dal makhani with brown rice and a side of mixed salad\n"
-                                ),
-                                DietPlan("Day 7",
-                                    "Breakfast: Idli with sambar (lightly spiced lentil soup)\n" +
-                                            "Lunch: Fish curry with brown rice and steamed vegetables\n" +
-                                            "Snack: Yogurt with a handful of nuts\n" +
-                                            "Dinner: Moong dal khichdi with a side of cucumber raita"
                                 )
                             )
                         ),
@@ -349,30 +244,6 @@
                                             "Lunch: Moong dal with roti and a side of mixed salad\n" +
                                             "Snack: Dates with a glass of milk\n" +
                                             "Dinner: Grilled fish with quinoa and steamed vegetables"
-                                ),
-                                DietPlan("Day 4",
-                                    "Breakfast: Chia seed pudding with yogurt and honey\n" +
-                                            "Lunch: Spinach and chickpea curry with brown rice\n" +
-                                            "Snack: Almonds and raisins\n" +
-                                            "Dinner: Light mutton curry with whole wheat chapati and steamed vegetables"
-                                ),
-                                DietPlan("Day 5",
-                                    "Breakfast: Masala oats with chopped veggies\n" +
-                                            "Lunch: Chicken and vegetable stew with brown rice\n" +
-                                            "Snack: Fruit smoothie\n" +
-                                            "Dinner: Dal (lentils) with roti and cucumber salad"
-                                ),
-                                DietPlan("Day 6",
-                                    "Breakfast: Multigrain toast with peanut butter and banana slices\n" +
-                                            "Lunch: Mixed vegetable khichdi (rice and lentils) with a side of yogurt\n" +
-                                            "Snack: Fresh fruit bowl (guava, apple, pear)\n" +
-                                            "Dinner: Baked fish with whole wheat chapati and sautéed spinach"
-                                ),
-                                DietPlan("Day 7",
-                                    "Breakfast: Soft idli with coconut chutney\n" +
-                                            "Lunch: Chicken pulao with cucumber and tomato salad\n" +
-                                            "Snack: Yogurt with honey and almonds\n" +
-                                            "Dinner: Grilled paneer with a side of chapati and vegetable soup"
                                 )
                             )
                         )

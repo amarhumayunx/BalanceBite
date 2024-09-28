@@ -24,6 +24,10 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
         <activity
+            android:name=".AboutAppActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+        <activity
             android:name=".EditUserActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />

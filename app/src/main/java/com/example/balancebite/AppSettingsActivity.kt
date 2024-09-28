@@ -57,7 +57,8 @@ class AppSettingsActivity : AppCompatActivity() {
 
         // Handle "About" button click
         buttonAbout.setOnClickListener {
-            showAboutInfo()
+            val intent = Intent(this, AboutAppActivity::class.java)
+            startActivity(intent)
         }
 
         // Handle "Delete Profile" button click
@@ -153,16 +154,6 @@ class AppSettingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun showAboutInfo() {
-        val versionName = packageManager.getPackageInfo(packageName, 0).versionName
-        val developerName = "Humayun Amar"
-
-        AlertDialog.Builder(this)
-            .setTitle("About This App")
-            .setMessage("Developer: $developerName\nVersion: $versionName")
-            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
-            .show()
-    }
 
     private fun deleteProfile() {
         val user = FirebaseAuth.getInstance().currentUser

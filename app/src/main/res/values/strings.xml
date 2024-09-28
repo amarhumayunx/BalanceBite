@@ -27,6 +27,14 @@
     <string name="read_now_button_text_on_dashboard">Read Now</string>
     <string name="open">Open Drawer</string>
     <string name="close">Close Drawer</string>
-
+    <string name="image_content_desc_on_app_setting_activity">Profile Picture</string>
+    <string name="password_hint_on_app_setting_activity">New Password</string>
+    <string name="string_on_change_password_button">Change Password</string>
+    <string name="string_on_about_button">About</string>
+    <string name="string_on_delete_profile_button">Delete Profile</string>
+    <string name="string_on_show_progress_button">Show Progress Information</string>
+    <string name="string_on_logout_button">Logout</string>
+    <string name="string_on_admin_login_button">Login to Admin Account</string>
+    <string name="string_on_about_app_label">About BalanceBite</string>
 
 </resources>

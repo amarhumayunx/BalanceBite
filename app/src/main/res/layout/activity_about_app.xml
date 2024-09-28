@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    tools:context=".AboutAppActivity">
+
+    <ImageView
+        android:id="@+id/wave_one"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:contentDescription="@string/wave_one"
+        android:src="@drawable/wave_for_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="1"
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
+
+    <!-- CardView for buttons and EditText -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/wave_one"
+        app:layout_constraintBottom_toTopOf="@id/wave_two"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/app_name_on_main_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_on_about_app_label"
+                android:textColor="@color/green"
+                android:textSize="35sp"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/name_about_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Idea By Hafiz Bilal Shahid"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Developed By Humayun Amar"
+                android:textStyle="italic"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/TextView_for_app_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Version: "
+                android:layout_gravity="center_horizontal"/>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/wave_two"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:contentDescription="@string/wave_two"
+        android:src="@drawable/wave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintWidth_percent="1"
+        tools:ignore="ImageContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

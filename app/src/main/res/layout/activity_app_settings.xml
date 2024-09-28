@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".AppSettingsActivity">
 
     <!-- Top Wave Image -->
     <ImageView
@@ -60,7 +61,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:src="@drawable/default_profile_picture"
-                android:contentDescription="Profile Picture"
+                android:contentDescription="@string/image_content_desc_on_app_setting_activity"
                 android:scaleType="centerCrop"
                 android:layout_marginBottom="16dp" />
 
@@ -69,56 +70,68 @@
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:autofillHints="Change Password"
-                android:hint="New Password"
+                android:hint="@string/password_hint_on_app_setting_activity"
                 android:inputType="textPassword"
-                android:layout_marginBottom="16dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                tools:ignore="VisualLintTextFieldSize" />
 
             <!-- Change Password Button -->
             <Button
                 android:id="@+id/buttonChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Change Password"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
-                android:layout_marginBottom="16dp" />
+                android:text="@string/string_on_change_password_button"
+                android:textColor="@color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <!-- About Button -->
             <Button
                 android:id="@+id/buttonAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="About"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
-                android:layout_marginBottom="16dp" />
+                android:text="@string/string_on_about_button"
+                android:textColor="@color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <!-- Delete Profile Button -->
             <Button
                 android:id="@+id/buttonDeleteProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delete Profile"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
-                android:layout_marginBottom="16dp" />
+                android:text="@string/string_on_delete_profile_button"
+                android:textColor="@color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <!-- Show Progress Button -->
             <Button
                 android:id="@+id/buttonShowProgress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Show Progress Information"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
-                android:layout_marginBottom="16dp" />
+                android:text="@string/string_on_show_progress_button"
+                android:textColor="@color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <!-- Logout Button -->
             <Button
                 android:id="@+id/buttonLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logout"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
-                android:textColor="@android:color/white"
-                android:layout_marginBottom="16dp" />
+                android:text="@string/string_on_logout_button"
+                android:textColor="@color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <!-- Admin Login Button -->
 
@@ -126,10 +139,11 @@
                 android:id="@+id/adminLoginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login to Admin Account"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
+                android:text="@string/string_on_admin_login_button"
                 android:textColor="@color/white"
-                android:layout_marginBottom="16dp"/>
+                tools:ignore="VisualLintButtonSize" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -1,48 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="10dp"
-    android:gravity="center_vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Display the user's name -->
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center" />
+
+    <!-- User Name -->
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="username"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <!-- User Details -->
+    <TextView
+        android:id="@+id/userDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details" />
+
+    <!-- User Progress -->
+    <TextView
+        android:id="@+id/userProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="progress"
+        android:layout_marginTop="4dp" />
+
+    <!-- Horizontal LinearLayout for Buttons -->
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp">
 
-        <TextView
-            android:id="@+id/textViewUserName"
+        <!-- Edit Button -->
+        <Button
+            android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Name"
-            android:textSize="18sp"
-            android:textColor="@color/green"/>
+            android:text="Edit Account"
+            android:backgroundTint="@color/green"
+            android:layout_marginEnd="8dp" />
 
-        <!-- Display the user's email -->
-        <TextView
-            android:id="@+id/textViewUserEmail"
+        <!-- Delete Button -->
+        <Button
+            android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Email"
-            android:textSize="14sp"
-            android:textColor="@color/green"/>
+            android:text="Delete Account"
+            android:backgroundTint="@color/green"
+            android:textColor="#FF0000" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green"
-        android:text="Edit"/>
-
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green"
-        android:text="Delete"/>
 </LinearLayout>

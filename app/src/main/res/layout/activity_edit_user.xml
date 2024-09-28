@@ -1,102 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- User's Name -->
-    <TextView
-        android:id="@+id/NameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="18sp"/>
-
-    <EditText
-        android:id="@+id/editName"
+    <!-- Top Wave Image -->
+    <ImageView
+        android:id="@+id/wave_one"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Name"/>
+        android:layout_height="180dp"
+        android:contentDescription="@string/wave_one"
+        android:src="@drawable/wave_for_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
 
-    <!-- Age -->
-    <TextView
-        android:id="@+id/AgeLabel"
-        android:layout_width="wrap_content"
+    <!-- CardView for Profile and Buttons -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Age"
-        android:textSize="18sp"/>
+        app:layout_constraintTop_toBottomOf="@id/wave_one"
+        app:layout_constraintBottom_toTopOf="@id/wave_two"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="30dp">
 
-    <EditText
-        android:id="@+id/editAge"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:padding="16dp">
+
+            <!-- Name Input -->
+            <TextView
+                android:id="@+id/NameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:drawableEnd="@drawable/name_of_user"
+                android:drawableTint="@color/gray"
+                android:layout_height="wrap_content"
+                android:hint="Enter Name"/>
+
+            <!-- Age Input -->
+            <TextView
+                android:id="@+id/AgeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/age_icon"
+                android:drawableTint="@color/gray"
+                android:hint="Enter Age"
+                android:inputType="number"/>
+
+            <!-- Height Input -->
+            <TextView
+                android:id="@+id/HeightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height (cm)"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/height_icon"
+                android:drawableTint="@color/gray"
+                android:hint="Enter Height"
+                android:inputType="numberDecimal"/>
+
+            <!-- Weight Input -->
+            <TextView
+                android:id="@+id/WeightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight (kg)"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/weight_icon"
+                android:drawableTint="@color/gray"
+                android:hint="Enter Weight"
+                android:inputType="numberDecimal"/>
+
+            <!-- Health Info Input -->
+            <TextView
+                android:id="@+id/HealthInfoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health Information"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editHealthInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/health_icon"
+                android:drawableTint="@color/gray"
+                android:hint="Enter Health Information"/>
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:backgroundTint="@color/green"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Delete Button -->
+            <Button
+                android:id="@+id/buttonDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:backgroundTint="@color/green"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Wave Image -->
+    <ImageView
+        android:id="@+id/wave_two"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Age"
-        android:inputType="number"/>
+        android:layout_height="235dp"
+        android:contentDescription="@string/wave_two"
+        android:src="@drawable/wave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
 
-    <!-- Height -->
-    <TextView
-        android:id="@+id/HeightLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Height (cm)"
-        android:textSize="18sp"/>
-
-    <EditText
-        android:id="@+id/editHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Height"
-        android:inputType="numberDecimal"/>
-
-    <!-- Weight -->
-    <TextView
-        android:id="@+id/WeightLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight (kg)"
-        android:textSize="18sp"/>
-
-    <EditText
-        android:id="@+id/editWeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Weight"
-        android:inputType="numberDecimal"/>
-
-    <!-- Health Info -->
-    <TextView
-        android:id="@+id/HealthInfoLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Health Information"
-        android:textSize="18sp"/>
-
-    <EditText
-        android:id="@+id/editHealthInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Health Information"/>
-
-    <!-- Save Button -->
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Delete Button -->
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:textColor="@android:color/white"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

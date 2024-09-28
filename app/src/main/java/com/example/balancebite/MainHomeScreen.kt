@@ -141,7 +141,8 @@ class MainHomeScreen : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
-        Toast.makeText(this, "Back to Login Page", Toast.LENGTH_SHORT).show()
-        navigateToLogin()
+        val intent = Intent(this, MainActivity::class.java)
+        Toast.makeText(this, "User is already logged in. if you want to login then logout first!", Toast.LENGTH_SHORT).show()
+        startActivity(intent)
     }
 }

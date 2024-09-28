@@ -1,26 +1,30 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 
-// UserAdapter.kt
-class UserAdapter(private val userList: List<User>, private val listener: OnUserClickListener) :
-    RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-
-    interface OnUserClickListener {
-        fun onEditClick(user: User)
-        fun onDeleteClick(userId: String)
-    }
+class UserAdapter(private val userList: List<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val userName: TextView = itemView.findViewById(R.id.textViewUserName)
-        val userEmail: TextView = itemView.findViewById(R.id.textViewUserEmail)
-        val editButton: Button = itemView.findViewById(R.id.buttonEdit)
-        val deleteButton: Button = itemView.findViewById(R.id.buttonDelete)
+        val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
+        val userName: TextView = itemView.findViewById(R.id.userName)
+        val userDetails: TextView = itemView.findViewById(R.id.userDetails)
+        val userProgress: TextView = itemView.findViewById(R.id.userProgress)
+        val editButton: Button = itemView.findViewById(R.id.editButton)
+        val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -28,21 +32,81 @@ class UserAdapter(private val userList: List<User>, private val listener: OnUser
         return UserViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
-        holder.userName.text = user.name
-        holder.userEmail.text = user.email // Set the email
+        val profile = user.profile
 
+        // Load profile picture with Picasso
+        Picasso.get().load(profile.profilePictureUrl).into(holder.profileImage)
+
+        // Set user details
+        holder.userName.text = user.name
+        holder.userDetails.text = "Age: ${profile.age}, \nHeight: ${profile.height} cm, \nWeight: ${profile.weight} kg, \nHealth Info: ${profile.healthInfo}"
+
+        // Fetch and display user progress from Firebase
+        fetchUserProgress(user.userId, holder)
+
+        // Handle edit button click
         holder.editButton.setOnClickListener {
-            listener.onEditClick(user)
+            val context = holder.itemView.context
+            val intent = Intent(context, EditUserActivity::class.java)
+            intent.putExtra("userId", user.userId)
+            context.startActivity(intent)
         }
 
+        // Handle delete button click
         holder.deleteButton.setOnClickListener {
-            listener.onDeleteClick(user.userId!!)
+            deleteUser(user.userId, holder)
         }
     }
 
-    override fun getItemCount(): Int {
-        return userList.size
+    override fun getItemCount(): Int = userList.size
+
+    // Fetch user's progress data from Firebase
+    private fun fetchUserProgress(userId: String, holder: UserViewHolder) {
+        val database = FirebaseDatabase.getInstance().reference.child("Users").child(userId).child("Progress")
+
+        database.orderByKey().limitToLast(1).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            @SuppressLint("SetTextI18n")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (progressSnapshot in snapshot.children) {
+                        val progress = progressSnapshot.getValue(ProgressEntry::class.java)
+                        if (progress != null)
+                        {
+                            holder.userProgress.text = "Day: ${progress.day}, \nCalories: ${progress.calories}, \nWater: ${progress.water} glasses, \nExercise Time: ${progress.exerciseTime} hours"
+                        }
+                        else
+                        {
+                            holder.userProgress.text = "No progress data available"
+                        }
+                    }
+                } else {
+                    holder.userProgress.text = "No progress data available"
+                }
+            }
+
+            @SuppressLint("SetTextI18n")
+            override fun onCancelled(error: DatabaseError) {
+                holder.userProgress.text = "Failed to load progress"
+            }
+        })
+    }
+
+    // Function to delete the user profile from Firebase
+    private fun deleteUser(userId: String, holder: UserViewHolder) {
+        val database = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
+
+        // Delete the user from Firebase
+        database.removeValue().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(holder.itemView.context, "User profile deleted.", Toast.LENGTH_SHORT).show()
+                notifyItemRemoved(holder.adapterPosition)
+            } else {
+                Toast.makeText(holder.itemView.context, "Failed to delete user profile.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
