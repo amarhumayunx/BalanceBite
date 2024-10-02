@@ -60,7 +60,7 @@
             android:backgroundTint="@color/green"
             android:padding="10dp"
             android:text="@string/delete_account_button"
-            android:textColor="#FF0000"
+            android:textColor="@color/red"
             tools:ignore="ButtonStyle,TextContrastCheck" />
     </LinearLayout>
 
