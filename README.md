@@ -36,8 +36,6 @@ The BalanceBite system follows a layered client-server architecture:
 - **User Management & Data Handling**: Secures and manages user profiles and health data in Firebase Firestore.
 - **Custom AI Chatbot**: Provides personalized health advice using the Naive Bayes algorithm.
 
-For a detailed breakdown, please refer to the [Technical Architecture Documentation](#).
-
 ## **Installation and Setup**
 
 ### Prerequisites
