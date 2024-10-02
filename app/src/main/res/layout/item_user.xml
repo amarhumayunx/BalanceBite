@@ -12,7 +12,7 @@
         android:id="@+id/profileImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:contentDescription="TODO"
+        android:contentDescription="Profile Image"
         android:scaleType="centerCrop"
         android:layout_gravity="center" />
 
@@ -31,14 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Details" />
-
-    <!-- User Progress -->
-    <TextView
-        android:id="@+id/userProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="progress"
-        android:layout_marginTop="4dp" />
 
     <!-- Horizontal LinearLayout for Buttons -->
     <LinearLayout

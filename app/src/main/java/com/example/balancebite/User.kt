@@ -13,8 +13,9 @@ data class UserMiniProfiler(
 
 data class User(
     val userId: String = "",
+    val progressId: String = "",
     val email: String = "",
     val name: String = "",
     val profile: UserMiniProfiler = UserMiniProfiler(),
-    val progress: Map<String, ProgressEntry>? = null
+    val progress: ProgressEntry = ProgressEntry()
 )

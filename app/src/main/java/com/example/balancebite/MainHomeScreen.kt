@@ -94,9 +94,6 @@ class MainHomeScreen : AppCompatActivity() {
                 val intent = Intent(this, AppSettingsActivity::class.java)
                 startActivity(intent)
             }
-            else -> {
-                Toast.makeText(this, "This Option is under Development.", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 
