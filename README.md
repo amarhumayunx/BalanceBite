@@ -44,7 +44,7 @@ The BalanceBite system follows a layered client-server architecture:
 ### Steps to Install the APK on Your Mobile
 
 1. **Download the APK**:
-   - Download the latest BalanceBite APK from the [Releases](#) section on this GitHub repository.
+   - Download the latest BalanceBite APK from the Google Play Store, When I release an build.
 
 2. **Allow Installation from Unknown Sources**:
    - Go to your device's **Settings** > **Security**.
