@@ -16,6 +16,7 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/wave_on_login"
         android:src="@drawable/wave_for_login_page"
+        android:padding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -58,6 +59,7 @@
         app:cardElevation="18dp"
         android:layout_margin="10dp"
         android:backgroundTint="@color/white"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -71,13 +73,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="25dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/app_name_card_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/card_view_pop_up_name"
+                    android:padding="10dp"
                     android:textColor="@color/green"
                     android:textSize="35sp"
                     android:textStyle="bold"
@@ -88,6 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/information_string"
+                    android:padding="10dp"
                     android:alpha="0.9"
                     />
 
@@ -97,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/email_string"
                     android:alpha="1.7"
+                    android:padding="5dp"
                     android:textStyle="bold"
                     />
 
@@ -106,8 +111,11 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="Email"
                     android:textAlignment="center"
-                    android:drawableEnd="@drawable/email_icon"
+                    android:drawableEnd="@drawable/email_real_icon"
+                    android:drawableTint="@color/gray"
                     android:hint="@string/email_hint_string"
+                    android:background="@drawable/custom_edittext_round"
+                    android:padding="10dp"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
                     android:textColorHint="#757575"
@@ -119,6 +127,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/password_string"
                     android:alpha="1.7"
+                    android:padding="5dp"
                     android:textStyle="bold"
                     />
 
@@ -128,9 +137,12 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="Password"
                     android:textAlignment="center"
-                    android:drawableEnd="@drawable/password_icon"
+                    android:drawableEnd="@drawable/password_real_icon"
+                    android:drawableTint="@color/gray"
                     android:hint="@string/password_hint_string"
+                    android:background="@drawable/custom_edittext_round"
                     android:inputType="textPassword"
+                    android:padding="10dp"
                     android:minHeight="48dp"
                     android:textColorHint="#757575"
                     tools:ignore="VisualLintTextFieldSize" />
@@ -156,7 +168,10 @@
                     android:layout_height="60dp"
                     android:backgroundTint="@color/green"
                     android:text="@string/sign_in_button_string"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
+                    android:drawableEnd="@drawable/done_icon"
+                    android:drawableTint="@color/white"
+                    android:textSize="29sp"
                     app:cornerRadius="32dp"
                     tools:ignore="VisualLintButtonSize" />
 
@@ -166,6 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
+                    android:textSize="15sp"
                     android:text="@string/sign_up_line_on_login_page"
                     android:textColor="#4CAF50"
                     tools:ignore="TextContrastCheck" />

@@ -156,6 +156,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:backgroundTint="@color/green"
+                        android:padding="10dp"
                         android:text="@string/track_button"
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
@@ -167,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nutrition_line"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:padding="10dp"
                     android:layout_marginBottom="8dp" />
@@ -178,6 +179,7 @@
                     android:layout_height="wrap_content"
                     android:columnCount="3"
                     android:rowCount="1"
+                    android:padding="10dp"
                     android:layout_marginBottom="16dp">
 
                     <LinearLayout
@@ -187,7 +189,7 @@
                         android:layout_columnWeight="1"
                         android:orientation="vertical"
                         android:layout_margin="10dp"
-                        android:padding="8dp"
+                        android:padding="10dp"
                         android:gravity="center"
                         tools:ignore="UseCompoundDrawables">
 
@@ -196,12 +198,14 @@
                             android:layout_height="48dp"
                             android:contentDescription="@string/fruit_image_desc"
                             android:src="@drawable/fruit_salad"
+                            android:padding="0dp"
                             tools:ignore="ImageContrastCheck" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/label_fruits"
+                            android:padding="5dp"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -212,7 +216,7 @@
                         android:layout_columnWeight="1"
                         android:orientation="vertical"
                         android:layout_margin="10dp"
-                        android:padding="8dp"
+                        android:padding="10dp"
                         android:gravity="center"
                         tools:ignore="UseCompoundDrawables">
 
@@ -221,12 +225,14 @@
                             android:layout_height="48dp"
                             android:contentDescription="@string/vegetable_image_desc"
                             android:src="@drawable/vegetables"
+                            android:padding="0dp"
                             tools:ignore="ImageContrastCheck" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/label_vegetables"
+                            android:padding="5dp"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -237,13 +243,14 @@
                         android:layout_columnWeight="1"
                         android:orientation="vertical"
                         android:layout_margin="10dp"
-                        android:padding="8dp"
+                        android:padding="10dp"
                         android:gravity="center"
                         tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
+                            android:padding="0dp"
                             android:contentDescription="@string/supplement_image_desc"
                             android:src="@drawable/supplement" />
 
@@ -251,6 +258,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/label_supplements"
+                            android:padding="3dp"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </GridLayout>
@@ -269,6 +277,7 @@
         app:itemIconTint="@color/green"
         android:elevation="10dp"
         android:layout_margin="10dp"
+        android:padding="5dp"
         app:menu="@menu/nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

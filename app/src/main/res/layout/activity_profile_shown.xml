@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".ProfileShownActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ProfileShownActivity">
 
 <ImageView
     android:id="@+id/wave_one"
@@ -32,24 +33,20 @@ tools:context=".ProfileShownActivity">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <!-- LinearLayout inside CardView for user details -->
     <LinearLayout
+        android:id="@+id/linear_layout_profile_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/white"
+        android:layout_margin="0dp"
         android:padding="0dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/wave_on_home_screen_image_description"
-            android:src="@drawable/wave_on_home_screen"
-            tools:ignore="ImageContrastCheck" />
 
+        <!-- App Name -->
         <TextView
             android:id="@+id/app_name_on_main_activity"
             android:layout_width="wrap_content"
@@ -57,15 +54,24 @@ tools:context=".ProfileShownActivity">
             android:text="@string/app_name"
             android:textColor="@color/green"
             android:textSize="36sp"
-            android:padding="15dp"
+            android:padding="10dp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             tools:ignore="TextSizeCheck,TextContrastCheck" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
+        <TextView
+            android:id="@+id/user_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:padding="10dp"
+            android:text="@string/profile_info_label"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:ignore="TextContrastCheck" />
 
         <!-- Username -->
         <TextView
@@ -75,6 +81,7 @@ tools:context=".ProfileShownActivity">
             android:text="@string/username_label"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:padding="10dp"
             android:layout_margin="10dp"
             android:layout_marginBottom="10dp"/>
 
@@ -85,6 +92,7 @@ tools:context=".ProfileShownActivity">
             android:layout_height="wrap_content"
             android:text="@string/age_label"
             android:textSize="16sp"
+            android:padding="10dp"
             android:layout_margin="10dp"
             android:layout_marginBottom="8dp"/>
 
@@ -95,6 +103,7 @@ tools:context=".ProfileShownActivity">
             android:layout_height="wrap_content"
             android:text="@string/height_label"
             android:layout_margin="10dp"
+            android:padding="10dp"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"/>
 
@@ -105,6 +114,7 @@ tools:context=".ProfileShownActivity">
             android:layout_height="wrap_content"
             android:text="@string/weight_label"
             android:layout_margin="10dp"
+            android:padding="10dp"
             android:textSize="16sp"/>
 
         <!-- Health Information -->
@@ -114,6 +124,7 @@ tools:context=".ProfileShownActivity">
             android:layout_height="wrap_content"
             android:text="@string/health_info_label"
             android:layout_margin="10dp"
+            android:padding="10dp"
             android:textSize="16sp"/>
 
     </LinearLayout>
@@ -125,6 +136,7 @@ tools:context=".ProfileShownActivity">
     android:layout_height="235dp"
     android:contentDescription="@string/wave_two"
     android:src="@drawable/wave"
+    android:padding="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

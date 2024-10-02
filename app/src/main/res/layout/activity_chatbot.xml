@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".ChatbotActivity">
 
     <!-- Greeting TextView -->
@@ -29,6 +29,7 @@
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:padding="10dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/chatbotInput"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +46,7 @@
             android:layout_margin="10dp"
             android:background="@color/white"
             android:orientation="vertical"
-            android:padding="16dp" />
+            android:padding="20dp" />
     </ScrollView>
 
     <!-- Chatbot input field -->
@@ -59,7 +60,7 @@
         android:inputType="text"
         android:padding="12dp"
         android:textColor="#333333"
-        android:textColorHint="#888888"
+        android:textColorHint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/chatbotSendButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +74,7 @@
         android:layout_margin="16dp"
         android:backgroundTint="@color/green"
         android:text="@string/send_button_on_chatbot_activity"
+        android:padding="10dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

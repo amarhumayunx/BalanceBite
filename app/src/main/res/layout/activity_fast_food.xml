@@ -1,91 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".FastFoodActivity">
 
-    <!-- Centered CardView -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="36dp"
-        app:cardElevation="4dp"
+    <!-- Top Wave Image -->
+    <ImageView
+        android:id="@+id/wave_one"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:contentDescription="@string/wave_one"
+        android:padding="0dp"
+        android:src="@drawable/wave_for_layout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
 
-        <!-- Scrollable Content -->
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <!-- CardView for App Name and User Name -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_fastfood"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/wave_one"
+        app:layout_constraintBottom_toTopOf="@id/wave_two"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        app:cardElevation="8dp"
+        android:background="@color/white"
+        app:cardCornerRadius="30dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/light_white"
-                android:padding="16dp">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:text="@string/pros_and_cons_of_fast_food"
+                android:textColor="@color/green"
+                android:textSize="23sp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
 
-                <!-- Title -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/pros_and_cons_of_fast_food"
-                    android:textColor="@color/green"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck" />
+            <!-- Pros Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="@string/pros_of_fast_food"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                tools:ignore="TextContrastCheck" />
 
-                <!-- Pros Section -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/pros_of_fast_food"
-                    android:textColor="@color/green"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pros_lines"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:layout_marginBottom="24dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pros_lines"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="24dp" />
+            <!-- Cons Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="@string/cons_of_fast_food"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
 
-                <!-- Cons Section -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/cons_of_fast_food"
-                    android:textColor="@color/green"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cons_lines"
+                android:padding="10dp"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cons_lines"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-        </ScrollView>
-
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Wave Image -->
+    <ImageView
+        android:id="@+id/wave_two"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:contentDescription="@string/wave_two"
+        android:src="@drawable/wave"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -79,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sign_up"
                         android:textColor="@color/green"
+                        android:padding="10dp"
                         android:textSize="35sp"
                         android:textStyle="bold"
                         tools:ignore="TextContrastCheck" />
@@ -87,6 +88,7 @@
                         android:id="@+id/information_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:text="@string/sign_up_information"
                         android:alpha="0.9" />
 
@@ -95,6 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/user_name_string"
+                        android:padding="5dp"
                         android:alpha="1.7"
                         android:textStyle="bold" />
 
@@ -105,8 +108,10 @@
                         android:hint="@string/user_name_hint_string"
                         android:minHeight="48dp"
                         android:textAlignment="center"
+                        android:background="@drawable/custom_edittext_round"
                         android:drawableEnd="@drawable/name_of_user"
                         android:drawableTint="@color/gray"
+                        android:padding="15dp"
                         android:textColorHint="#757575"
                         tools:ignore="Autofill,TextFields,VisualLintTextFieldSize" />
 
@@ -116,6 +121,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/email_string"
                         android:alpha="1.7"
+                        android:padding="10dp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -124,9 +130,11 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/email_hint_string"
                         android:textAlignment="center"
-                        android:drawableEnd="@drawable/email_icon"
+                        android:background="@drawable/custom_edittext_round"
+                        android:drawableEnd="@drawable/email_real_icon"
                         android:drawableTint="@color/gray"
                         android:inputType="textEmailAddress"
+                        android:padding="10dp"
                         android:minHeight="48dp"
                         android:textColorHint="#757575"
                         tools:ignore="Autofill,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
@@ -136,6 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/password_string"
+                        android:padding="5dp"
                         android:alpha="1.7"
                         android:textStyle="bold" />
 
@@ -145,8 +154,10 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/password_hint_string"
                         android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:background="@drawable/custom_edittext_round"
                         android:textAlignment="center"
-                        android:drawableEnd="@drawable/password_icon"
+                        android:drawableEnd="@drawable/password_real_icon"
                         android:drawableTint="@color/gray"
                         android:minHeight="48dp"
                         android:textColorHint="#757575"
@@ -163,6 +174,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:visibility="gone"
+                            android:padding="10dp"
                             android:indeterminate="true" />
                     </RelativeLayout>
 
@@ -172,6 +184,10 @@
                         android:layout_height="60dp"
                         android:layout_margin="10dp"
                         android:text="@string/sign_up"
+                        android:backgroundTint="@color/green"
+                        android:padding="10dp"
+                        android:drawableEnd="@drawable/done_icon"
+                        android:drawableTint="@color/white"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:cornerRadius="35dp"
