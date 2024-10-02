@@ -15,6 +15,7 @@ android {
     defaultConfig {
         applicationId = "com.example.balancebite"
         minSdk = 28
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -71,7 +72,7 @@ dependencies {
     implementation (libs.picasso)
     implementation (libs.circleimageview)
     implementation (libs.picasso.v28)
-
+    implementation (libs.androidx.work.runtime.ktx)
 
 
 

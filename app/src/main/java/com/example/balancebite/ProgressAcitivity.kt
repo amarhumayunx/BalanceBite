@@ -3,10 +3,13 @@ package com.example.balancebite
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import android.widget.Toast
+import java.util.concurrent.TimeUnit
 
 class ProgressActivity : AppCompatActivity() {
 
@@ -19,7 +22,7 @@ class ProgressActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_progress_acitivity)
+        setContentView(R.layout.activity_progress_activity)
 
         inputDay = findViewById(R.id.inputDay)
         inputCalories = findViewById(R.id.inputCalories)
@@ -62,6 +65,7 @@ class ProgressActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 Toast.makeText(this, "Progress submitted successfully", Toast.LENGTH_SHORT).show()
                 clearInputs()
+                scheduleNotificationForNextDay()  // Schedule notification after successful submission
             } else {
                 Toast.makeText(this, "Failed to submit progress", Toast.LENGTH_SHORT).show()
             }
@@ -74,5 +78,13 @@ class ProgressActivity : AppCompatActivity() {
         inputWater.text.clear()
         inputExerciseTime.text.clear()
         inputWeight.text.clear()
+    }
+
+    private fun scheduleNotificationForNextDay() {
+        val workRequest = OneTimeWorkRequestBuilder<ProgressNotificationWorker>()
+            .setInitialDelay(24, TimeUnit.HOURS)  // Set the delay to 24 hours
+            .build()
+
+        WorkManager.getInstance(applicationContext).enqueue(workRequest)
     }
 }
