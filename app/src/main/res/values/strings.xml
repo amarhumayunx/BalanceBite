@@ -118,6 +118,10 @@
     <string name="details">Details</string>
     <string name="edit_account_button">Edit Account</string>
     <string name="delete_account_button">Delete Account</string>
+    <string name="diet_plans">Diet Plans</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 
 
 </resources>
