@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedbackActivity">
+
+    <!-- Top Wave Image -->
+    <ImageView
+        android:id="@+id/wave_one"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:contentDescription="@string/wave_one"
+        android:src="@drawable/wave_for_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
+
+    <!-- CardView for App Name and User Name -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewFeedback"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/wave_one"
+        app:layout_constraintBottom_toTopOf="@id/wave_two"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:padding="16dp">
+
+            <!-- App Name Text -->
+            <TextView
+                android:id="@+id/app_name_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/green"
+                android:layout_margin="10dp"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+            <!-- Feedback Title -->
+            <TextView
+                android:id="@+id/feedback_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_feedback_title"
+                android:textColor="@color/gray"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold" />
+
+            <!-- Feedback Input -->
+            <EditText
+                android:id="@+id/feedback_input"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/string_feedback_hint"
+                android:textAlignment="center"
+                android:background="@drawable/custom_edittext_background"
+                android:padding="16dp"
+                android:minHeight="120dp"
+                android:inputType="textMultiLine" />
+
+            <!-- RatingBar -->
+            <TextView
+                android:id="@+id/rating_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_us"
+                android:textColor="@color/gray"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:numStars="5"
+                android:stepSize="1.0" />
+
+            <!-- Submit Feedback Button -->
+            <Button
+                android:id="@+id/submit_feedback_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/submit_feedback"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Wave Image -->
+    <ImageView
+        android:id="@+id/wave_two"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:contentDescription="@string/wave_two"
+        android:src="@drawable/wave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        tools:ignore="ImageContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

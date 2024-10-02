@@ -135,8 +135,18 @@
                 android:textColor="@color/white"
                 tools:ignore="VisualLintButtonSize" />
 
-            <!-- Admin Login Button -->
+            <!-- FeedBack Button -->
+            <Button
+                android:id="@+id/buttonFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/green"
+                android:text="Feedback"
+                android:textColor="@color/white"
+                tools:ignore="VisualLintButtonSize" />
 
+            <!-- Admin Login Button -->
             <Button
                 android:id="@+id/adminLoginButton"
                 android:layout_width="match_parent"

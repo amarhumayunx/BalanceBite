@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -20,14 +21,6 @@ data class DietPlanDay(
     val Snack: String = "",
     val Snack2: String = ""
 )
-
-/*data class UserProfile(
-    val name: String = "",
-    val age: Int = 0,
-    val height: String = "",
-    val weight: String = "",
-    val healthInfo: String = ""
-)*/
 
 data class NaiveBayesModel(
     val trainingData: Map<String, String>
@@ -162,31 +155,6 @@ class ChatbotActivity : AppCompatActivity() {
         }
     }
 
-
-    /*private fun handleUserInput(input: String) {
-        if (input.contains("profile", true)) {
-            fetchUserProfile() // Fetch user profile if requested
-        } else if (input.contains("diet", true) || input.contains("eat", true)) {
-            val response = naiveBayesModel.predict(input)
-            chatbotReply(response)
-        } else {
-            when {
-                input.contains("age", true) -> {
-                    chatbotReply("Please enter your age:")
-                }
-                input.toIntOrNull() != null -> {
-                    userAge = input.toInt()
-                    userAgeGroup = determineAgeGroup(userAge)
-                    chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
-                }
-                input.contains("Day", true) -> {
-                    selectedDay = input
-                    fetchDietPlanForDay(userAgeGroup, selectedDay)
-                }
-                else -> {
-                    chatbotReply("Sorry, I'm BalanceBite Chatbot. I can only assist with diet-related queries.")
-                }*/
-
     private fun handleUserInput(input: String) {
         // Convert input to lower case for easier matching
         val caseInput = input
@@ -199,6 +167,12 @@ class ChatbotActivity : AppCompatActivity() {
 
         // Check for diet-related queries
         if (caseInput.contains("diet") || caseInput.contains("eat")) {
+            val response = naiveBayesModel.predict(input)
+            chatbotReply(response)
+            return
+        }
+
+        if (caseInput.contains("suggest me a diet plan")) {
             val response = naiveBayesModel.predict(input)
             chatbotReply(response)
             return
@@ -226,6 +200,7 @@ class ChatbotActivity : AppCompatActivity() {
                 userAgeGroup = determineAgeGroup(userAge)
                 chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
             }
+
             caseInput.contains("day") && caseInput.contains("plan") -> {
                 chatbotReply("Please specify which day you would like the diet plan for (e.g., Day1).")
             }
@@ -264,7 +239,6 @@ class ChatbotActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     private fun getResponseFromTrainingData(input: String): String? {
@@ -338,13 +312,14 @@ class ChatbotActivity : AppCompatActivity() {
         chatbotReply(profileMessage)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun displayUserMessage(message: String) {
         val cardView = CardView(this)
         cardView.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        cardView.setCardElevation(4f)
+        cardView.cardElevation = 4f
         cardView.radius = 12f
         cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.white)) // Set a different color for user messages
 
@@ -392,13 +367,14 @@ class ChatbotActivity : AppCompatActivity() {
         chatbotReply(planMessage)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun chatbotReply(message: String) {
         val cardView = CardView(this)
         cardView.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        cardView.setCardElevation(4f)
+        cardView.cardElevation = 4f
         cardView.radius = 12f
         cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.white))
 

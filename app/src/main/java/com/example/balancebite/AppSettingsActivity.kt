@@ -41,6 +41,7 @@ class AppSettingsActivity : AppCompatActivity() {
         val buttonLogout = findViewById<Button>(R.id.buttonLogout)
         profileImageView = findViewById(R.id.profile_image)
         val buttonAdmin = findViewById<Button>(R.id.adminLoginButton)
+        val buttonFeedback = findViewById<Button>(R.id.buttonFeedback)
 
         // Load profile picture
         loadProfilePicture()
@@ -84,6 +85,12 @@ class AppSettingsActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()
+        }
+
+        // Handle "Feedback" button click
+        buttonFeedback.setOnClickListener {
+            val intent = Intent(this, FeedbackActivity::class.java)
+            startActivity(intent)
         }
 
         buttonAdmin.setOnClickListener{

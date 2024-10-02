@@ -23,6 +23,10 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
         <activity
+            android:name=".FeedbackActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+        <activity
             android:name=".ChatbotActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />

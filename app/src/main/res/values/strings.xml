@@ -36,5 +36,9 @@
     <string name="string_on_logout_button">Logout</string>
     <string name="string_on_admin_login_button">Login to Admin Account</string>
     <string name="string_on_about_app_label">About BalanceBite</string>
+    <string name="string_feedback_title">Any advice or suggestions?</string>
+    <string name="string_feedback_hint">Your Experience</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="submit_feedback">Submit Feedback</string>
 
 </resources>

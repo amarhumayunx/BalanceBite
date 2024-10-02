@@ -8,5 +8,11 @@ data class DietPlanGroup(
 data class DietPlan(
     val day: String,
     val meals: String
-)
+) {
+    val snack2: String = ""
+    val snack: String = ""
+    val dinner: String = ""
+    val lunch: String = ""
+    val breakfast: String = ""
+}
 
