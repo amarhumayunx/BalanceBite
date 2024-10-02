@@ -69,14 +69,15 @@
             <EditText
                 android:id="@+id/feedback_input"
                 android:layout_width="match_parent"
-                android:layout_margin="20dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/string_feedback_hint"
-                android:textAlignment="center"
+                android:layout_margin="20dp"
                 android:background="@drawable/custom_edittext_background"
-                android:padding="16dp"
+                android:hint="@string/string_feedback_hint"
+                android:inputType="textMultiLine"
                 android:minHeight="120dp"
-                android:inputType="textMultiLine" />
+                android:padding="16dp"
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
             <!-- RatingBar -->
             <TextView
@@ -105,9 +106,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/submit_feedback"
                 android:backgroundTint="@color/green"
-                android:textColor="@color/white" />
+                android:text="@string/submit_feedback"
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck,VisualLintButtonSize" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

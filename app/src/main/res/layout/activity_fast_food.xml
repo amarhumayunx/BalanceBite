@@ -37,28 +37,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pros and Cons of Fast Food"
-                    android:textSize="24sp"
-                    android:textColor="@color/green"
-                    android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/pros_and_cons_of_fast_food"
+                    android:textColor="@color/green"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
 
                 <!-- Pros Section -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pros"
-                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/pros_of_fast_food"
                     android:textColor="@color/green"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    tools:ignore="TextContrastCheck" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1. Convenient and time-saving.\n2. Affordable and easily accessible.\n3. Consistent taste and quality.\n4. Variety of options available."
+                    android:text="@string/pros_lines"
                     android:textSize="16sp"
                     android:layout_marginBottom="24dp" />
 
@@ -66,17 +68,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cons"
-                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/cons_of_fast_food"
                     android:textColor="@color/green"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    tools:ignore="TextContrastCheck" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1. High in calories and unhealthy fats.\n2. Often contains excessive sugar and sodium.\n3. Can contribute to weight gain and health issues.\n4. May lack nutritional value compared to fresh foods."
+                    android:text="@string/cons_lines"
                     android:textSize="16sp" />
 
             </LinearLayout>

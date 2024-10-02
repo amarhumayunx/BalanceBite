@@ -42,6 +42,7 @@
                 android:src="@drawable/image_for_screen"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
+                android:contentDescription="@string/image_content_on_splash_screen"
                 android:layout_marginBottom="20dp" />
 
             <TextView
@@ -49,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Eat Healthy"
+                android:text="@string/label_on_screen_after_splash_screen"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -58,9 +59,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Maintaining good health should be the primary focus of everyone."
+                android:text="@string/line_on_splash_screen"
                 android:textSize="16sp"
-                android:textColor="#000000" />
+                android:textColor="@color/black" />
 
             <!-- Button to move to LoginPageActivity -->
             <Button
@@ -69,8 +70,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/green"
-                android:text="Get Started"
-                android:textColor="@color/white" />
+                android:text="@string/get_started_button"
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
             <!-- TextView to move to LoginPageActivity -->
             <TextView
@@ -78,8 +80,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="You don't Have An Account? Signup"
-                android:textColor="@color/green" />
+                android:text="@string/sign_up_line_on_login_page"
+                android:textColor="@color/green"
+                tools:ignore="TextContrastCheck" />
 
         </LinearLayout>
 

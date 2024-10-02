@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/light_white"
-    android:padding="16dp"
+    android:background="@color/green"
+    android:padding="10dp"
     tools:context=".PlanSelectionActivity">
 
     <androidx.cardview.widget.CardView
@@ -24,13 +24,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="16dp">
+            android:padding="10dp">
 
             <Button
                 android:id="@+id/btnDietPlans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Diet Plans"
+                android:padding="10dp"
+                android:text="@string/title_diet_plan"
                 android:background="@android:color/transparent"
                 android:textColor="@color/black"
                 android:textStyle="italic"/>
@@ -52,15 +53,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="16dp">
+            android:background="@color/white"
+            android:padding="10dp">
 
             <Button
                 android:id="@+id/btnExercises"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Exercises"
+                android:text="@string/title_exercise"
                 android:background="@android:color/transparent"
                 android:textColor="@color/black"
+                android:padding="10dp"
                 android:textStyle="italic"/>
 
 

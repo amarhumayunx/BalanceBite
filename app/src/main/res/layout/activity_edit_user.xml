@@ -45,24 +45,25 @@
                 android:id="@+id/NameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/name_label_on_edit_user_activity"
                 android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/editName"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/name_of_user"
                 android:drawableTint="@color/gray"
+                android:hint="@string/enter_name_on_edit_user_activity"
                 android:textAlignment="center"
-                android:layout_height="wrap_content"
-                android:hint="Enter Name"/>
+                tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
             <!-- Age Input -->
             <TextView
                 android:id="@+id/AgeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Age"
+                android:text="@string/age_label_on_edit_user_activity"
                 android:textSize="18sp"/>
 
             <EditText
@@ -71,52 +72,55 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/age_icon"
                 android:drawableTint="@color/gray"
-                android:hint="Enter Age"
+                android:hint="@string/enter_age_on_edit_user_activity"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:inputType="number"/>
+                tools:ignore="Autofill,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
             <!-- Height Input -->
             <TextView
                 android:id="@+id/HeightLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Height (cm)"
+                android:text="@string/height_label_on_edit_user_activity"
                 android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/editHeight"
                 android:layout_width="match_parent"
-                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/height_icon"
                 android:drawableTint="@color/gray"
-                android:hint="Enter Height"
-                android:inputType="numberDecimal"/>
+                android:hint="@string/enter_height_on_edit_user_activity"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
             <!-- Weight Input -->
             <TextView
                 android:id="@+id/WeightLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight (kg)"
+                android:text="@string/weight_label_on_edit_user_activity"
                 android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/editWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:drawableEnd="@drawable/weight_icon"
                 android:drawableTint="@color/gray"
-                android:hint="Enter Weight"
-                android:inputType="numberDecimal"/>
+                android:hint="@string/enter_weight_on_edit_user_activity"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
             <!-- Health Info Input -->
             <TextView
                 android:id="@+id/HealthInfoLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Health Information"
+                android:text="@string/health_info_label_on_edit_user_activity"
                 android:textSize="18sp"/>
 
             <EditText
@@ -124,30 +128,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/health_icon"
-                android:textAlignment="center"
                 android:drawableTint="@color/gray"
-                android:hint="Enter Health Information"/>
+                android:hint="@string/enter_health_info_on_edit_user_activity"
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
             <!-- Save Button -->
             <Button
                 android:id="@+id/buttonSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save"
+                android:layout_marginTop="16dp"
                 android:backgroundTint="@color/green"
+                android:text="@string/save_button_on_edit_user_activity"
                 android:textSize="18sp"
-                android:layout_marginTop="16dp"/>
+                tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 
             <!-- Delete Button -->
             <Button
                 android:id="@+id/buttonDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delete"
                 android:layout_marginTop="8dp"
-                android:textSize="18sp"
                 android:backgroundTint="@color/green"
-                android:textColor="@android:color/white"/>
+                android:text="@string/delete_button_on_edit_user_activity"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck,VisualLintButtonSize" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

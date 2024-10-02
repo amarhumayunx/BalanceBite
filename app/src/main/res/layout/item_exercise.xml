@@ -21,7 +21,7 @@
             android:id="@+id/tvAgeGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age Group"
+            android:text="@string/age_group"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -30,7 +30,7 @@
             android:id="@+id/tvActivities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activities"
+            android:text="@string/activities"
             android:textSize="14sp"
             android:layout_marginTop="8dp" />
 
@@ -39,7 +39,7 @@
             android:id="@+id/tvRecommendedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recommended Time"
+            android:text="@string/recommended_time"
             android:textSize="12sp"
             android:layout_marginTop="8dp" />
     </LinearLayout>

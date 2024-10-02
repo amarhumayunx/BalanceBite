@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="Days"
+            android:text="@string/days"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:paddingBottom="8dp" />
@@ -31,7 +31,7 @@
             android:id="@+id/tvMeals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meals"
+            android:text="@string/meals"
             android:textSize="16sp"
             android:textColor="@android:color/black" />
 

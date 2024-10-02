@@ -11,7 +11,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="8dp"
-        />
+        android:contentDescription="@string/vegetable_image_desc" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:padding="10dp"
             android:textStyle="bold"
             />
 
@@ -32,6 +33,7 @@
             android:id="@+id/vegetableDescriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:textSize="14sp"
             />
 
@@ -39,6 +41,7 @@
             android:id="@+id/vegetableCaloriesTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:textSize="14sp"
             />
 

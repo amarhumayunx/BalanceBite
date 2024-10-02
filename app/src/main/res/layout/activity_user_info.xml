@@ -31,9 +31,10 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
-                android:src="@drawable/wave_on_home_screen"
                 android:background="@android:color/transparent"
-                android:contentDescription="@string/wave_on_home_screen_image_description" />
+                android:contentDescription="@string/wave_on_home_screen_image_description"
+                android:src="@drawable/wave_on_home_screen"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/app_name_on_main_activity"
@@ -42,7 +43,7 @@
                 android:text="@string/app_name"
                 android:textColor="@color/green"
                 android:textSize="36sp"
-                android:padding="15dp"
+                android:padding="16dp"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -61,88 +62,96 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload a Profile Picture in small size"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp"
+                android:padding="10dp"
+                android:text="@string/upload_pic_line"
                 android:textColor="@color/green"
-                />
+                tools:ignore="TextContrastCheck" />
 
             <!-- Button to change the profile picture -->
             <Button
                 android:id="@+id/btnChangeProfilePic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Profile Picture"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/green"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:layout_marginTop="12dp"
-                android:layout_margin="10dp"/>
+                android:backgroundTint="@color/green"
+                android:padding="10dp"
+                android:text="@string/upload_profile_pic_button"
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
             <EditText
                 android:id="@+id/user_name_on_user_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:padding="12dp"
-                android:textAlignment="center"
                 android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/name_of_user"
                 android:drawableTint="@color/gray"
-                android:hint="Enter your name"
-                android:inputType="textPersonName"/>
+                android:hint="@string/name_of_user"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
             <EditText
                 android:id="@+id/user_age_on_user_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/age_icon"
                 android:drawableTint="@color/gray"
-                android:layout_margin="10dp"
-                android:textAlignment="center"
+                android:hint="@string/age_icon"
+                android:inputType="number"
                 android:padding="12dp"
-                android:hint="Enter your age"
-                android:inputType="number"/>
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
             <EditText
                 android:id="@+id/user_height_on_user_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/height_icon"
                 android:drawableTint="@color/gray"
-                android:textAlignment="center"
-                android:background="@drawable/custom_edittext_background"
+                android:hint="@string/height_icon"
+                android:inputType="numberDecimal"
                 android:padding="12dp"
-                android:layout_margin="10dp"
-                android:hint="Enter your height (cm)"
-                android:inputType="numberDecimal"/>
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
             <EditText
                 android:id="@+id/user_weight_on_user_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your weight (kg)"
-                android:textAlignment="center"
-                android:background="@drawable/custom_edittext_background"
-                android:drawableTint="@color/gray"
                 android:layout_margin="10dp"
+                android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/weight_icon"
+                android:drawableTint="@color/gray"
+                android:hint="@string/weight_icon"
+                android:inputType="numberDecimal"
                 android:padding="12dp"
-                android:inputType="numberDecimal"/>
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
             <EditText
                 android:id="@+id/user_health_info_on_user_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableTint="@color/gray"
                 android:layout_margin="10dp"
-                android:padding="12dp"
-                android:textAlignment="center"
                 android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/health_icon"
-                android:hint="Enter any health information (optional)"
-                android:inputType="text"/>
+                android:drawableTint="@color/gray"
+                android:hint="@string/health_icon"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textAlignment="center"
+                tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -153,6 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:padding="10dp"
                     android:visibility="gone"
                     android:indeterminate="true" />
 
@@ -162,12 +172,14 @@
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:backgroundTint="@color/green"
                 android:drawableEnd="@drawable/done_icon"
                 android:drawableTint="@color/white"
-                android:textSize="30dp"
-                android:layout_margin="10dp"
-                android:text="Submit" />
+                android:padding="10dp"
+                android:text="@string/submit_user_info"
+                android:textSize="29sp"
+                tools:ignore="TextContrastCheck,VisualLintButtonSize,VisualLintBounds" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

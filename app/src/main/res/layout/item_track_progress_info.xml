@@ -20,7 +20,7 @@
             android:id="@+id/progressDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Day 1"
+            android:text="@string/day"
             android:textStyle="bold"
             android:textSize="18sp" />
 
@@ -29,28 +29,28 @@
             android:id="@+id/progressCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calories: 2000" />
+            android:text="@string/calories" />
 
         <!-- Water consumption -->
         <TextView
             android:id="@+id/progressWater"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Water: 8 glasses" />
+            android:text="@string/water_glasses" />
 
         <!-- Exercise time -->
         <TextView
             android:id="@+id/progressExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Exercise Time: 30 min" />
+            android:text="@string/exercise_time" />
 
         <!-- Weight -->
         <TextView
             android:id="@+id/progressWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weight: 70 kg" />
+            android:text="@string/weight" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

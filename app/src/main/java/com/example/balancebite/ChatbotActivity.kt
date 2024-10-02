@@ -172,12 +172,6 @@ class ChatbotActivity : AppCompatActivity() {
             return
         }
 
-        if (caseInput.contains("suggest me a diet plan")) {
-            val response = naiveBayesModel.predict(input)
-            chatbotReply(response)
-            return
-        }
-
         // Check for help requests
         if (caseInput.contains("help") || caseInput.contains("what can you do")) {
             chatbotReply("I can assist you with diet plans, profile inquiries, and more. Just ask me!")
@@ -192,6 +186,14 @@ class ChatbotActivity : AppCompatActivity() {
 
         // Handle user age input and corresponding actions
         when {
+            caseInput.contains("suggest me a diet plan") -> {
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
             caseInput.contains("age") -> {
                 chatbotReply("Please enter your age:")
             }

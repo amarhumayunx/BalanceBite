@@ -48,7 +48,7 @@
                 android:text="@string/string_on_about_app_label"
                 android:textColor="@color/green"
                 android:textSize="35sp"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -61,19 +61,23 @@
                 android:id="@+id/name_about_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Idea By Hafiz Bilal Shahid"
+                android:text="@string/name_about_app"
+                android:padding="10dp"
                 android:layout_gravity="center_horizontal"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="16dp" />
 
             <TextView
+                android:id="@+id/developer_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Developed By Humayun Amar"
+                android:text="@string/developer_name"
+                android:textSize="20sp"
                 android:textStyle="italic"
+                android:padding="10dp"
                 android:layout_gravity="center_horizontal"
                 />
 
@@ -85,8 +89,10 @@
                 android:id="@+id/TextView_for_app_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Version: "
-                android:layout_gravity="center_horizontal"/>
+                android:textSize="20sp"
+                android:text="@string/app_version"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"/>
 
 
         </LinearLayout>

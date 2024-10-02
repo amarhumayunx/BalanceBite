@@ -12,7 +12,7 @@
         android:id="@+id/profileImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:contentDescription="Profile Image"
+        android:contentDescription="@string/profile_image"
         android:scaleType="centerCrop"
         android:layout_gravity="center" />
 
@@ -21,7 +21,8 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="username"
+        android:padding="10dp"
+        android:text="@string/username"
         android:textStyle="bold"
         android:layout_marginTop="8dp" />
 
@@ -30,7 +31,8 @@
         android:id="@+id/userDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Details" />
+        android:padding="10dp"
+        android:text="@string/details" />
 
     <!-- Horizontal LinearLayout for Buttons -->
     <LinearLayout
@@ -44,18 +46,22 @@
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Account"
+            android:layout_marginEnd="8dp"
+            android:padding="10dp"
             android:backgroundTint="@color/green"
-            android:layout_marginEnd="8dp" />
+            android:text="@string/edit_account_button"
+            tools:ignore="ButtonStyle,TextContrastCheck" />
 
         <!-- Delete Button -->
         <Button
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete Account"
             android:backgroundTint="@color/green"
-            android:textColor="#FF0000" />
+            android:padding="10dp"
+            android:text="@string/delete_account_button"
+            android:textColor="#FF0000"
+            tools:ignore="ButtonStyle,TextContrastCheck" />
     </LinearLayout>
 
 </LinearLayout>

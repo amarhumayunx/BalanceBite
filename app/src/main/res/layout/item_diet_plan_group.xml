@@ -19,7 +19,7 @@
             android:id="@+id/tvAgeGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age"
+            android:text="@string/age"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"

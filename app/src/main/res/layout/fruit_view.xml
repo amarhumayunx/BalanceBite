@@ -10,7 +10,8 @@
         android:id="@+id/fruitImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/fruit_image_desc" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -23,18 +24,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:padding="10dp"
             android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/fruitDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/fruitCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:textSize="14sp"/>
     </LinearLayout>
 </LinearLayout>

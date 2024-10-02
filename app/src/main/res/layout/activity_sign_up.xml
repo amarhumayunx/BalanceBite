@@ -51,6 +51,7 @@
                     android:id="@+id/child_id"
                     android:layout_width="180dp"
                     android:layout_height="290dp"
+                    android:contentDescription="@string/desc_child_on_sign_up"
                     android:src="@drawable/childimagetwo"
                     />
             </LinearLayout>
@@ -107,7 +108,7 @@
                         android:drawableEnd="@drawable/name_of_user"
                         android:drawableTint="@color/gray"
                         android:textColorHint="#757575"
-                        tools:ignore="TextFields,VisualLintTextFieldSize" />
+                        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize" />
 
                     <TextView
                         android:id="@+id/email_address_id_on_card_view"
@@ -128,7 +129,7 @@
                         android:inputType="textEmailAddress"
                         android:minHeight="48dp"
                         android:textColorHint="#757575"
-                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                        tools:ignore="Autofill,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
 
                     <TextView
                         android:id="@+id/password_id_on_card_view"
@@ -149,7 +150,7 @@
                         android:drawableTint="@color/gray"
                         android:minHeight="48dp"
                         android:textColorHint="#757575"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                        tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -169,13 +170,12 @@
                         android:id="@+id/button_on_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:backgroundTint="@color/green"
                         android:layout_margin="10dp"
                         android:text="@string/sign_up"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:cornerRadius="35dp"
-                        tools:ignore="VisualLintButtonSize,TextSizeCheck,DuplicateSpeakableTextCheck" />
+                        tools:ignore="VisualLintButtonSize,TextSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

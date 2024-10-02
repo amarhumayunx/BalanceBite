@@ -89,7 +89,7 @@
                 android:backgroundTint="@color/green"
                 android:text="@string/string_on_change_password_button"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             <!-- About Button -->
             <Button
@@ -100,7 +100,7 @@
                 android:backgroundTint="@color/green"
                 android:text="@string/string_on_about_button"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             <!-- Delete Profile Button -->
             <Button
@@ -111,7 +111,7 @@
                 android:backgroundTint="@color/green"
                 android:text="@string/string_on_delete_profile_button"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             <!-- Show Progress Button -->
             <Button
@@ -122,7 +122,7 @@
                 android:backgroundTint="@color/green"
                 android:text="@string/string_on_show_progress_button"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             <!-- Logout Button -->
             <Button
@@ -133,7 +133,7 @@
                 android:backgroundTint="@color/green"
                 android:text="@string/string_on_logout_button"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             <!-- FeedBack Button -->
             <Button
@@ -142,9 +142,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/green"
-                android:text="Feedback"
+                android:text="@string/button_feedback"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             <!-- Admin Login Button -->
             <Button
@@ -155,7 +155,7 @@
                 android:backgroundTint="@color/green"
                 android:text="@string/string_on_admin_login_button"
                 android:textColor="@color/white"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
