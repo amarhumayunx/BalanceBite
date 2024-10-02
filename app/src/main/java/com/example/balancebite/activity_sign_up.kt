@@ -82,7 +82,7 @@ class ActivitySignUP : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance().getReference("Users")
 
         // Create a User object with the provided information
-        val user = User(userId, username, email)
+        val user = User(userId, email, username)
 
         // Store the user information in the database under the userId node
         database.child(userId).setValue(user).addOnCompleteListener { task ->

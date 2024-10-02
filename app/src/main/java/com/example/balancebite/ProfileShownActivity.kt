@@ -26,7 +26,7 @@ class ProfileShownActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference.child("Users")
 
         // Initialize TextViews
-        nameTextView = findViewById(R.id.usernameTextView)
+        nameTextView = findViewById(R.id.usernameActualTextView)
         heightTextView = findViewById(R.id.heightTextView)
         weightTextView = findViewById(R.id.weightTextView)
         healthInfoTextView = findViewById(R.id.healthInfoTextView)

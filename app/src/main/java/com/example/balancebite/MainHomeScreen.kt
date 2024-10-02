@@ -82,10 +82,10 @@ class MainHomeScreen : AppCompatActivity() {
                 val intent = Intent(this, PlanSelectionActivity::class.java)
                 startActivity(intent)
             }
-            /*R.id.nav_chat_bot -> {
-                val intent = Intent(this, ChatBotActivity::class.java)
+            R.id.nav_chat_bot -> {
+                val intent = Intent(this, ChatbotActivity::class.java)
                 startActivity(intent)
-            }*/
+            }
             R.id.nav_profile -> {
                 val intent = Intent(this, ProfileShownActivity::class.java)
                 startActivity(intent)

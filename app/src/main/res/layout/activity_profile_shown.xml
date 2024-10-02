@@ -25,7 +25,7 @@ tools:context=".ProfileShownActivity">
     android:id="@+id/cardview_profile_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="36dp"
+    app:cardCornerRadius="30dp"
     app:cardElevation="8dp"
     android:layout_margin="10dp"
     app:layout_constraintTop_toTopOf="parent"
@@ -68,7 +68,7 @@ tools:context=".ProfileShownActivity">
 
         <!-- Username -->
         <TextView
-            android:id="@+id/usernameTextView"
+            android:id="@+id/usernameActualTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username: "
