@@ -65,8 +65,9 @@ class UserAdapter(private val userList: List<User>) : RecyclerView.Adapter<UserA
         database.removeValue().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(holder.itemView.context, "User profile deleted.", Toast.LENGTH_SHORT).show()
-                notifyItemRemoved(holder.adapterPosition)
-            } else {
+                notifyItemRemoved(holder.absoluteAdapterPosition)
+            }
+            else {
                 Toast.makeText(holder.itemView.context, "Failed to delete user profile.", Toast.LENGTH_SHORT).show()
             }
         }
