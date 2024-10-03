@@ -19,7 +19,6 @@ class AboutAppActivity : AppCompatActivity() {
         // Get the version name and version code from the PackageManager
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
         val versionName = packageInfo.versionName
-        val versionCode = packageInfo.longVersionCode
 
         // Set the version name and version code to the TextView
         versionTextView.text = "Version: $versionName "

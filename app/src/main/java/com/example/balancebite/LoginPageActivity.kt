@@ -12,6 +12,7 @@ import com.example.balancebite.databinding.ActivityLoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
+@Suppress("DEPRECATION")
 class LoginPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
     private lateinit var auth: FirebaseAuth
@@ -132,7 +133,6 @@ class LoginPageActivity : AppCompatActivity() {
                         val height = profile.child("height").value
                         val weight = profile.child("weight").value
                         val healthInfo = profile.child("healthInfo").value
-                        val profilePictureUrl = profile.child("profilePictureUrl").value as? String
 
                         // If all personal information exists, navigate to the dashboard
                         if (name != null && height != null && weight != null && healthInfo != null) {

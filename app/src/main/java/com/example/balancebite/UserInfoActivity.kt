@@ -1,6 +1,5 @@
 package com.example.balancebite
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -25,6 +24,7 @@ data class UserProfile(
     val profilePictureUrl: String = "" // Add a field for the profile picture URL
 )
 
+@Suppress("DEPRECATION")
 class UserInfoActivity : AppCompatActivity() {
 
     private lateinit var etName: EditText
@@ -76,7 +76,7 @@ class UserInfoActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK && requestCode == pickImageRequest) {
+        if (resultCode == RESULT_OK && requestCode == pickImageRequest) {
             imageUri = data?.data
             profileImageView.setImageURI(imageUri) // Display selected image in CircleImageView
         }

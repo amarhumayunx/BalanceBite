@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class ProgressAdapter(private val progressList: List<ProgressEntry>) : RecyclerV
         return ProgressViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ProgressViewHolder, position: Int) {
         val progressEntry = progressList[position]
         holder.dayTextView.text = "Day: ${progressEntry.day}"

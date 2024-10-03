@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,7 @@ class EditUserActivity : AppCompatActivity() {
     }
 
     // Function to load user data from Firebase
+    @SuppressLint("SetTextI18n")
     private fun loadUserData() {
         database.child(userId).child("profile").get().addOnSuccessListener { snapshot ->
             if (snapshot.exists()) {
