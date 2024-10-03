@@ -1,6 +1,8 @@
 package com.example.balancebite
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -8,33 +10,84 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
 
+    // Permission request code for notifications
+    private val notificationPermissionCode = 102
+
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.green)
 
         // Initialize Firebase Auth and Database
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                checkUserStatusAndNavigate()
-            }, 1000
-        )
+        // Check and request notification permissions if necessary
+        checkAndRequestNotificationPermission()
+
+        // Schedule the notification to repeat every 24 hours
+        scheduleProgressNotification()
+
+        // Splash screen delay before navigation
+        Handler(Looper.getMainLooper()).postDelayed({
+            checkUserStatusAndNavigate()
+        }, 1000)
     }
 
+    private fun scheduleProgressNotification() {
+        // Create a PeriodicWorkRequest for ProgressNotificationWorker to run every 24 hours
+        val periodicWorkRequest = PeriodicWorkRequestBuilder<ProgressNotificationWorker>(24, TimeUnit.HOURS)
+            .build()
+
+        // Enqueue the work request
+        WorkManager.getInstance(this).enqueue(periodicWorkRequest)
+    }
+
+
+
+    // Method to check and request notification permissions
+    private fun checkAndRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Request POST_NOTIFICATIONS permission for Android 13+ (API 33)
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    notificationPermissionCode
+                )
+            }
+        }
+    }
+
+    // Handle the result of permission request
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == notificationPermissionCode) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Notification permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    // Check if the user is authenticated and has the required data in Firebase
     private fun checkUserStatusAndNavigate() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -46,39 +99,40 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     if (task.result.exists()) {
                         val userData = task.result.children
-                        // Check if essential user data exists
                         val hasRequiredData = userData.any { it.key in listOf("name", "age", "weight", "height", "healthInfo") }
                         if (hasRequiredData) {
-                            // User data exists and contains essential information, navigate to the dashboard
-                            val intent = Intent(this, MainHomeScreen::class.java)
-                            Toast.makeText(this, "Moving to Dashboard", Toast.LENGTH_SHORT).show()
-                            startActivity(intent)
+                            // User data exists and is complete, navigate to the dashboard
+                            navigateToActivity(MainHomeScreen::class.java, "Moving to Dashboard")
                         } else {
-                            // User data exists but is incomplete, navigate to the login activity
-                            val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
-                            Toast.makeText(this, "Incomplete user data. Please log in again.", Toast.LENGTH_SHORT).show()
-                            startActivity(intent)
+                            // User data is incomplete, navigate to the login activity
+                            navigateToActivity(MainActivityAfterSplashScreen::class.java, "Incomplete user data. Please log in again.")
                         }
                     } else {
-                        // User data does not exist in the database, navigate to the login activity
-                        val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
-                        Toast.makeText(this, "No user data found. Please log in.", Toast.LENGTH_SHORT).show()
-                        startActivity(intent)
+                        // No user data exists, navigate to the login activity
+                        navigateToActivity(MainActivityAfterSplashScreen::class.java, "No user data found. Please log in.")
                     }
                 } else {
                     // Error occurred while fetching user data
-                    Toast.makeText(this, "Error checking user data. Please log in.", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
-                    startActivity(intent)
+                    showToast("Error checking user data: ${task.exception?.message}")
+                    navigateToActivity(MainActivityAfterSplashScreen::class.java)
                 }
-                finish() // Close the current activity
             }
         } else {
             // User is not logged in, navigate to the login activity
-            val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
-            Toast.makeText(this, "Login to your account", Toast.LENGTH_SHORT).show()
-            startActivity(intent)
-            finish() // Close the current activity
+            navigateToActivity(MainActivityAfterSplashScreen::class.java, "Please log in to your account")
         }
+    }
+
+    // Helper method to navigate to an activity with a toast message
+    private fun navigateToActivity(activityClass: Class<*>, message: String? = null) {
+        message?.let { showToast(it) }
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
+        finish() // Close the current activity
+    }
+
+    // Helper method to show a toast message
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

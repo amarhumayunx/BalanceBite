@@ -29,6 +29,7 @@ class ProgressNotificationWorker(appContext: Context, workerParams: WorkerParame
             .setContentTitle(title)
             .setContentText(message)
             .setSmallIcon(R.drawable.appimage)  // Replace with your app's icon
+
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .build()

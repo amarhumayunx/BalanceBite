@@ -1,4 +1,5 @@
 package com.example.balancebite
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.TextView
