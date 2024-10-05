@@ -123,7 +123,10 @@
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
     <string name="profile_info_label">User Information</string>
-
+    <string name="upload_profile_picture">Update Profile Picture</string>
+    <string name="any_problem_then_mail_me">Any Problem than Mail me</string>
+    <string name="email_me_string">Email: amarhumayun@outlook.com</string>
+    <string name="button_contact_us">Contact Us</string>
 
 
 </resources>

@@ -6,5 +6,6 @@ data class ProgressEntry(
     val day: String? = "",
     val exerciseTime: Int? = 0,
     val water: Int? = 0,
-    val weight: Int? = 0
+    val weight: Int? = 0,
+    val size:Int? = 0
 )

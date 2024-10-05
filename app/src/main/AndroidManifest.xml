@@ -16,159 +16,143 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
         <activity
+            android:name=".ContactUsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"/>
+        <activity
             android:name=".FeedbackActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".ChatbotActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".AboutAppActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".EditUserActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".AdminDashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".TrackProgressInfoShowActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".AppSettingsActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".PlanSelectionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".ExerciseActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".ProfileShownActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".DietPlanActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".UserInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".ProgressActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".FastFoodActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".SupplementActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".VegetableActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".FruitActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".ActivitySignUP"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".MainHomeScreen"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".MainActivityAfterSplashScreen"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".LoginPageActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            >
+            tools:ignore="DiscouragedApi,LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
