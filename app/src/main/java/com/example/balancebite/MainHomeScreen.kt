@@ -3,6 +3,8 @@ package com.example.balancebite
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.LinearLayout
@@ -20,6 +22,7 @@ class MainHomeScreen : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var usernameTextView: TextView
     private lateinit var bottomNavigationView: BottomNavigationView
+    private var backPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,9 +141,18 @@ class MainHomeScreen : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        super.onBackPressed()
-        val intent = Intent(this, MainActivity::class.java)
-        Toast.makeText(this, "User is already logged in. if you want to login then logout first!", Toast.LENGTH_SHORT).show()
-        startActivity(intent)
+
+        if (backPressedOnce) {
+            super.onBackPressed() // If back was pressed once, exit the app
+            return
+        }
+
+        this.backPressedOnce = true
+        Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+
+        // Reset the backPressedOnce flag after 2 seconds
+        Handler(Looper.getMainLooper()).postDelayed({
+            backPressedOnce = false
+        }, 2000)
     }
 }

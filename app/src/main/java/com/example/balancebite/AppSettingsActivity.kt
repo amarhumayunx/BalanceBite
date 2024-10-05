@@ -64,8 +64,6 @@ class AppSettingsActivity : AppCompatActivity() {
             deleteProfile()
         }
 
-
-
         // Handle "Show Progress Information" button click
         buttonShowProgress.setOnClickListener {
             val intent = Intent(this, TrackProgressInfoShowActivity::class.java)
@@ -90,6 +88,7 @@ class AppSettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Handle "Contact Us" button click
         buttonContactUs.setOnClickListener{
             val intent = Intent(this,ContactUsActivity::class.java)
             startActivity(intent)

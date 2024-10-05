@@ -1,6 +1,5 @@
 package com.example.balancebite
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -18,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.util.concurrent.TimeUnit
 
+@Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     // Permission request code for notifications
     private val notificationPermissionCode = 102
+
+    // Variable to track back press time
+    private var backPressedOnce = false
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +40,6 @@ class MainActivity : AppCompatActivity() {
         // Initialize Firebase Auth and Database
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-
-        // Check and request notification permissions if necessary
-        checkAndRequestNotificationPermission()
 
         // Schedule the notification to repeat every 24 hours
         scheduleProgressNotification()
@@ -59,21 +59,6 @@ class MainActivity : AppCompatActivity() {
         WorkManager.getInstance(this).enqueue(periodicWorkRequest)
     }
 
-
-
-    // Method to check and request notification permissions
-    private fun checkAndRequestNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // Request POST_NOTIFICATIONS permission for Android 13+ (API 33)
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                    notificationPermissionCode
-                )
-            }
-        }
-    }
 
     // Handle the result of permission request
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -134,5 +119,21 @@ class MainActivity : AppCompatActivity() {
     // Helper method to show a toast message
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    // Override onBackPressed method to handle double press to exit
+    override fun onBackPressed() {
+        if (backPressedOnce) {
+            super.onBackPressed() // If back was pressed once, exit the app
+            return
+        }
+
+        this.backPressedOnce = true
+        Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+
+        // Reset the backPressedOnce flag after 2 seconds
+        Handler(Looper.getMainLooper()).postDelayed({
+            backPressedOnce = false
+        }, 2000)
     }
 }
