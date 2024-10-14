@@ -100,13 +100,6 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="16dp" />
 
-                <androidx.constraintlayout.utils.widget.ImageFilterButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    />
-
-
                 <!-- Article Section -->
                 <LinearLayout
                     android:layout_width="match_parent"
