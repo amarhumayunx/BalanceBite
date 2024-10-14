@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BalanceBite</string>
     <string name="wave_one">Wave Upper</string>
@@ -128,6 +129,4 @@
     <string name="email_me_string">Email: amarhumayun@outlook.com</string>
     <string name="button_contact_us">Contact Us</string>
     <string name="body_mass_index_label">Body Mass Index (BMI):</string>
-
-
 </resources>
