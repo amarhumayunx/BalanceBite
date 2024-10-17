@@ -79,6 +79,20 @@ class LoginPageActivity : AppCompatActivity() {
 
         progressBar.visibility = View.VISIBLE
 
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                progressBar.visibility = View.GONE
+                if (task.isSuccessful) {
+                    // Sign-in successful, navigate based on user data
+                    Toast.makeText(this, "Sign-in successful!", Toast.LENGTH_SHORT).show()
+                    checkUserInfoAndNavigate()
+                } else {
+                    // Sign-in failed, show error message
+                    val errorMessage = task.exception?.message ?: "Unknown error occurred"
+                    handleSignInFailure(errorMessage)
+                }
+            }
+
     }
 
 
@@ -97,19 +111,29 @@ class LoginPageActivity : AppCompatActivity() {
                         val height = profile.child("height").value
                         val weight = profile.child("weight").value
                         val healthInfo = profile.child("healthInfo").value
+                        val age = profile.child("age").value
+                        val gender = profile.child("gender").value as? Boolean
 
                         // If all personal information exists, navigate to the dashboard
-                        if (name != null && height != null && weight != null && healthInfo != null) {
+                        if (name != null && height != null && weight != null && healthInfo != null && gender != null && age != null)
+                        {
                             navigateToDashboard(name)
-                        } else {
+                        }
+                        else
+                        {
                             // Missing personal information, navigate to UserInfoActivity
                             navigateToUserInfoPage()
                         }
-                    } else {
+                    }
+                    else
+                    {
                         // No user data exists, navigate to UserInfoActivity
+                        Toast.makeText(this, "No user data exists", Toast.LENGTH_SHORT).show()
                         navigateToUserInfoPage()
                     }
-                } else {
+                }
+                else
+                {
                     Toast.makeText(this, "Failed to retrieve user information", Toast.LENGTH_SHORT).show()
                 }
             }

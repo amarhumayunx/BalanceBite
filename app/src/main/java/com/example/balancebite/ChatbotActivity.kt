@@ -110,6 +110,7 @@ class ChatbotActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chatbot)
 
         val trainingData: Map<String, String> = mapOf(
+            "What is a balanced diet?" to "A balanced diet includes a variety of foods",
             "What should I eat?" to "You can eat fruits and nuts.",
             "Tell me about breakfast." to "A healthy breakfast includes eggs and toast.",
             "I want a diet plan." to "What is your age group?",
@@ -353,6 +354,43 @@ class ChatbotActivity : AppCompatActivity() {
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
+
+            caseInput.contains("suggest me an diet plan",ignoreCase = true)->{
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
+
+            caseInput.contains("i need a diet plan", ignoreCase = true)->{
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
+
+            caseInput.contains("i need a diet plan for me",ignoreCase = true)->{
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
+
+            caseInput.contains("i need a diet plan for my age",ignoreCase = true)->{
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
+
             caseInput.contains("age",ignoreCase = true) -> {
                 chatbotReply("Please enter your age:")
             }

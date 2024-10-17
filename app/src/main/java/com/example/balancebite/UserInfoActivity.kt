@@ -20,6 +20,7 @@ data class UserProfile(
     val age: Int = 0,
     val height: Double = 0.0,
     val weight: Double = 0.0,
+    val gender: String = "",
     val healthInfo: String = "",
     val profilePictureUrl: String = "" // Add a field for the profile picture URL
 )
@@ -32,6 +33,7 @@ class UserInfoActivity : AppCompatActivity() {
     private lateinit var etHeight: EditText
     private lateinit var etWeight: EditText
     private lateinit var etHealthInfo: EditText
+    private lateinit var etGender: EditText
     private lateinit var btnSubmit: Button
     private lateinit var profileImageView: CircleImageView
     private lateinit var btnChangeProfilePic: Button
@@ -53,6 +55,7 @@ class UserInfoActivity : AppCompatActivity() {
         // Initialize views
         etName = findViewById(R.id.user_name_on_user_info)
         etAge = findViewById(R.id.user_age_on_user_info)
+        etGender = findViewById(R.id.user_gender_on_user_info)
         etHeight = findViewById(R.id.user_height_on_user_info)
         etWeight = findViewById(R.id.user_weight_on_user_info)
         etHealthInfo = findViewById(R.id.user_health_info_on_user_info)
@@ -87,6 +90,7 @@ class UserInfoActivity : AppCompatActivity() {
         val age = etAge.text.toString().trim().toIntOrNull()
         val height = etHeight.text.toString().trim().toDoubleOrNull()
         val weight = etWeight.text.toString().trim().toDoubleOrNull()
+        val gender = etGender.text.toString().trim()
         val healthInfo = etHealthInfo.text.toString().trim()
 
         // Check for incomplete information
@@ -110,11 +114,16 @@ class UserInfoActivity : AppCompatActivity() {
             return
         }
 
+        if (gender.isEmpty()) {
+            etGender.error = "Please enter your gender"
+            return
+        }
+
         val userId = auth.currentUser?.uid
 
         if (userId != null) {
             if (imageUri != null) {
-                uploadProfilePicture(userId, name, age, height, weight, healthInfo)
+                uploadProfilePicture(userId, name, age, height, weight, gender, healthInfo)
             } else {
                 Toast.makeText(this, "Please select a profile picture", Toast.LENGTH_SHORT).show()
             }
@@ -123,13 +132,22 @@ class UserInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadProfilePicture(userId: String, name: String, age: Int, height: Double, weight: Double, healthInfo: String) {
+
+    private fun uploadProfilePicture(
+        userId: String,
+        name: String,
+        age: Int,
+        height: Double,
+        weight: Double,
+        gender: String,
+        healthInfo: String
+    ) {
         val storageReference = FirebaseStorage.getInstance().getReference("profile_pictures/$userId.jpg")
         storageReference.putFile(imageUri!!)
             .addOnSuccessListener {
                 storageReference.downloadUrl.addOnSuccessListener { uri ->
                     val profilePictureUrl = uri.toString()
-                    saveUserProfileToDatabase(userId, name, age, height, weight, healthInfo, profilePictureUrl)
+                    saveUserProfileToDatabase(userId, name, age, height, weight, gender, healthInfo, profilePictureUrl)
                 }
             }
             .addOnFailureListener { e ->
@@ -137,8 +155,18 @@ class UserInfoActivity : AppCompatActivity() {
             }
     }
 
-    private fun saveUserProfileToDatabase(userId: String, name: String, age: Int, height: Double, weight: Double, healthInfo: String, profilePictureUrl: String) {
-        val userProfile = UserProfile(name, age, height, weight, healthInfo, profilePictureUrl)
+
+    private fun saveUserProfileToDatabase(
+        userId: String,
+        name: String,
+        age: Int,
+        height: Double,
+        weight: Double,
+        gender: String,
+        healthInfo: String,
+        profilePictureUrl: String
+    ) {
+        val userProfile = UserProfile(name, age, height, weight, gender, healthInfo, profilePictureUrl)
 
         // Store user profile data in Firebase Realtime Database
         database.child(userId).child("profile").setValue(userProfile).addOnCompleteListener { task ->
@@ -153,4 +181,5 @@ class UserInfoActivity : AppCompatActivity() {
             }
         }
     }
+
 }

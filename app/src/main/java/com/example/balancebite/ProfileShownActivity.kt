@@ -16,6 +16,7 @@ class ProfileShownActivity : AppCompatActivity() {
     private lateinit var heightTextView: TextView
     private lateinit var weightTextView: TextView
     private lateinit var healthInfoTextView: TextView
+    private lateinit var genderTextView: TextView
     private lateinit var ageTextView: TextView
     private lateinit var bmiTextView: TextView  // New TextView for BMI
 
@@ -32,6 +33,7 @@ class ProfileShownActivity : AppCompatActivity() {
         nameTextView = findViewById(R.id.usernameActualTextView)
         heightTextView = findViewById(R.id.heightTextView)
         weightTextView = findViewById(R.id.weightTextView)
+        genderTextView = findViewById(R.id.genderTextView)  // Initialize gender TextView
         healthInfoTextView = findViewById(R.id.healthInfoTextView)
         ageTextView = findViewById(R.id.ageTextView)
         bmiTextView = findViewById(R.id.bodymassindexTextView)
@@ -42,8 +44,7 @@ class ProfileShownActivity : AppCompatActivity() {
 
     private fun fetchUserInfo() {
         val userId = auth.currentUser?.uid
-        if (userId == null)
-        {
+        if (userId == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
             return
         }
@@ -51,12 +52,11 @@ class ProfileShownActivity : AppCompatActivity() {
         // Access the nested 'profile' node for the user
         database.child(userId).child("profile").addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
-            override fun onDataChange(dataSnapshot: DataSnapshot)
-            {
-                if (dataSnapshot.exists())
-                {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
                     val name = dataSnapshot.child("name").getValue(String::class.java) ?: "Name not available"
                     val age = dataSnapshot.child("age").getValue(Int::class.java)?.toString() ?: "Age not available"
+                    val gender = dataSnapshot.child("gender").getValue(String::class.java) ?: "Gender not available"  // Fetch gender
                     val heightCm = dataSnapshot.child("height").getValue(Int::class.java)
                     val weightKg = dataSnapshot.child("weight").getValue(Int::class.java)
                     val healthInfo = dataSnapshot.child("healthInfo").getValue(String::class.java) ?: "Health Info not available"
@@ -64,30 +64,25 @@ class ProfileShownActivity : AppCompatActivity() {
                     // Set the data to TextViews
                     nameTextView.text = "Name: $name"
                     ageTextView.text = "Age: $age"
+                    genderTextView.text = "Gender: $gender"  // Display gender
                     heightTextView.text = "Height: ${heightCm ?: "N/A"} cm"
                     weightTextView.text = "Weight: ${weightKg ?: "N/A"} kg"
                     healthInfoTextView.text = "Health Info: $healthInfo"
 
                     // Calculate and display BMI if height and weight are available
-                    if (heightCm != null && weightKg != null)
-                    {
+                    if (heightCm != null && weightKg != null) {
                         val heightMeters = heightCm / 100.0  // Convert cm to meters
                         val bmi = calculateBMI(weightKg, heightMeters)
                         bmiTextView.text = "BMI: %.2f".format(bmi)
-                    }
-                    else
-                    {
+                    } else {
                         bmiTextView.text = "BMI: Not available"
                     }
-                }
-                else
-                {
+                } else {
                     Toast.makeText(this@ProfileShownActivity, "User data not found", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError)
-            {
+            override fun onCancelled(databaseError: DatabaseError) {
                 Toast.makeText(this@ProfileShownActivity, "Error fetching data: ${databaseError.message}", Toast.LENGTH_SHORT).show()
             }
         })

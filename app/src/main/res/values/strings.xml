@@ -95,11 +95,11 @@
     <string name="desc_child_on_sign_up">Child Image</string>
     <string name="progress_label">Your Progress</string>
     <string name="upload_pic_line">Upload a Profile Picture in small size</string>
-    <string name="name_of_user">Enter Your Name</string>
+    <string name="name_of_user">Enter Name</string>
     <string name="upload_profile_pic_button">Upload profile Picture</string>
-    <string name="age_icon">Enter Your Age</string>
-    <string name="height_icon">Enter Your Height (cm)</string>
-    <string name="weight_icon">Enter Your Weight (kg)</string>
+    <string name="age_icon">Enter Age</string>
+    <string name="height_icon">Enter Height (cm)</string>
+    <string name="weight_icon">Enter Weight (kg)</string>
     <string name="health_icon">Enter Health Information (optional)</string>
     <string name="submit_user_info">Submit Information</string>
     <string name="days">Days</string>
@@ -128,6 +128,8 @@
     <string name="email_me_string">Email: amarhumayun@outlook.com</string>
     <string name="button_contact_us">Contact Us</string>
     <string name="body_mass_index_label">Body Mass Index (BMI):</string>
+    <string name="gender_icon">Enter Gender</string>
+    <string name="gender_label">Gender:</string>
 
 
 </resources>

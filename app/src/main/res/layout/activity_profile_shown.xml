@@ -96,6 +96,17 @@
             android:layout_margin="10dp"
             android:layout_marginBottom="8dp"/>
 
+        <!-- Gender -->
+        <TextView
+            android:id="@+id/genderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gender_label"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="8dp"/>
+
         <!-- Height -->
         <TextView
             android:id="@+id/heightTextView"

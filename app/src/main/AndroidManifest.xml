@@ -16,11 +16,14 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
         <activity
+            android:name=".RecommendedDietPlanActivity"
+            android:exported="false" />
+        <activity
             android:name=".ContactUsActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity"/>
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".FeedbackActivity"
             android:exported="false"

@@ -46,6 +46,14 @@ class MainHomeScreen : AppCompatActivity() {
             handleBottomNavigation(item)
             true
         }
+
+
+        val recommendeddietplanText = findViewById<TextView>(R.id.recommendedDietPlanText)
+        recommendeddietplanText.setOnClickListener {
+            // Start the DietPlanActivity to show BMI and diet plan
+            val intent = Intent(this, RecommendedDietPlanActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpSectionListeners() {
