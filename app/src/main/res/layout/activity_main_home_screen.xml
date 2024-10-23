@@ -109,21 +109,30 @@
                     android:layout_marginBottom="16dp">
 
                     <!-- Your Recommended Diet Plan Section -->
-                    <TextView
-                        android:id="@+id/recommendedDietPlanText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Your Recommended Diet Plan According to Your Information"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:padding="10dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="16dp"
-                        android:textColor="@color/green"
-                        android:clickable="true"
-                        android:focusable="true" />
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="60dp"
+                        android:layout_margin="16dp"
+                        app:cardElevation="8dp"
+                        app:cardBackgroundColor="@color/green">
 
+                        <TextView
+                            android:id="@+id/recommendedDietPlanText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:text="@string/your_recommended_diet_plan_according_to_your_information"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:ignore="TextContrastCheck" />
+
+                    </androidx.cardview.widget.CardView>
 
                     <TextView
                         android:id="@+id/articleTitle"

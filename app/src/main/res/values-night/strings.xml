@@ -131,4 +131,11 @@
     <string name="body_mass_index_label">Body Mass Index (BMI):</string>
     <string name="gender_icon">Enter Gender</string>
     <string name="gender_label">Gender:</string>
+    <string name="wave_bottom_desc">End Image on Recommended Diet Plan Activity</string>
+    <string name="wave_top_desc">Wave top</string>
+    <string name="your_bmi">Your BMI:</string>
+    <string name="bmi_category">BMI Category:</string>
+    <string name="diet_plan">Diet Plan:</string>
+    <string name="your_recommended_diet_plan">Your Recommended Diet Plan</string>
+    <string name="your_recommended_diet_plan_according_to_your_information">Your Recommended Diet Plan</string>
 </resources>

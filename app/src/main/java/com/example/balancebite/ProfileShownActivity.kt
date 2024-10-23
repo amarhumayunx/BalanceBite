@@ -74,6 +74,9 @@ class ProfileShownActivity : AppCompatActivity() {
                         val heightMeters = heightCm / 100.0  // Convert cm to meters
                         val bmi = calculateBMI(weightKg, heightMeters)
                         bmiTextView.text = "BMI: %.2f".format(bmi)
+
+                        // Save BMI to Firebase Database
+                        saveBMIToDatabase(userId, bmi)
                     } else {
                         bmiTextView.text = "BMI: Not available"
                     }
@@ -86,6 +89,17 @@ class ProfileShownActivity : AppCompatActivity() {
                 Toast.makeText(this@ProfileShownActivity, "Error fetching data: ${databaseError.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    // Function to save BMI to Firebase
+    private fun saveBMIToDatabase(userId: String, bmi: Double) {
+        database.child(userId).child("profile").child("bmi").setValue(bmi)
+            .addOnSuccessListener {
+                Toast.makeText(this, "BMI saved successfully", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error saving BMI: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     // BMI Calculation Function

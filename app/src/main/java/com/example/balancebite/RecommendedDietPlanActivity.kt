@@ -5,8 +5,17 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+
+data class DiseaseDietPlan(
+    val day: Int = 0,
+    val breakfast: String = "",
+    val lunch: String = "",
+    val dinner: String = "",
+    val snack: String = ""
+)
 
 class RecommendedDietPlanActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -18,11 +27,12 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
     private var userAge: Int? = null
     private var userWeight: Int? = null
     private var userHeight: Int? = null
-    private lateinit var userHealthInfo: String
+    private var userHealthInfo: String = "normal" // Default value
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recommended_diet_plan)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
 
         // Initialize Firebase Auth and Database
         auth = FirebaseAuth.getInstance()
@@ -44,24 +54,17 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            // Retrieve user profile data
                             userAge = dataSnapshot.child("age").getValue(Int::class.java)
                             userWeight = dataSnapshot.child("weight").getValue(Int::class.java)
                             userHeight = dataSnapshot.child("height").getValue(Int::class.java)
                             userHealthInfo = dataSnapshot.child("healthInfo").getValue(String::class.java) ?: "normal"
 
-                            // Validate user data and calculate BMI if applicable
-                            if (userHeight != null && userWeight != null)
-                            {
+                            if (userHeight != null && userWeight != null) {
                                 calculateBMI()
-                            }
-                            else
-                            {
+                            } else {
                                 showToast("Please complete your profile with valid height and weight.")
                             }
-                        }
-                        else
-                        {
+                        } else {
                             showToast("Profile data not found. Please update your profile.")
                         }
                     }
@@ -70,9 +73,7 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
                         showToast("Error fetching data: ${error.message}")
                     }
                 })
-        }
-        else
-        {
+        } else {
             showToast("User not logged in.")
             finish() // Close the activity if no user is logged in
         }
@@ -80,14 +81,17 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun calculateBMI() {
-        val heightInMeters = userHeight!!.toDouble() / 100
-        val bmi = userWeight!!.toDouble() / (heightInMeters * heightInMeters)
+        val heightInMeters = userHeight?.let { it.toDouble() / 100 } ?: return
+        val weight = userWeight ?: return
 
+        val bmi = weight / (heightInMeters * heightInMeters)
         if (bmi.isFinite()) {
             bmiTextView.text = "Your BMI: %.2f".format(bmi)
-            val bmiCategory = getBMICategory(bmi)
+            val bmiCategory = getBMICategory(bmi) // Get category
             bmiCategoryTextView.text = "BMI Category: $bmiCategory"
-            fetchDietPlan(bmiCategory)
+
+            // Fetch and display the diet plan based on BMI category
+            fetchDietPlan(bmiCategory) // Fetch the first day's plan
         } else {
             bmiTextView.text = "Invalid BMI. Please update your profile data."
         }
@@ -95,88 +99,89 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
 
     private fun getBMICategory(bmi: Double): String {
         return when {
-            bmi < 18.5 -> "Underweight"
-            bmi in 18.5..24.9 -> "Normal weight"
-            bmi in 25.0..29.9 -> "Overweight"
-            else -> "Obesity"
+            bmi < 18.5 -> "underweight"
+            bmi in 18.5..24.9 -> "normal_weight"
+            bmi in 25.0..29.9 -> "overweight"
+            else -> "obesity"
         }
     }
 
-    private fun fetchDietPlan(bmiCategory: String)
-    {
-        val ageGroup = getAgeGroup(userAge)
+    private fun fetchDietPlan(disease: String) {
+        val database = FirebaseDatabase.getInstance().getReference("disease_diet_plans")
 
-        if (userHealthInfo == "normal")
-        {
-            // Fetch normal diet plan for the specific age group
-            database.child("dietPlans").child(ageGroup)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        if (dataSnapshot.exists())
-                        {
-                            displayDietPlan(dataSnapshot)
-                        }
-                        else
-                        {
-                            showToast("Diet plan not found for your age group.")
-                        }
-                    }
+        // Navigate to the specified disease category (BMI category) in the database
+        database.child(disease).child("plan")
+            .get()
+            .addOnSuccessListener { dataSnapshot ->
+                if (dataSnapshot.exists()) {
+                    val dietPlans = StringBuilder()
 
-                    override fun onCancelled(error: DatabaseError)
-                    {
-                        showToast("Error fetching diet plan: ${error.message}")
-                    }
-                })
-        }
-        else
-        {
-            // Fetch diet plan based on health condition
-            database.child("diseases_diet_plan").child(userHealthInfo).child("plan")
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot)
-                    {
-                        if (dataSnapshot.exists())
-                        {
-                            displayDietPlan(dataSnapshot)
-                        }
-                        else
-                        {
-                            showToast("Diet plan not found for your health condition.")
+                    // Loop through each day in the plan and append it to the StringBuilder
+                    for (daySnapshot in dataSnapshot.children) {
+                        val plan = daySnapshot.getValue(DiseaseDietPlan::class.java)
+                        plan?.let {
+                            dietPlans.append("""
+                            Day ${it.day}:
+                            Breakfast: ${it.breakfast}
+                            Lunch: ${it.lunch}
+                            Dinner: ${it.dinner}
+                            Snack: ${it.snack}
+
+                        """.trimIndent())
                         }
                     }
 
-                    override fun onCancelled(error: DatabaseError)
-                    {
-                        showToast("Error fetching diet plan: ${error.message}")
-                    }
-                })
-        }
+                    // Display all diet plans for the BMI category in the TextView
+                    dietPlanTextView.text = dietPlans.toString()
+                } else {
+                    showToast("No diet plans found for $disease.")
+                    dietPlanTextView.text = "No diet plan available."
+                }
+            }
+            .addOnFailureListener { exception ->
+                showToast("Error fetching data: ${exception.message}")
+            }
     }
+
+
+
+    private fun displayDietPlan(dataSnapshot: DataSnapshot) {
+        val dietPlan = StringBuilder()
+
+        // Loop through the children (days in the plan)
+        for (daySnapshot in dataSnapshot.children) {
+            val dayMap = daySnapshot.getValue(object : GenericTypeIndicator<Map<String, String>>() {})
+            if (dayMap != null) {
+                val day = dayMap["day"] ?: "Unknown Day"
+                val description = dayMap["0"] ?: "No description available"
+                dietPlan.append("$day: $description\n\n")
+            } else {
+                dietPlan.append("Invalid data format.\n")
+            }
+        }
+
+        // Display the diet plan in the TextView
+        dietPlanTextView.text = dietPlan.toString()
+    }
+
+
+    // Helper function to display toast messages
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
 
     private fun getAgeGroup(age: Int?): String {
         return when (age) {
             in 1..3 -> "1to3Years"
-            in 4..6 -> "3to6Years"
-            in 7..12 -> "6to12Years"
-            in 13..18 -> "12to18Years"
-            in 19..24 -> "18to24Years"
-            in 25..34 -> "24to34Years"
-            in 35..44 -> "34to44Years"
-            in 45..54 -> "44to54Years"
+            in 3..6 -> "3to6Years"
+            in 6..12 -> "6to12Years"
+            in 12..18 -> "12to18Years"
+            in 18..24 -> "18to24Years"
+            in 24..34 -> "24to34Years"
+            in 34..44 -> "34to44Years"
+            in 44..54 -> "44to54Years"
             else -> "55YearsandAbove"
         }
-    }
-
-    private fun displayDietPlan(dataSnapshot: DataSnapshot) {
-        val dietPlan = StringBuilder()
-        for (day in 1..7) {
-            val dayPlan = dataSnapshot.child("Day$day").getValue(String::class.java)
-            dietPlan.append("Day $day: ${dayPlan ?: "Not available"}\n")
-        }
-        dietPlanTextView.text = dietPlan.toString()
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
