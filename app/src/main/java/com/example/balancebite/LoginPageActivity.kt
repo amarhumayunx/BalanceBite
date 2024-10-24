@@ -95,42 +95,38 @@ class LoginPageActivity : AppCompatActivity() {
 
     }
 
-
     // Check if the user's personal information exists in the database
     private fun checkUserInfoAndNavigate() {
         val userId = auth.currentUser?.uid
         if (userId != null) {
-            database.child(userId).get().addOnCompleteListener { task ->
+            database.child(userId).child("profile").get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val userInfo = task.result
-                    if (userInfo.exists()) {
+                    val profile = task.result
+                    if (profile.exists()) {
                         // Retrieve the profile information from the database
-                        val profile = userInfo.child("profile")
-
                         val name = profile.child("name").value as? String
                         val height = profile.child("height").value
                         val weight = profile.child("weight").value
                         val healthInfo = profile.child("healthInfo").value
                         val age = profile.child("age").value
-                        val gender = profile.child("gender").value as? Boolean
+                        val gender = profile.child("gender").value
 
                         // If all personal information exists, navigate to the dashboard
-                        if (name != null && height != null && weight != null && healthInfo != null && gender != null && age != null)
-                        {
+                        if (name != null && height != null && weight != null && healthInfo != null && gender != null && age != null) {
                             navigateToDashboard(name)
-                        }
-                        else
-                        {
+                        } else {
                             // Missing personal information, navigate to UserInfoActivity
+                            Toast.makeText(this, "Please complete your profile information.", Toast.LENGTH_SHORT).show()
                             navigateToUserInfoPage()
                         }
-                    }
-                    else
-                    {
+                    } else {
                         // No user data exists, navigate to UserInfoActivity
                         Toast.makeText(this, "No user data exists", Toast.LENGTH_SHORT).show()
                         navigateToUserInfoPage()
                     }
+                } else {
+                    // Handle error if fetching profile data fails
+                    Toast.makeText(this, "Error fetching user data: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
@@ -138,6 +134,7 @@ class LoginPageActivity : AppCompatActivity() {
             Toast.makeText(this, "User is not logged in", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     // Navigate to the dashboard activity
     private fun navigateToDashboard(name: String) {

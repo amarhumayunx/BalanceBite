@@ -77,11 +77,13 @@ class ActivitySignUP : AppCompatActivity() {
     private fun saveBasicUserInfo(userId: String, username: String, email: String) {
         val database = FirebaseDatabase.getInstance().getReference("Users")
 
+        // Create a map with username and email to store in the database
         val userProfile = mapOf(
             "username" to username,
             "email" to email
         )
 
+        // Save the user profile under the current user's ID
         database.child(userId).child("profile").setValue(userProfile)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -115,18 +117,18 @@ class ActivitySignUP : AppCompatActivity() {
         return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    // Function to navigate back to the activity after splash screen
-    private fun navigateBackToActivityAfterSplashScreen() {
-        val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
-        startActivity(intent)
-        finish()
-    }
-
     // Handle the back button press to navigate back to the activity after splash screen
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         Toast.makeText(this, "Back to Get Started Activity", Toast.LENGTH_SHORT).show()
         navigateBackToActivityAfterSplashScreen()
+    }
+
+    // Function to navigate back to the activity after splash screen
+    private fun navigateBackToActivityAfterSplashScreen() {
+        val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
+        startActivity(intent)
+        finish()
     }
 }

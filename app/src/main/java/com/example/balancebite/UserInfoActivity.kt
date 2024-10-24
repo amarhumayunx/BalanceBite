@@ -22,7 +22,7 @@ data class UserProfile(
     val weight: Double = 0.0,
     val gender: String = "",
     val healthInfo: String = "",
-    val profilePictureUrl: String = "" // Add a field for the profile picture URL
+    val profilePictureUrl: String = ""
 )
 
 @Suppress("DEPRECATION")
@@ -63,12 +63,10 @@ class UserInfoActivity : AppCompatActivity() {
         profileImageView = findViewById(R.id.profile_image)
         btnChangeProfilePic = findViewById(R.id.btnChangeProfilePic)
 
-        // Set click listener for the submit button
-        btnSubmit.setOnClickListener {
-            saveUserInfo()
-        }
+        // Submit button listener
+        btnSubmit.setOnClickListener { saveUserInfo() }
 
-        // Set click listener for changing profile picture
+        // Change profile picture listener
         btnChangeProfilePic.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImageRequest)
@@ -81,7 +79,7 @@ class UserInfoActivity : AppCompatActivity() {
 
         if (resultCode == RESULT_OK && requestCode == pickImageRequest) {
             imageUri = data?.data
-            profileImageView.setImageURI(imageUri) // Display selected image in CircleImageView
+            profileImageView.setImageURI(imageUri) // Display selected image
         }
     }
 
@@ -93,34 +91,29 @@ class UserInfoActivity : AppCompatActivity() {
         val gender = etGender.text.toString().trim()
         val healthInfo = etHealthInfo.text.toString().trim()
 
-        // Check for incomplete information
+        // Validate inputs
         if (name.isEmpty()) {
             etName.error = "Name is required"
             return
         }
-
         if (age == null || age <= 0) {
-            etAge.error = "Please enter a valid age"
+            etAge.error = "Enter a valid age"
             return
         }
-
-        if (height == null || height <= 0.0) {
-            etHeight.error = "Please enter a valid height"
+        if (height == null || height <= 0) {
+            etHeight.error = "Enter a valid height"
             return
         }
-
-        if (weight == null || weight <= 0.0) {
-            etWeight.error = "Please enter a valid weight"
+        if (weight == null || weight <= 0) {
+            etWeight.error = "Enter a valid weight"
             return
         }
-
         if (gender.isEmpty()) {
-            etGender.error = "Please enter your gender"
+            etGender.error = "Enter your gender"
             return
         }
 
         val userId = auth.currentUser?.uid
-
         if (userId != null) {
             if (imageUri != null) {
                 uploadProfilePicture(userId, name, age, height, weight, gender, healthInfo)
@@ -131,7 +124,6 @@ class UserInfoActivity : AppCompatActivity() {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun uploadProfilePicture(
         userId: String,
@@ -151,10 +143,9 @@ class UserInfoActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to upload profile picture: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to upload picture: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
 
     private fun saveUserProfileToDatabase(
         userId: String,
@@ -166,13 +157,20 @@ class UserInfoActivity : AppCompatActivity() {
         healthInfo: String,
         profilePictureUrl: String
     ) {
-        val userProfile = UserProfile(name, age, height, weight, gender, healthInfo, profilePictureUrl)
+        val userProfile = mapOf(
+            "name" to name,
+            "age" to age,
+            "height" to height,
+            "weight" to weight,
+            "gender" to gender,
+            "healthInfo" to healthInfo,
+            "profilePictureUrl" to profilePictureUrl
+        )
 
-        // Store user profile data in Firebase Realtime Database
-        database.child(userId).child("profile").setValue(userProfile).addOnCompleteListener { task ->
+        // Use updateChildren to avoid overwriting existing data
+        database.child(userId).child("profile").updateChildren(userProfile).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(this, "Profile saved successfully!", Toast.LENGTH_SHORT).show()
-                // Navigate to the main home screen after saving
                 val intent = Intent(this, MainHomeScreen::class.java)
                 startActivity(intent)
                 finish()
@@ -181,5 +179,4 @@ class UserInfoActivity : AppCompatActivity() {
             }
         }
     }
-
 }
