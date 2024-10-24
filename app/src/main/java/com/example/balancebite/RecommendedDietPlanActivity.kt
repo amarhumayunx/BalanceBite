@@ -106,6 +106,7 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun fetchDietPlan(disease: String) {
         val database = FirebaseDatabase.getInstance().getReference("disease_diet_plans")
 
@@ -144,44 +145,10 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
     }
 
 
-
-    private fun displayDietPlan(dataSnapshot: DataSnapshot) {
-        val dietPlan = StringBuilder()
-
-        // Loop through the children (days in the plan)
-        for (daySnapshot in dataSnapshot.children) {
-            val dayMap = daySnapshot.getValue(object : GenericTypeIndicator<Map<String, String>>() {})
-            if (dayMap != null) {
-                val day = dayMap["day"] ?: "Unknown Day"
-                val description = dayMap["0"] ?: "No description available"
-                dietPlan.append("$day: $description\n\n")
-            } else {
-                dietPlan.append("Invalid data format.\n")
-            }
-        }
-
-        // Display the diet plan in the TextView
-        dietPlanTextView.text = dietPlan.toString()
-    }
-
-
     // Helper function to display toast messages
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 
-    private fun getAgeGroup(age: Int?): String {
-        return when (age) {
-            in 1..3 -> "1to3Years"
-            in 3..6 -> "3to6Years"
-            in 6..12 -> "6to12Years"
-            in 12..18 -> "12to18Years"
-            in 18..24 -> "18to24Years"
-            in 24..34 -> "24to34Years"
-            in 34..44 -> "34to44Years"
-            in 44..54 -> "44to54Years"
-            else -> "55YearsandAbove"
-        }
-    }
 }

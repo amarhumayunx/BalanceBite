@@ -115,27 +115,6 @@ class ActivitySignUP : AppCompatActivity() {
         return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    // Save additional user information without overwriting previous data
-    fun saveAdditionalUserInfo(userId: String, height: String, weight: String, age: String) {
-        val database = FirebaseDatabase.getInstance().getReference("Users")
-
-        val additionalInfo = mapOf(
-            "height" to height,
-            "weight" to weight,
-            "age" to age
-        )
-
-        // Use 'updateChildren' to add new data without deleting the existing profile
-        database.child(userId).child("profile").updateChildren(additionalInfo)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "User info updated successfully!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Failed to update user info: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
     // Function to navigate back to the activity after splash screen
     private fun navigateBackToActivityAfterSplashScreen() {
         val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
