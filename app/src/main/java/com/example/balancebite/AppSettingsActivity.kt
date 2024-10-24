@@ -1,12 +1,11 @@
 package com.example.balancebite
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
 import android.graphics.Canvas
-import android.graphics.Shader
 import android.graphics.Paint
+import android.graphics.Shader
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button

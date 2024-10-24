@@ -132,10 +132,6 @@ class LoginPageActivity : AppCompatActivity() {
                         navigateToUserInfoPage()
                     }
                 }
-                else
-                {
-                    Toast.makeText(this, "Failed to retrieve user information", Toast.LENGTH_SHORT).show()
-                }
             }
         } else {
             // Handle the case where userId is null (user not logged in)

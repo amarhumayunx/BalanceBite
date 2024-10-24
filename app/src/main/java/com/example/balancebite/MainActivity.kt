@@ -49,14 +49,18 @@ class MainActivity : AppCompatActivity() {
         if (currentUser != null) {
             // Check if user data exists in Firebase Database
             val userId = currentUser.uid
-            val userRef = database.getReference("Users").child(userId)
+            val userRef = database.getReference("Users").child(userId).child("profile")
 
             userRef.get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     if (task.result.exists()) {
-                        val userData = task.result.children
-                        val hasRequiredData = userData.any { it.key in listOf("name", "age", "weight", "height", "healthInfo") }
-                        if (hasRequiredData) {
+                        val userData = task.result
+                        // Check for all required data fields in the profile node
+                        val hasAllRequiredData = listOf("name", "age", "weight", "height", "healthInfo").all { key ->
+                            userData.child(key).exists()
+                        }
+
+                        if (hasAllRequiredData) {
                             // User data exists and is complete, navigate to the dashboard
                             navigateToActivity(MainHomeScreen::class.java, "Moving to Dashboard")
                         } else {
@@ -78,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             navigateToActivity(MainActivityAfterSplashScreen::class.java, "Please log in to your account")
         }
     }
+
 
     // Helper method to navigate to an activity with a toast message
     private fun navigateToActivity(activityClass: Class<*>, message: String? = null) {

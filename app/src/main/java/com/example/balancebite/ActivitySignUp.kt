@@ -99,7 +99,7 @@ class ActivitySignUP : AppCompatActivity() {
     // Function to handle sign-up failure
     private fun handleSignUpFailure(exception: Exception?) {
         if (exception != null) {
-            if (exception.message?.contains("email address is already in use") == true) {
+            if (exception.message?.contains("Email address is already in use") == true) {
                 Toast.makeText(this, "Email already in use. Redirecting to sign-in page...", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginPageActivity::class.java)
                 startActivity(intent)

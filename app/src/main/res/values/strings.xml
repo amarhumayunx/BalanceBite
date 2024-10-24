@@ -86,7 +86,7 @@
     <string name="weight_label">Weight: </string>
     <string name="health_info_label">Health Information: </string>
     <string name="daily_progress_label">Daily Progress</string>
-    <string name="day_label">Enter Day (e.g., Day 1)</string>
+    <string name="day_label">Enter Day (e.g., Monday, Tuesday, etc.)</string>
     <string name="calories_label">Intake Calories of this day: </string>
     <string name="water_label">Enter glasses of water </string>
     <string name="exercise_label">Enter exercise time (in minutes)</string>
