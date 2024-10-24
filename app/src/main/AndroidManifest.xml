@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -38,18 +37,6 @@
             tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".AboutAppActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
-        <activity
-            android:name=".EditUserActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
-        <activity
-            android:name=".AdminDashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
@@ -156,9 +143,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             tools:ignore="DiscouragedApi,LockedOrientationActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

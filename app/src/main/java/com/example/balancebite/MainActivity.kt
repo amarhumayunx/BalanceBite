@@ -1,7 +1,6 @@
 package com.example.balancebite
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -10,20 +9,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import java.util.concurrent.TimeUnit
 
 @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
-
-    // Permission request code for notifications
-    private val notificationPermissionCode = 102
 
     // Variable to track back press time
     private var backPressedOnce = false
@@ -40,35 +33,14 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
-        // Schedule the notification to repeat every 24 hours
-        scheduleProgressNotification()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+        }
 
         // Splash screen delay before navigation
         Handler(Looper.getMainLooper()).postDelayed({
             checkUserStatusAndNavigate()
         }, 1000)
-    }
-
-    private fun scheduleProgressNotification() {
-        // Create a PeriodicWorkRequest for ProgressNotificationWorker to run every 24 hours
-        val periodicWorkRequest = PeriodicWorkRequestBuilder<ProgressNotificationWorker>(24, TimeUnit.HOURS)
-            .build()
-
-        // Enqueue the work request
-        WorkManager.getInstance(this).enqueue(periodicWorkRequest)
-    }
-
-
-    // Handle the result of permission request
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == notificationPermissionCode) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Notification permission granted", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     // Check if the user is authenticated and has the required data in Firebase

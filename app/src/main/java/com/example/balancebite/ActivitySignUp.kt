@@ -11,7 +11,6 @@ import com.example.balancebite.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-
 @Suppress("DEPRECATION")
 class ActivitySignUP : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -32,9 +31,7 @@ class ActivitySignUP : AppCompatActivity() {
         binding.buttonOnCardView.setOnClickListener {
             signUpNewUser()
         }
-
     }
-
 
     // Function to sign up a new user
     private fun signUpNewUser() {
@@ -66,7 +63,7 @@ class ActivitySignUP : AppCompatActivity() {
                     val userId = auth.currentUser?.uid
                     if (userId != null) {
                         // Save the user information in Firebase Realtime Database
-                        saveUserToDatabase(userId, username, email)
+                        saveBasicUserInfo(userId, username, email)
                     } else {
                         Toast.makeText(this, "Failed to get user ID", Toast.LENGTH_SHORT).show()
                     }
@@ -76,27 +73,27 @@ class ActivitySignUP : AppCompatActivity() {
             }
     }
 
-    // Function to save user information to Firebase Realtime Database
-    private fun saveUserToDatabase(userId: String, username: String, email: String) {
-        // Get a reference to the "Users" node in the Firebase Realtime Database
+    // Function to save basic user information to Firebase Realtime Database
+    private fun saveBasicUserInfo(userId: String, username: String, email: String) {
         val database = FirebaseDatabase.getInstance().getReference("Users")
 
-        // Create a User object with the provided information
-        val user = User(userId, username, email)
+        val userProfile = mapOf(
+            "username" to username,
+            "email" to email
+        )
 
-        // Store the user information in the database under the userId node
-        database.child(userId).setValue(user).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(this, "Sign-Up successful! Please enter your personal information.", Toast.LENGTH_SHORT).show()
-                // Move to UserInfoActivity after successful sign-up
-                val intent = Intent(this, UserInfoActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                // If storing the user info fails, show an error message
-                Toast.makeText(this, "Failed to store user info: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+        database.child(userId).child("profile").setValue(userProfile)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Sign-Up successful! Please enter your personal information.", Toast.LENGTH_SHORT).show()
+                    // Move to UserInfoActivity to enter additional details
+                    val intent = Intent(this, UserInfoActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Failed to save user profile: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
             }
-        }
     }
 
     // Function to handle sign-up failure
@@ -113,16 +110,37 @@ class ActivitySignUP : AppCompatActivity() {
         }
     }
 
-    // Function to check if the email format is valid
+    // Function to validate the email format
     private fun isValidEmail(email: String): Boolean {
         return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    // Save additional user information without overwriting previous data
+    fun saveAdditionalUserInfo(userId: String, height: String, weight: String, age: String) {
+        val database = FirebaseDatabase.getInstance().getReference("Users")
+
+        val additionalInfo = mapOf(
+            "height" to height,
+            "weight" to weight,
+            "age" to age
+        )
+
+        // Use 'updateChildren' to add new data without deleting the existing profile
+        database.child(userId).child("profile").updateChildren(additionalInfo)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "User info updated successfully!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Failed to update user info: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     // Function to navigate back to the activity after splash screen
     private fun navigateBackToActivityAfterSplashScreen() {
         val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
         startActivity(intent)
-        finish() // Optional: close the current activity
+        finish()
     }
 
     // Handle the back button press to navigate back to the activity after splash screen
