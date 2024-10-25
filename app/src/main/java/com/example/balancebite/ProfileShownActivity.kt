@@ -95,7 +95,7 @@ class ProfileShownActivity : AppCompatActivity() {
     private fun saveBMIToDatabase(userId: String, bmi: Double) {
         database.child(userId).child("profile").child("bmi").setValue(bmi)
             .addOnSuccessListener {
-                Toast.makeText(this, "BMI saved successfully", Toast.LENGTH_SHORT).show()
+                print("BMI saved successfully")
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error saving BMI: ${e.message}", Toast.LENGTH_SHORT).show()

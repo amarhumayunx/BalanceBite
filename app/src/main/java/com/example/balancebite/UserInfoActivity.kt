@@ -17,6 +17,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 data class UserProfile(
     val name: String = "",
+    val email: String = "",
     val age: Int = 0,
     val height: Double = 0.0,
     val weight: Double = 0.0,
@@ -36,7 +37,7 @@ class UserInfoActivity : AppCompatActivity() {
     private lateinit var etGender: EditText
     private lateinit var btnSubmit: Button
     private lateinit var profileImageView: CircleImageView
-    private lateinit var btnChangeProfilePic: Button
+    private lateinit var btnUploadProfilePic: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
@@ -61,13 +62,13 @@ class UserInfoActivity : AppCompatActivity() {
         etHealthInfo = findViewById(R.id.user_health_info_on_user_info)
         btnSubmit = findViewById(R.id.btnSubmit)
         profileImageView = findViewById(R.id.profile_image)
-        btnChangeProfilePic = findViewById(R.id.btnChangeProfilePic)
+        btnUploadProfilePic = findViewById(R.id.btnUploadProfilePic)
 
         // Submit button listener
         btnSubmit.setOnClickListener { saveUserInfo() }
 
         // Change profile picture listener
-        btnChangeProfilePic.setOnClickListener {
+        btnUploadProfilePic.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImageRequest)
         }
@@ -114,9 +115,11 @@ class UserInfoActivity : AppCompatActivity() {
         }
 
         val userId = auth.currentUser?.uid
-        if (userId != null) {
+        val email = auth.currentUser?.email
+
+        if (userId != null && email != null) {
             if (imageUri != null) {
-                uploadProfilePicture(userId, name, age, height, weight, gender, healthInfo)
+                uploadProfilePicture(userId, email, name, age, height, weight, gender, healthInfo)
             } else {
                 Toast.makeText(this, "Please select a profile picture", Toast.LENGTH_SHORT).show()
             }
@@ -127,6 +130,7 @@ class UserInfoActivity : AppCompatActivity() {
 
     private fun uploadProfilePicture(
         userId: String,
+        email: String,
         name: String,
         age: Int,
         height: Double,
@@ -139,7 +143,7 @@ class UserInfoActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 storageReference.downloadUrl.addOnSuccessListener { uri ->
                     val profilePictureUrl = uri.toString()
-                    saveUserProfileToDatabase(userId, name, age, height, weight, gender, healthInfo, profilePictureUrl)
+                    saveUserProfileToDatabase(email, userId, name, age, height, weight, gender, healthInfo, profilePictureUrl)
                 }
             }
             .addOnFailureListener { e ->
@@ -148,6 +152,7 @@ class UserInfoActivity : AppCompatActivity() {
     }
 
     private fun saveUserProfileToDatabase(
+        email: String,
         userId: String,
         name: String,
         age: Int,
@@ -158,6 +163,7 @@ class UserInfoActivity : AppCompatActivity() {
         profilePictureUrl: String
     ) {
         val userProfile = mapOf(
+            "email" to email,  // Include email in the profile
             "name" to name,
             "age" to age,
             "height" to height,

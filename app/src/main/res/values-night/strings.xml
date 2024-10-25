@@ -19,8 +19,8 @@
     <string name="card_view_pop_up_name">Login Page</string>
     <string name="sign_up">Sign up</string>
     <string name="sign_up_information">Please Sign Up with your Account</string>
-    <string name="user_name_string">Name</string>
-    <string name="user_name_hint_string">Enter Your Name</string>
+    <string name="user_name_string">Username</string>
+    <string name="user_name_hint_string">Enter Your Username</string>
     <string name="user_name_on_home_screen">Welcome, User</string>
     <string name="wave_on_home_screen_image_description">Wave Image description</string>
     <string name="line_below_user_name_on_home_screen">Find, Track and Eat healthy food.</string>

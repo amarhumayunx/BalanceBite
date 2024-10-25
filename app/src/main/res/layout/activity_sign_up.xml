@@ -105,15 +105,15 @@
                         android:id="@+id/user_name_for_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/user_name_hint_string"
-                        android:minHeight="48dp"
-                        android:textAlignment="center"
                         android:background="@drawable/custom_edittext_round"
                         android:drawableEnd="@drawable/name_of_user"
                         android:drawableTint="@color/gray"
+                        android:hint="@string/user_name_hint_string"
+                        android:minHeight="48dp"
                         android:padding="15dp"
+                        android:textAlignment="center"
                         android:textColorHint="#757575"
-                        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize" />
+                        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/email_address_id_on_card_view"
@@ -128,16 +128,16 @@
                         android:id="@+id/email_address_id_on_card_view_for_enter_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/email_hint_string"
-                        android:textAlignment="center"
                         android:background="@drawable/custom_edittext_round"
                         android:drawableEnd="@drawable/email_real_icon"
                         android:drawableTint="@color/gray"
+                        android:hint="@string/email_hint_string"
                         android:inputType="textEmailAddress"
-                        android:padding="10dp"
                         android:minHeight="48dp"
+                        android:padding="10dp"
+                        android:textAlignment="center"
                         android:textColorHint="#757575"
-                        tools:ignore="Autofill,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                        tools:ignore="Autofill,SpeakableTextPresentCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/password_id_on_card_view"

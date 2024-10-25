@@ -75,7 +75,7 @@
                     tools:ignore="TextContrastCheck" />
 
                 <Button
-                    android:id="@+id/btnChangeProfilePic"
+                    android:id="@+id/btnUploadProfilePic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
