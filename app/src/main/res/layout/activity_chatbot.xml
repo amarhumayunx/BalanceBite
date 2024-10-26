@@ -30,27 +30,21 @@
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="10dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/chatbotInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/greetingTextView"
-        tools:ignore="SpeakableTextPresentCheck">
+        app:layout_constraintBottom_toTopOf="@id/chatbotInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- LinearLayout to hold multiple CardViews -->
-        <LinearLayout
-            android:id="@+id/messageContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:padding="20dp" />
+    <LinearLayout
+        android:id="@+id/messageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp" />
     </ScrollView>
 
-    <!-- Chatbot input field -->
+        <!-- Chatbot input field -->
     <EditText
         android:id="@+id/chatbotInput"
         android:layout_width="0dp"
@@ -67,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="Autofill,VisualLintTextFieldSize,TextContrastCheck" />
 
-    <!-- Send button for chatbot -->
+        <!-- Send button for chatbot -->
     <Button
         android:id="@+id/chatbotSendButton"
         android:layout_width="wrap_content"

@@ -2,6 +2,8 @@ package com.example.balancebite
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.Gravity
+import android.view.Gravity.RIGHT
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -346,6 +348,26 @@ class ChatbotActivity : AppCompatActivity() {
 
         // Handle user age input and corresponding actions
         when {
+            // Handle weight gain queries
+            caseInput.contains("gain weight", ignoreCase = true) -> {
+                chatbotReply("To gain weight, aim to consume more calories than you burn. " +
+                        "Incorporate calorie-dense foods like nuts, avocados, and whole grains into your meals. " +
+                        "Try having 5-6 smaller meals throughout the day instead of 2-3 large ones. " +
+                        "Focus on whole foods that provide essential nutrients, such as lean meats, dairy, legumes, and starchy vegetables. " +
+                        "Engage in resistance exercises to build muscle mass, and consider smoothies or shakes made with milk, protein powder, " +
+                        "fruits, and nut butters to add extra calories.")
+            }
+
+            // Handle weight loss queries
+            caseInput.contains("lose weight", ignoreCase = true) -> {
+                chatbotReply("To lose weight, aim for gradual weight loss of 1-2 pounds per week for sustainable results. " +
+                        "Be mindful of serving sizes by using smaller plates or bowls to help manage portions. " +
+                        "Drink plenty of water throughout the day, as thirst can sometimes be mistaken for hunger. " +
+                        "Incorporate regular exercise into your routine, aiming for at least 150 minutes of moderate activity each week. " +
+                        "Finally, reduce your intake of sugary drinks, snacks, and fast foods, opting for whole, unprocessed foods whenever possible.")
+            }
+
+
             caseInput.contains("suggest me a diet plan",ignoreCase = true) -> {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
@@ -365,6 +387,24 @@ class ChatbotActivity : AppCompatActivity() {
             }
 
             caseInput.contains("i need a diet plan", ignoreCase = true)->{
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
+
+            caseInput.contains("i need diet plan for me", ignoreCase = true)->{
+                chatbotReply("Please tell me your age.")
+                userAge = caseInput.toInt()
+                userAgeGroup = determineAgeGroup(userAge)
+                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                selectedDay = input
+                fetchDietPlanForDay(userAgeGroup, selectedDay)
+            }
+
+            caseInput.contains("need a diet plan", ignoreCase = true)->{
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
@@ -505,11 +545,13 @@ class ChatbotActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private fun displayUserProfile(profile: UserProfile) {
         print("\n")
         val profileMessage = """
             Name: ${profile.name}
             Age: ${profile.age}
+            Body Mass Index: ${String.format("%.1f", profile.bmi.toFloat())}
             Height: ${profile.height}
             Weight: ${profile.weight}
             Health Info: ${profile.healthInfo}
@@ -519,29 +561,40 @@ class ChatbotActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun displayUserMessage(message: String) {
-        val cardView = CardView(this)
-        cardView.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        cardView.cardElevation = 4f
-        cardView.radius = 12f
-        cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.white)) // Set a different color for user messages
+        // Create a CardView for the user message bubble
+        val cardView = CardView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,  // Adjusts dynamically to message length
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(10, 10, 10, 10)  // Add margin around bubbles
+                gravity = Gravity.END  // Align user messages to the right
+            }
+            cardElevation = 8f
+            radius = 24f  // Rounded corners for a smooth look
+            setCardBackgroundColor(ContextCompat.getColor(this@ChatbotActivity, R.color.green))
+        }
 
-        val messageTextView = TextView(this)
-        messageTextView.text = "You: $message"
-        messageTextView.setTextColor(ContextCompat.getColor(this, R.color.black))
+        // Create a TextView for the message content
+        val messageTextView = TextView(this).apply {
+            text = message
+            setTextColor(ContextCompat.getColor(this@ChatbotActivity, R.color.white))
+            textSize = 16f
+            setPadding(24, 16, 24, 16)  // Padding inside the bubble
+        }
 
-        messageTextView.setPadding(16, 16, 16, 16)
-
+        // Add the TextView to the CardView
         cardView.addView(messageTextView)
 
+        // Add the message bubble to the message container
         val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
         messageContainer.addView(cardView)
 
+        // Scroll to the latest message
         val scrollView = findViewById<ScrollView>(R.id.scrollView)
         scrollView.post { scrollView.smoothScrollTo(0, messageContainer.bottom) }
     }
+
 
     private fun fetchDietPlanForDay(ageGroup: String, day: String) {
         val dayRef = dietPlanRef.child(ageGroup).child(day)
@@ -574,26 +627,36 @@ class ChatbotActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun chatbotReply(message: String) {
-        val cardView = CardView(this)
-        cardView.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        cardView.cardElevation = 4f
-        cardView.radius = 12f
-        cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.white))
+        // Create a CardView for the chatbot message bubble
+        val cardView = CardView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,  // Adjusts dynamically to message length
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(10, 10, 10, 10)  // Add margin around bubbles
+                gravity = Gravity.START  // Align chatbot messages to the left
+            }
+            cardElevation = 8f
+            radius = 24f  // Rounded corners for a smooth look
+            setCardBackgroundColor(ContextCompat.getColor(this@ChatbotActivity, R.color.green))
+        }
 
-        val messageTextView = TextView(this)
-        messageTextView.text = "BalanceBite Chatbot:\n$message"
-        messageTextView.setTextColor(ContextCompat.getColor(this, R.color.gray))
+        // Create a TextView for the message content
+        val messageTextView = TextView(this).apply {
+            text = message
+            setTextColor(ContextCompat.getColor(this@ChatbotActivity, R.color.white))
+            textSize = 16f
+            setPadding(24, 16, 24, 16)  // Padding inside the bubble
+        }
 
-        messageTextView.setPadding(16, 16, 16, 16)
-
+        // Add the TextView to the CardView
         cardView.addView(messageTextView)
 
+        // Add the message bubble to the message container
         val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
         messageContainer.addView(cardView)
 
+        // Scroll to the latest message
         val scrollView = findViewById<ScrollView>(R.id.scrollView)
         scrollView.post { scrollView.smoothScrollTo(0, messageContainer.bottom) }
     }
