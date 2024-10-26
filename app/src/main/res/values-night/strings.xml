@@ -24,7 +24,7 @@
     <string name="user_name_on_home_screen">Welcome, User</string>
     <string name="wave_on_home_screen_image_description">Wave Image description</string>
     <string name="line_below_user_name_on_home_screen">Find, Track and Eat healthy food.</string>
-    <string name="pros_and_cons_of_fast_food">The pros and cons of fast food.</string>
+    <string name="pros_and_cons_of_fast_food">Fast Food: Blessings &amp; Burdens</string>
     <string name="read_now_button_text_on_dashboard">Read Now</string>
     <string name="open">Open Drawer</string>
     <string name="close">Close Drawer</string>
@@ -61,9 +61,9 @@
     <string name="enter_health_info_on_edit_user_activity">Enter Health Information</string>
     <string name="save_button_on_edit_user_activity">Save</string>
     <string name="delete_button_on_edit_user_activity">Delete</string>
-    <string name="pros_of_fast_food">Pros</string>
+    <string name="pros_of_fast_food">Blessings</string>
     <string name="pros_lines">1. Convenient and time-saving.\n2. Affordable and easily accessible.\n3. Consistent taste and quality.\n4. Variety of options available.</string>
-    <string name="cons_of_fast_food">Cons</string>
+    <string name="cons_of_fast_food">Burdens</string>
     <string name="cons_lines">1. High in calories and unhealthy fats.\n2. Often contains excessive sugar and sodium.\n3. Can contribute to weight gain and health issues.\n4. May lack nutritional value compared to fresh foods.</string>
     <string name="sign_up_line_on_login_page">You don\'t Have An Account? Signup</string>
     <string name="label_on_screen_after_splash_screen">Eat Healthy</string>

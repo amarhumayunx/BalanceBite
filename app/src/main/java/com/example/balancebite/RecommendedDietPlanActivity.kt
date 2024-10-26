@@ -1,13 +1,19 @@
 package com.example.balancebite
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.util.Locale
+import android.text.SpannableStringBuilder
 
 data class DiseaseDietPlan(
     val day: Int = 0,
@@ -85,17 +91,81 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         val weight = userWeight ?: return
 
         val bmi = weight / (heightInMeters * heightInMeters)
+
         if (bmi.isFinite()) {
-            bmiTextView.text = "Your BMI: %.2f".format(bmi)
-            val bmiCategory = getBMICategory(bmi) // Get category
-            bmiCategoryTextView.text = "BMI Category: $bmiCategory"
+            displayBMI(bmi)
+            val bmiCategory = getBMICategory(bmi)
+            displayBMICategory(bmi)
 
             // Fetch and display the diet plan based on BMI category
-            fetchDietPlan(bmiCategory) // Fetch the first day's plan
+            fetchDietPlan(bmiCategory)
         } else {
             bmiTextView.text = "Invalid BMI. Please update your profile data."
         }
     }
+
+    @SuppressLint("SetTextI18n")
+    private fun displayBMICategory(bmi: Double) {
+        val bmiCategoryDisplay = getBMICategoryForDisplay(bmi).lowercase()
+
+        val categoryText = "BMI Category: ${bmiCategoryDisplay.capitalize(Locale.ROOT)}"
+        val spannableString = SpannableString(categoryText)
+
+        val color = when (bmiCategoryDisplay) {
+            "underweight" -> ContextCompat.getColor(this,R.color.blue)
+            "normal weight" -> ContextCompat.getColor(this,R.color.green)
+            "overweight" -> ContextCompat.getColor(this,R.color.yellow)
+            "obesity" -> ContextCompat.getColor(this,R.color.red)
+            else -> ContextCompat.getColor(this,R.color.gray)
+        }
+
+        val startIndex = categoryText.indexOf(bmiCategoryDisplay.capitalize(Locale.ROOT))
+        val endIndex = startIndex + bmiCategoryDisplay.length
+
+        spannableString.setSpan(
+            ForegroundColorSpan(color),
+            startIndex,
+            endIndex,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        bmiCategoryTextView.text = spannableString
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun displayBMI(bmi: Double) {
+        // Create the BMI text
+        val bmiText = "Your BMI: %.1f".format(bmi)
+        val spannableString = SpannableString(bmiText)
+
+        // Apply black color to the text "Your BMI: "
+        spannableString.setSpan(
+            ForegroundColorSpan(Color.BLACK),
+            0, // Start index for "Your BMI: "
+            10, // End index for "Your BMI: "
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Determine the color based on the BMI category
+        val bmiColor = when {
+            bmi < 18.5 -> ContextCompat.getColor(this, R.color.blue) // Underweight
+            bmi < 24.9 -> ContextCompat.getColor(this, R.color.green) // Normal weight
+            bmi < 29.9 -> ContextCompat.getColor(this, R.color.yellow) // Overweight
+            else -> ContextCompat.getColor(this, R.color.red) // Obesity
+        }
+
+        // Apply the determined color to the BMI value
+        spannableString.setSpan(
+            ForegroundColorSpan(bmiColor),
+            10, // Start index of the BMI value
+            bmiText.length, // End index (end of the string)
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Set the formatted text to the TextView
+        bmiTextView.text = spannableString
+    }
+
 
     private fun getBMICategory(bmi: Double): String {
         return when {
@@ -106,34 +176,51 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
+    private fun getBMICategoryForDisplay(bmi: Double): String {
+        return when {
+            bmi < 18.5 -> "Underweight"
+            bmi in 18.5..24.9 -> "Normal weight"
+            bmi in 25.0..29.9 -> "Overweight"
+            else -> "Obesity"
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     private fun fetchDietPlan(disease: String) {
-        val database = FirebaseDatabase.getInstance().getReference("disease_diet_plans")
+        val dietPlanRef = database.child("disease_diet_plans").child(disease).child("plan")
 
-        // Navigate to the specified disease category (BMI category) in the database
-        database.child(disease).child("plan")
-            .get()
+        dietPlanRef.get()
             .addOnSuccessListener { dataSnapshot ->
                 if (dataSnapshot.exists()) {
-                    val dietPlans = StringBuilder()
+                    val dietPlans = SpannableStringBuilder() // Use SpannableStringBuilder
 
-                    // Loop through each day in the plan and append it to the StringBuilder
+                    // Loop through each day and append the plan
                     for (daySnapshot in dataSnapshot.children) {
                         val plan = daySnapshot.getValue(DiseaseDietPlan::class.java)
                         plan?.let {
-                            dietPlans.append("""
-                            Day ${it.day}:
-                            Breakfast: ${it.breakfast}
-                            Lunch: ${it.lunch}
-                            Dinner: ${it.dinner}
-                            Snack: ${it.snack}
+                            val dayText = "Day ${it.day}:\n"
+                            val breakfastText = "Breakfast: ${it.breakfast}\n"
+                            val lunchText = "Lunch: ${it.lunch}\n"
+                            val dinnerText = "Dinner: ${it.dinner}\n"
+                            val snackText = "Snack: ${it.snack}\n\n"
 
-                        """.trimIndent())
+                            // Set color for "Day" text
+                            val coloredDayText = SpannableString(dayText).apply {
+                                setSpan(ForegroundColorSpan(ContextCompat.getColor(this@RecommendedDietPlanActivity, R.color.green)),
+                                    0, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                            }
+
+                            // Append the text to the SpannableStringBuilder
+                            dietPlans.append(coloredDayText)
+                            dietPlans.append(breakfastText)
+                            dietPlans.append(lunchText)
+                            dietPlans.append(dinnerText)
+                            dietPlans.append(snackText)
                         }
                     }
 
-                    // Display all diet plans for the BMI category in the TextView
-                    dietPlanTextView.text = dietPlans.toString()
+                    // Display the diet plans in the TextView
+                    dietPlanTextView.text = dietPlans
                 } else {
                     showToast("No diet plans found for $disease.")
                     dietPlanTextView.text = "No diet plan available."
@@ -149,6 +236,4 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
-
 }

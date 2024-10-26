@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:padding="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDietPlans"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:padding="10dp"/>
 
 </LinearLayout>
