@@ -39,7 +39,7 @@
 
                 <!-- Spacer View -->
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="375dp"
                     android:layout_height="90dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/wave_on_home_screen_image_description"
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@color/light_white"
+                    android:background="@color/white"
                     android:padding="10dp"
                     android:layout_marginBottom="16dp">
 
@@ -302,8 +302,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/nav_round_corner"
-        app:backgroundTint="@color/white"
-        app:itemIconTint="@color/green"
+        app:backgroundTint="@color/green"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemRippleColor="@color/white"
+        android:textAlignment="center"
         android:elevation="10dp"
         android:layout_margin="10dp"
         android:padding="5dp"

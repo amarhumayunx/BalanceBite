@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class ContactUsActivity : AppCompatActivity()
 {
@@ -15,6 +16,7 @@ class ContactUsActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_us)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
 
         // Reference to the email TextView
         val emailTextView = findViewById<TextView>(R.id.email_address)
