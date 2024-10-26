@@ -3,7 +3,6 @@ package com.example.balancebite
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Gravity
-import android.view.Gravity.RIGHT
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -11,9 +10,9 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.google.firebase.database.*
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 
 data class DietPlanDay(
