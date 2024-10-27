@@ -1,6 +1,9 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -43,8 +46,29 @@ class MainActivity : AppCompatActivity() {
         }, 1000)
     }
 
+    // Function to check internet connectivity
+    @SuppressLint("ObsoleteSdkInt")
+    private fun isInternetAvailable(): Boolean {
+        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork
+            val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+            networkCapabilities != null &&
+                    (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+        } else {
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            activeNetworkInfo != null && activeNetworkInfo.isConnected
+        }
+    }
+
     // Check if the user is authenticated and has the required data in Firebase
     private fun checkUserStatusAndNavigate() {
+        if (!isInternetAvailable()) {
+            showToast("No internet connection. Please check your connection.")
+            return // Exit the method if there's no internet
+        }
+
         val currentUser = auth.currentUser
         if (currentUser != null) {
             // Check if user data exists in Firebase Database
@@ -82,7 +106,6 @@ class MainActivity : AppCompatActivity() {
             navigateToActivity(MainActivityAfterSplashScreen::class.java, "Please log in to your account")
         }
     }
-
 
     // Helper method to navigate to an activity with a toast message
     private fun navigateToActivity(activityClass: Class<*>, message: String? = null) {

@@ -306,6 +306,8 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:itemRippleColor="@color/white"
+        app:itemIconSize="24dp"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         android:textAlignment="center"
         android:elevation="10dp"
         android:layout_margin="10dp"

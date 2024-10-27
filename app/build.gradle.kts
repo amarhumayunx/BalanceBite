@@ -74,5 +74,4 @@ dependencies {
     implementation (libs.picasso.v28)
     implementation (libs.androidx.work.runtime.ktx)
 
-
 }

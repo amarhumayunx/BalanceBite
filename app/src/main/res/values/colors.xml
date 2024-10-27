@@ -10,6 +10,15 @@
     <color name="blue">#87CEEB</color>
     <color name="yellow">#FFFFC5</color>
     <color name="light_green">#5CED73</color>
-    
+    <color name="soft_blue">#AEEEEE</color>
+    <color name="soft_blue_two">#87CEEB</color>
+
+    <color name="light_green_two">#B2FF59</color>
+    <color name="light_green_three">#81C784</color>
+    <color name="neutral_gray">#E0E0E0</color>
+    <color name="purple">#CE93D8</color>
+
+
+
 
 </resources>
