@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="10dp"
     tools:context=".MainHomeScreen">
 
     <!-- ScrollView to enable scrolling inside CardView -->
@@ -18,7 +17,6 @@
         android:layout_margin="10dp"
         app:cardElevation="4dp"
         app:cardBackgroundColor="@color/white"
-        android:layout_gravity="center"
         android:layout_weight="1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
@@ -39,9 +37,8 @@
 
                 <!-- Spacer View -->
                 <ImageView
-                    android:layout_width="375dp"
-                    android:layout_height="90dp"
-                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/wave_on_home_screen_image_description"
                     android:src="@drawable/wave_on_home_screen"
                     tools:ignore="ImageContrastCheck" />
@@ -299,20 +296,21 @@
     <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
+        android:layout_width="410dp"
         android:layout_height="wrap_content"
         android:background="@drawable/nav_round_corner"
-        app:backgroundTint="@color/green"
+        app:backgroundTint="@color/light_green_three"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:itemRippleColor="@color/white"
         app:itemIconSize="24dp"
+        app:itemTextAppearanceActiveBoldEnabled="true"
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         android:textAlignment="center"
         android:elevation="10dp"
-        android:layout_margin="10dp"
         android:padding="5dp"
         app:menu="@menu/nav_menu"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

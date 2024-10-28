@@ -43,6 +43,9 @@ class MainHomeScreen : AppCompatActivity() {
 
         // Initialize BottomNavigationView and set up item selection
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
+
+        bottomNavigationView.selectedItemId = R.id.no_selection
+
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             handleBottomNavigation(item)
             true
@@ -164,4 +167,11 @@ class MainHomeScreen : AppCompatActivity() {
             backPressedOnce = false
         }, 2000)
     }
+
+    override fun onResume() {
+        super.onResume()
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.no_selection // Reset selection
+    }
+
 }

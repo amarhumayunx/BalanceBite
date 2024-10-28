@@ -114,7 +114,7 @@ class ChatbotActivity : AppCompatActivity() {
             "What is a balanced diet?" to "A balanced diet includes a variety of foods",
             "What should I eat?" to "You can eat fruits and nuts.",
             "Tell me about breakfast." to "A healthy breakfast includes eggs and toast.",
-            "I want a diet plan." to "What is your age group?",
+            "I want a diet plan." to "What is your age?",
             "Give me a diet for day 1." to "You can have a fruit salad for breakfast.",
             "hey" to "How can I assist you?",
             "Hi" to "Welcome to BalanceBite Chatbot, How can I help you?",
@@ -371,7 +371,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -380,7 +380,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -389,7 +389,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -398,7 +398,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -407,7 +407,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -416,7 +416,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -425,7 +425,7 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Please tell me your age.")
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
                 selectedDay = input
                 fetchDietPlanForDay(userAgeGroup, selectedDay)
             }
@@ -436,7 +436,7 @@ class ChatbotActivity : AppCompatActivity() {
             caseInput.toIntOrNull() != null -> {
                 userAge = caseInput.toInt()
                 userAgeGroup = determineAgeGroup(userAge)
-                chatbotReply("You are in the $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
+                chatbotReply("You are in this $userAgeGroup age group. Which day's plan would you like? (e.g., Day1)")
             }
 
             caseInput.contains("day") && caseInput.contains("plan") -> {
