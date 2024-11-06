@@ -514,7 +514,7 @@ class ChatbotActivity : AppCompatActivity() {
             in 18..24 -> "18to24Years"
             in 24..34 -> "24to34Years"
             in 34..44 -> "34to44Years"
-            in 44..54 -> "44to54Years"
+            in 44..55 -> "44to55Years"
             else -> "55YearsandAbove"
         }
     }
