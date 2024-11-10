@@ -24,7 +24,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_fastfood"
         android:layout_width="0dp"
-        android:layout_height="700dp"
+        android:layout_height="600dp"
         android:layout_margin="16dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="30dp"
@@ -36,7 +36,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:scrollbarThumbVertical="@color/white"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"

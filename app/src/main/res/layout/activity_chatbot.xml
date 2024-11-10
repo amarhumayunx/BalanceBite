@@ -31,6 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:scrollbarThumbVertical="@color/white"
         app:layout_constraintTop_toBottomOf="@id/greetingTextView"
         app:layout_constraintBottom_toTopOf="@id/chatbotInput"
         app:layout_constraintStart_toStartOf="parent"

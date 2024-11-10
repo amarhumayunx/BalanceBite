@@ -22,8 +22,8 @@
     <!-- Fixed CardView between Images -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_bmi"
-        android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_width="0dp"
+        android:layout_height="600dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="8dp"
         android:padding="20dp"
@@ -103,7 +103,9 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-10dp">
+                android:layout_marginTop="-10dp"
+                android:scrollbarThumbVertical="@color/white"
+                >
 
                 <TextView
                     android:id="@+id/dietPlanTextView"

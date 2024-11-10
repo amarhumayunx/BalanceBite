@@ -28,7 +28,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="600dp"
         app:layout_constraintTop_toBottomOf="@id/wave_one"
         app:layout_constraintBottom_toTopOf="@id/wave_two"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,9 @@
         <!-- ScrollView for scrolling content -->
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:scrollbarThumbVertical="@color/white"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,16 +105,17 @@
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
-                <!-- About Button -->
+                <!-- Show Progress Button -->
                 <Button
-                    android:id="@+id/buttonAbout"
+                    android:id="@+id/buttonShowProgress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/green"
-                    android:text="@string/string_on_about_button"
+                    android:text="@string/string_on_show_progress_button"
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
 
                 <!-- Delete Profile Button -->
                 <Button
@@ -125,14 +128,38 @@
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
-                <!-- Show Progress Button -->
+
+
+                <!-- FeedBack Button -->
                 <Button
-                    android:id="@+id/buttonShowProgress"
+                    android:id="@+id/buttonFeedback"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/green"
-                    android:text="@string/string_on_show_progress_button"
+                    android:text="@string/button_feedback"
+                    android:textColor="@color/white"
+                    tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+                <!-- About Button -->
+                <Button
+                    android:id="@+id/buttonAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/green"
+                    android:text="@string/string_on_about_button"
+                    android:textColor="@color/white"
+                    tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+                <!-- Contact Us Button -->
+                <Button
+                    android:id="@+id/contactusbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/green"
+                    android:text="@string/button_contact_us"
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
@@ -147,27 +174,6 @@
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
-                <!-- FeedBack Button -->
-                <Button
-                    android:id="@+id/buttonFeedback"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:backgroundTint="@color/green"
-                    android:text="@string/button_feedback"
-                    android:textColor="@color/white"
-                    tools:ignore="VisualLintButtonSize,TextContrastCheck" />
-
-                <!-- Contact Us Button -->
-                <Button
-                    android:id="@+id/contactusbutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:backgroundTint="@color/green"
-                    android:text="@string/button_contact_us"
-                    android:textColor="@color/white"
-                    tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
             </LinearLayout>
         </ScrollView>
