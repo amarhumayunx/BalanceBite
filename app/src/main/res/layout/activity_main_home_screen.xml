@@ -8,7 +8,7 @@
     android:background="@color/white"
     tools:context=".MainHomeScreen">
 
-    <!-- ScrollView to enable scrolling inside CardView -->
+    <!-- CardView for Dashboard -->
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_on_dashboard"
         android:layout_width="0dp"
@@ -17,7 +17,6 @@
         android:layout_margin="10dp"
         app:cardElevation="4dp"
         app:cardBackgroundColor="@color/white"
-        android:layout_weight="1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,8 +26,7 @@
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbarThumbVertical="@color/white"
-            >
+            android:scrollbarThumbVertical="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,22 +43,36 @@
                     android:src="@drawable/wave_on_home_screen"
                     tools:ignore="ImageContrastCheck" />
 
-                <!-- App Name -->
-                <TextView
-                    android:id="@+id/app_name_on_main_activity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/green"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal"
-                    tools:ignore="TextSizeCheck,TextContrastCheck" />
-
-                <!-- Spacer View -->
-                <View
+                <!-- Header Section with App Name and Profile Picture -->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="25dp" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp">
+
+                    <!-- App Name -->
+                    <TextView
+                        android:id="@+id/app_name_on_main_activity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/app_name"
+                        android:textColor="@color/green"
+                        android:textSize="38sp"
+                        android:textStyle="italic|bold"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <!-- Profile Picture -->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImageView"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/default_profile_picture"
+                        android:contentDescription="@string/profile_image_description" />
+                </LinearLayout>
 
                 <!-- Username Section -->
                 <androidx.cardview.widget.CardView
@@ -86,11 +98,6 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <!-- Spacer View -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp" />
-
                 <!-- Subtitle Text -->
                 <TextView
                     android:id="@+id/subtitleText"
@@ -111,7 +118,6 @@
                     android:layout_marginBottom="16dp">
 
                     <!-- Your Recommended Diet Plan Section -->
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -218,16 +224,13 @@
                         android:orientation="vertical"
                         android:layout_margin="10dp"
                         android:padding="10dp"
-                        android:gravity="center"
-                        tools:ignore="UseCompoundDrawables">
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:contentDescription="@string/fruit_image_desc"
-                            android:src="@drawable/fruit_salad"
-                            android:padding="0dp"
-                            tools:ignore="ImageContrastCheck" />
+                            android:src="@drawable/fruit_salad" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -245,16 +248,13 @@
                         android:orientation="vertical"
                         android:layout_margin="10dp"
                         android:padding="10dp"
-                        android:gravity="center"
-                        tools:ignore="UseCompoundDrawables">
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:contentDescription="@string/vegetable_image_desc"
-                            android:src="@drawable/vegetables"
-                            android:padding="0dp"
-                            tools:ignore="ImageContrastCheck" />
+                            android:src="@drawable/vegetables" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -289,13 +289,13 @@
                             android:padding="3dp"
                             android:textSize="12sp" />
                     </LinearLayout>
-                </GridLayout>
 
+                </GridLayout>
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>
 
-    <!-- Bottom Navigation View -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="410dp"

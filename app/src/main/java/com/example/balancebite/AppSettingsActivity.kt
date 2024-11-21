@@ -35,7 +35,7 @@ class AppSettingsActivity : AppCompatActivity() {
         val buttonDeleteProfile = findViewById<Button>(R.id.buttonDeleteProfile)
         val buttonShowProgress = findViewById<Button>(R.id.buttonShowProgress)
         val buttonLogout = findViewById<Button>(R.id.buttonLogout)
-        profileImageView = findViewById(R.id.profile_image)
+        profileImageView = findViewById(R.id.profileImageView)
         val buttonFeedback = findViewById<Button>(R.id.buttonFeedback)
         val buttonContactUs = findViewById<Button>(R.id.contactusbutton)
 

@@ -8,14 +8,17 @@ import android.os.Handler
 import android.os.Looper
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import de.hdodenhof.circleimageview.CircleImageView
 
 @Suppress("DEPRECATION")
 class MainHomeScreen : AppCompatActivity() {
@@ -23,6 +26,7 @@ class MainHomeScreen : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var usernameTextView: TextView
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var profileImageView: ImageView
     private var backPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +39,11 @@ class MainHomeScreen : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference.child("Users")
         usernameTextView = findViewById(R.id.usernameTextView)
 
-        // Fetch and display the username
+        profileImageView = findViewById(R.id.profileImageView)
+
+        // Fetch and display the username & profile picture
         fetchAndDisplayUsername()
+        fetchAndDisplayProfilePicture()
 
         // Set up section listeners
         setUpSectionListeners()
@@ -112,6 +119,43 @@ class MainHomeScreen : AppCompatActivity() {
             }
         }
     }
+
+    private fun fetchAndDisplayProfilePicture() {
+        val userId = auth.currentUser?.uid
+
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            navigateToLogin()
+            return
+        }
+
+        // Change the path to point to profile/profilePictureUrl
+        database.child(userId).child("profile").child("profilePictureUrl")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        val profileUrl = dataSnapshot.getValue(String::class.java)
+                        profileUrl?.let {
+                            // Use Glide to load the image into the ImageView
+                            Glide.with(this@MainHomeScreen)
+                                .load(profileUrl)
+                                .placeholder(R.drawable.default_profile_picture) // Placeholder for loading
+                                .error(R.drawable.default_profile_picture) // Fallback if loading fails
+                                .into(profileImageView)
+                        } ?: run {
+                            Toast.makeText(this@MainHomeScreen, "Profile picture URL not found", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this@MainHomeScreen, "Profile picture data does not exist", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Toast.makeText(this@MainHomeScreen, "Error fetching profile picture: ${databaseError.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
 
     private fun fetchAndDisplayUsername() {
         val userId = auth.currentUser?.uid
