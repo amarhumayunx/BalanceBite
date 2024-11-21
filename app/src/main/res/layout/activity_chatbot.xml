@@ -8,72 +8,84 @@
     android:background="@color/white"
     tools:context=".ChatbotActivity">
 
-    <!-- Greeting TextView -->
+    <!-- Greeting TextView with a modern style -->
     <TextView
         android:id="@+id/greetingTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="24dp"
         android:padding="10dp"
         android:text="@string/greeting_line_on_chatbot_activity"
         android:textAlignment="center"
         android:textColor="@color/green"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
-    <!-- ScrollView to hold the messages -->
+    <!-- ScrollView to display chat messages -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:scrollbarThumbVertical="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/greetingTextView"
-        app:layout_constraintBottom_toTopOf="@id/chatbotInput"
+        android:scrollbarThumbVertical="@color/green"
+        app:layout_constraintBottom_toTopOf="@id/inputContainer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/greetingTextView"
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <LinearLayout
-        android:id="@+id/messageContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp" />
+        <LinearLayout
+            android:id="@+id/messageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp" />
     </ScrollView>
 
-        <!-- Chatbot input field -->
-    <EditText
-        android:id="@+id/chatbotInput"
+    <!-- Chat input container with rounded edges -->
+    <LinearLayout
+        android:id="@+id/inputContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/custom_edittext_background"
-        android:hint="@string/query_line_on_chatbot_activity"
-        android:inputType="text"
-        android:padding="12dp"
-        android:textColor="#333333"
-        android:textColorHint="@color/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/chatbotSendButton"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="Autofill,VisualLintTextFieldSize,TextContrastCheck" />
-
-        <!-- Send button for chatbot -->
-    <Button
-        android:id="@+id/chatbotSendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/green"
-        android:text="@string/send_button_on_chatbot_activity"
-        android:padding="10dp"
-        android:textColor="@color/white"
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Chatbot input field -->
+        <EditText
+            android:id="@+id/chatbotInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext_background"
+            android:hint="@string/query_line_on_chatbot_activity"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#333333"
+            android:textColorHint="@color/green"
+            tools:ignore="Autofill,VisualLintTextFieldSize,TextContrastCheck" />
+
+        <!-- Send button with an icon -->
+        <ImageButton
+            android:id="@+id/chatbotSendButton"
+            android:layout_width="72dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/oval_button_background"
+            android:contentDescription="@string/send_button_on_chatbot_activity"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_send"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
