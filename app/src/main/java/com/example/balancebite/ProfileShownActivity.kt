@@ -18,7 +18,7 @@ class ProfileShownActivity : AppCompatActivity() {
     private lateinit var healthInfoTextView: TextView
     private lateinit var genderTextView: TextView
     private lateinit var ageTextView: TextView
-    private lateinit var bmiTextView: TextView  // New TextView for BMI
+    private lateinit var bmiTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class ProfileShownActivity : AppCompatActivity() {
         nameTextView = findViewById(R.id.usernameActualTextView)
         heightTextView = findViewById(R.id.heightTextView)
         weightTextView = findViewById(R.id.weightTextView)
-        genderTextView = findViewById(R.id.genderTextView)  // Initialize gender TextView
+        genderTextView = findViewById(R.id.genderTextView)
         healthInfoTextView = findViewById(R.id.healthInfoTextView)
         ageTextView = findViewById(R.id.ageTextView)
         bmiTextView = findViewById(R.id.bodymassindexTextView)
@@ -56,7 +56,7 @@ class ProfileShownActivity : AppCompatActivity() {
                 if (dataSnapshot.exists()) {
                     val name = dataSnapshot.child("name").getValue(String::class.java) ?: "Name not available"
                     val age = dataSnapshot.child("age").getValue(Int::class.java)?.toString() ?: "Age not available"
-                    val gender = dataSnapshot.child("gender").getValue(String::class.java) ?: "Gender not available"  // Fetch gender
+                    val gender = dataSnapshot.child("gender").getValue(String::class.java) ?: "Gender not available"
                     val heightCm = dataSnapshot.child("height").getValue(Int::class.java)
                     val weightKg = dataSnapshot.child("weight").getValue(Int::class.java)
                     val healthInfo = dataSnapshot.child("healthInfo").getValue(String::class.java) ?: "Health Info not available"
@@ -64,7 +64,7 @@ class ProfileShownActivity : AppCompatActivity() {
                     // Set the data to TextViews
                     nameTextView.text = "Name: $name"
                     ageTextView.text = "Age: $age"
-                    genderTextView.text = "Gender: $gender"  // Display gender
+                    genderTextView.text = "Gender: $gender"
                     heightTextView.text = "Height: ${heightCm ?: "N/A"} cm"
                     weightTextView.text = "Weight: ${weightKg ?: "N/A"} kg"
                     healthInfoTextView.text = "Health Info: $healthInfo"
