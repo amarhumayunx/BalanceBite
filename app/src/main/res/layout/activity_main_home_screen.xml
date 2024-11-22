@@ -52,6 +52,15 @@
                     android:gravity="center_vertical"
                     android:layout_marginTop="0dp">
 
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/appimage"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/app_logo_description"
+                        android:layout_marginEnd="16dp"
+                        />
+
                     <!-- App Name -->
                     <TextView
                         android:id="@+id/app_name_on_main_activity"

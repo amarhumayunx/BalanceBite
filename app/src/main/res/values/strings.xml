@@ -139,6 +139,7 @@
     <string name="your_recommended_diet_plan_according_to_your_information">Your Recommended Diet Plans</string>
     <string name="home">Home</string>
     <string name="profile_image_description">profile pic\n</string>
+    <string name="app_logo_description">applogo</string>
 
 
 </resources>
