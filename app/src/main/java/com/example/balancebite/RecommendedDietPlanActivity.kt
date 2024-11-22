@@ -1,6 +1,6 @@
 package com.example.balancebite
 
-import android.annotation.SuppressLint
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
@@ -51,6 +51,24 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
 
         // Fetch user profile data from Firebase
         fetchUserData()
+
+        // Add animations
+        addAnimationsToViews()
+    }
+
+    private fun addAnimationsToViews() {
+        // Fade-in animation for the BMI and Diet Plan TextViews
+        val fadeInAnimatorBmi = ObjectAnimator.ofFloat(bmiTextView, "alpha", 0f, 1f)
+        fadeInAnimatorBmi.duration = 800
+        fadeInAnimatorBmi.start()
+
+        val fadeInAnimatorCategory = ObjectAnimator.ofFloat(bmiCategoryTextView, "alpha", 0f, 1f)
+        fadeInAnimatorCategory.duration = 800
+        fadeInAnimatorCategory.start()
+
+        val fadeInAnimatorDietPlan = ObjectAnimator.ofFloat(dietPlanTextView, "alpha", 0f, 1f)
+        fadeInAnimatorDietPlan.duration = 800
+        fadeInAnimatorDietPlan.start()
     }
 
     private fun fetchUserData() {
@@ -85,7 +103,6 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun calculateBMI() {
         val heightInMeters = userHeight?.let { it.toDouble() / 100 } ?: return
         val weight = userWeight ?: return
@@ -104,7 +121,6 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun displayBMICategory(bmi: Double) {
         val bmiCategoryDisplay = getBMICategoryForDisplay(bmi).lowercase()
 
@@ -132,7 +148,6 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         bmiCategoryTextView.text = spannableString
     }
 
-    @SuppressLint("SetTextI18n")
     private fun displayBMI(bmi: Double) {
         // Create the BMI text
         val bmiText = "Your BMI: %.1f".format(bmi)
@@ -166,7 +181,6 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         bmiTextView.text = spannableString
     }
 
-
     private fun getBMICategory(bmi: Double): String {
         return when {
             bmi < 18.5 -> "underweight"
@@ -185,7 +199,6 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun fetchDietPlan(disease: String) {
         val dietPlanRef = database.child("disease_diet_plans").child(disease).child("plan")
 
@@ -219,8 +232,11 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
                         }
                     }
 
-                    // Display the diet plans in the TextView
+                    // Apply a fade-in animation when the diet plan text is displayed
                     dietPlanTextView.text = dietPlans
+                    val fadeInAnimator = ObjectAnimator.ofFloat(dietPlanTextView, "alpha", 0f, 1f)
+                    fadeInAnimator.duration = 800
+                    fadeInAnimator.start()
                 } else {
                     showToast("No diet plans found for $disease.")
                     dietPlanTextView.text = "No diet plan available."
@@ -231,8 +247,6 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
             }
     }
 
-
-    // Helper function to display toast messages
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

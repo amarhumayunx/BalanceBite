@@ -1,11 +1,11 @@
 package com.example.balancebite
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +23,9 @@ class ProfileShownActivity : AppCompatActivity() {
     private lateinit var ageTextView: TextView
     private lateinit var bmiTextView: TextView
     private lateinit var profileImageView: ImageView
+    private lateinit var cardView: CardView
+    private lateinit var waveOne: ImageView
+    private lateinit var waveTwo: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +44,17 @@ class ProfileShownActivity : AppCompatActivity() {
         healthInfoTextView = findViewById(R.id.healthInfoTextView)
         ageTextView = findViewById(R.id.ageTextView)
         bmiTextView = findViewById(R.id.bodymassindexTextView)
-
-        profileImageView = findViewById<CircleImageView>(R.id.profileImageView)
+        profileImageView = findViewById(R.id.profileImageView)
+        cardView = findViewById(R.id.cardview_profile_info)
+        waveOne = findViewById(R.id.wave_one)
+        waveTwo = findViewById(R.id.wave_two)
 
         // Fetch and display user information
         fetchUserInfo()
         fetchAndDisplayProfilePicture()
+
+        // Apply Animations
+        applyAnimations()
     }
 
     private fun fetchAndDisplayProfilePicture() {
@@ -93,7 +101,6 @@ class ProfileShownActivity : AppCompatActivity() {
 
         // Access the nested 'profile' node for the user
         database.child(userId).child("profile").addListenerForSingleValueEvent(object : ValueEventListener {
-            @SuppressLint("SetTextI18n")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val name = dataSnapshot.child("name").getValue(String::class.java) ?: "Name not available"
@@ -147,5 +154,32 @@ class ProfileShownActivity : AppCompatActivity() {
     // BMI Calculation Function
     private fun calculateBMI(weight: Int, height: Double): Double {
         return weight / (height * height)
+    }
+
+    // Function to apply animations
+    private fun applyAnimations() {
+        // Apply Slide-In Animation to CardView
+        cardView.translationY = 500f // Start from off-screen (bottom)
+        cardView.animate()
+            .translationY(0f) // Move to original position
+            .setDuration(1000)
+            .setStartDelay(200)
+            .start()
+
+        // Apply Fade-In Animation to Wave One
+        waveOne.alpha = 0f
+        waveOne.animate()
+            .alpha(1f)
+            .setDuration(1000)
+            .setStartDelay(500)
+            .start()
+
+        // Apply Fade-In Animation to Wave Two
+        waveTwo.alpha = 0f
+        waveTwo.animate()
+            .alpha(1f)
+            .setDuration(1000)
+            .setStartDelay(700)
+            .start()
     }
 }

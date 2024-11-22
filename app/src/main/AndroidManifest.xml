@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
+
         <activity
             android:name=".RecommendedDietPlanActivity"
             android:exported="false"
@@ -146,13 +147,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             tools:ignore="DiscouragedApi,LockedOrientationActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

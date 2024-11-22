@@ -1,5 +1,7 @@
 package com.example.balancebite
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
@@ -8,6 +10,7 @@ import android.graphics.Paint
 import android.graphics.Shader
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -41,6 +44,18 @@ class AppSettingsActivity : AppCompatActivity() {
 
         // Load profile picture
         loadProfilePicture()
+
+        // Apply entry animations
+        animateProfilePicture()
+        animateButtons(
+            buttonChangePassword,
+            buttonAbout,
+            buttonDeleteProfile,
+            buttonShowProgress,
+            buttonLogout,
+            buttonFeedback,
+            buttonContactUs
+        )
 
         // Handle "Change Password" button click
         buttonChangePassword.setOnClickListener {
@@ -87,19 +102,20 @@ class AppSettingsActivity : AppCompatActivity() {
         }
 
         // Handle "Contact Us" button click
-        buttonContactUs.setOnClickListener{
-            val intent = Intent(this,ContactUsActivity::class.java)
+        buttonContactUs.setOnClickListener {
+            val intent = Intent(this, ContactUsActivity::class.java)
             startActivity(intent)
         }
-
     }
-
 
     // Load profile picture from Firebase Realtime Database
     private fun loadProfilePicture() {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
-            val databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(it.uid).child("profile").child("profilePictureUrl")
+            val databaseRef = FirebaseDatabase.getInstance().getReference("Users")
+                .child(it.uid)
+                .child("profile")
+                .child("profilePictureUrl")
             databaseRef.get().addOnSuccessListener { snapshot ->
                 val profilePictureUrl = snapshot.getValue(String::class.java)
                 Log.d("ProfilePicture", "Retrieved URL: $profilePictureUrl") // Log the URL
@@ -130,7 +146,6 @@ class AppSettingsActivity : AppCompatActivity() {
         }
     }
 
-
     private fun deleteProfile() {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
@@ -147,7 +162,8 @@ class AppSettingsActivity : AppCompatActivity() {
 
                             // Redirect to sign-up activity after account deletion
                             val intent = Intent(this, ActivitySignUP::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear activity stack
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear activity stack
                             startActivity(intent)
                             finish()
                         } else {
@@ -168,6 +184,41 @@ class AppSettingsActivity : AppCompatActivity() {
         }
     }
 
+    private fun animateProfilePicture() {
+        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 0.5f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 0.5f, 1f)
+        ObjectAnimator.ofPropertyValuesHolder(profileImageView, scaleX, scaleY).apply {
+            duration = 800
+            start()
+        }
+    }
+
+    private fun animateButtons(vararg buttons: Button) {
+        var delay = 0L
+        for (button in buttons) {
+            button.scaleX = 0.8f
+            button.scaleY = 0.8f
+            button.alpha = 0f
+
+            button.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .alpha(1f)
+                .setStartDelay(delay)
+                .setDuration(500)
+                .start()
+
+            button.setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> button.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100).start()
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> button.animate().scaleX(1f).scaleY(1f).setDuration(100).start()
+                }
+                false
+            }
+
+            delay += 100
+        }
+    }
 }
 
 // CircularImageTransformation.kt

@@ -8,10 +8,15 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -36,6 +41,21 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
+        // Load the fade-in animation for the layout and logo
+        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        val fadeInLogoAnim = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+
+        // Find the ImageView for the logo and ConstraintLayout for the main layout
+        val logoImageView = findViewById<ImageView>(R.id.image_one)
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // Start the fade-in animation on the logo
+        logoImageView.startAnimation(fadeInLogoAnim)
+
+        // Optionally animate the whole layout (main layout)
+        mainLayout.startAnimation(fadeInAnim)
+
+        // If necessary, request permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
         }
@@ -85,42 +105,48 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         if (hasAllRequiredData) {
-                            // User data exists and is complete, navigate to the dashboard
-                            navigateToActivity(MainHomeScreen::class.java, "Moving to Dashboard")
+                            // User data exists and is complete, navigate to the dashboard with a slide-in effect
+                            navigateToActivityWithSlide(MainHomeScreen::class.java, "Moving to Dashboard")
                         } else {
-                            // User data is incomplete, navigate to the login activity
-                            navigateToActivity(MainActivityAfterSplashScreen::class.java, "Incomplete user data. Please log in again.")
+                            // User data is incomplete, navigate to the login activity with a slide-in effect
+                            navigateToActivityWithSlide(MainActivityAfterSplashScreen::class.java, "Incomplete user data. Please log in again.")
                         }
                     } else {
-                        // No user data exists, navigate to the login activity
-                        navigateToActivity(MainActivityAfterSplashScreen::class.java, "No user data found. Please log in.")
+                        // No user data exists, navigate to the login activity with a slide-in effect
+                        navigateToActivityWithSlide(MainActivityAfterSplashScreen::class.java, "No user data found. Please log in.")
                     }
                 } else {
                     // Error occurred while fetching user data
                     showToast("Error checking user data: ${task.exception?.message}")
-                    navigateToActivity(MainActivityAfterSplashScreen::class.java)
+                    navigateToActivityWithSlide(MainActivityAfterSplashScreen::class.java)
                 }
             }
         } else {
-            // User is not logged in, navigate to the login activity
-            navigateToActivity(MainActivityAfterSplashScreen::class.java, "Please log in to your account")
+            // User is not logged in, navigate to the login activity with a slide-in effect
+            navigateToActivityWithSlide(MainActivityAfterSplashScreen::class.java, "Please log in to your account")
         }
     }
 
-    // Helper method to navigate to an activity with a toast message
-    private fun navigateToActivity(activityClass: Class<*>, message: String? = null) {
+    // Helper method to navigate to an activity with a slide-in animation
+    private fun navigateToActivityWithSlide(activityClass: Class<*>, message: String? = null) {
         message?.let { showToast(it) }
         val intent = Intent(this, activityClass)
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left) // Slide animation
         finish() // Close the current activity
     }
 
-    // Helper method to show a toast message
+    // Helper method to show a toast message with a fade-in animation
     private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        toast.view?.let {
+            // Apply a fade-in animation to the toast
+            ViewCompat.animate(it).alpha(0f).alpha(1f).setDuration(500).start()
+        }
+        toast.show()
     }
 
-    // Override onBackPressed method to handle double press to exit
+    // Override onBackPressed method to handle double press to exit with an animation
     override fun onBackPressed() {
         if (backPressedOnce) {
             super.onBackPressed() // If back was pressed once, exit the app
@@ -128,7 +154,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.backPressedOnce = true
-        Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+        showToast("Press back again to exit")
 
         // Reset the backPressedOnce flag after 2 seconds
         Handler(Looper.getMainLooper()).postDelayed({

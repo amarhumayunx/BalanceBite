@@ -80,6 +80,7 @@
                     android:layout_height="match_parent"
                     app:cardCornerRadius="60dp"
                     android:layout_margin="16dp"
+                    android:id="@+id/usernameCardView"
                     app:cardElevation="8dp"
                     app:cardBackgroundColor="@color/green">
 
@@ -301,7 +302,7 @@
         android:layout_width="410dp"
         android:layout_height="wrap_content"
         android:background="@drawable/nav_round_corner"
-        app:backgroundTint="@color/light_green_three"
+        app:backgroundTint="@color/green"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:itemRippleColor="@color/white"
@@ -310,7 +311,7 @@
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         android:textAlignment="center"
         android:elevation="10dp"
-        android:padding="5dp"
+        android:padding="10dp"
         app:menu="@menu/nav_menu"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

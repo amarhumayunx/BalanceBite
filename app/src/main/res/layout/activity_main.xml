@@ -7,9 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/white"
-
-    >
+    android:background="@color/white">
 
     <!-- Wave One Image -->
     <ImageView
@@ -56,5 +54,4 @@
         android:background="@android:color/transparent"
         app:layout_constraintWidth_percent="1"
         tools:ignore="ImageContrastCheck" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

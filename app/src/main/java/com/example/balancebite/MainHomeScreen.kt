@@ -1,32 +1,31 @@
 package com.example.balancebite
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.view.MotionEvent
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import de.hdodenhof.circleimageview.CircleImageView
 
-@Suppress("DEPRECATION")
+@Suppress("DEPRECATION", "PrivatePropertyName")
 class MainHomeScreen : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var usernameTextView: TextView
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var profileImageView: ImageView
+    private lateinit var app_name_on_cardview: TextView
     private var backPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +37,8 @@ class MainHomeScreen : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference.child("Users")
         usernameTextView = findViewById(R.id.usernameTextView)
-
         profileImageView = findViewById(R.id.profileImageView)
+        app_name_on_cardview = findViewById(R.id.app_name_on_main_activity)
 
         // Fetch and display the username & profile picture
         fetchAndDisplayUsername()
@@ -50,14 +49,11 @@ class MainHomeScreen : AppCompatActivity() {
 
         // Initialize BottomNavigationView and set up item selection
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-
         bottomNavigationView.selectedItemId = R.id.no_selection
-
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             handleBottomNavigation(item)
             true
         }
-
 
         val recommendeddietplanText = findViewById<TextView>(R.id.recommendedDietPlanText)
         recommendeddietplanText.setOnClickListener {
@@ -65,6 +61,12 @@ class MainHomeScreen : AppCompatActivity() {
             val intent = Intent(this, RecommendedDietPlanActivity::class.java)
             startActivity(intent)
         }
+
+        // Add animations
+        applyEntryAnimations()
+        animateSectionCards()
+        addPulsingEffectToRecommendedDietPlan()
+        addTouchAnimationToSections()
     }
 
     private fun setUpSectionListeners() {
@@ -129,24 +131,18 @@ class MainHomeScreen : AppCompatActivity() {
             return
         }
 
-        // Change the path to point to profile/profilePictureUrl
         database.child(userId).child("profile").child("profilePictureUrl")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()) {
                         val profileUrl = dataSnapshot.getValue(String::class.java)
                         profileUrl?.let {
-                            // Use Glide to load the image into the ImageView
                             Glide.with(this@MainHomeScreen)
                                 .load(profileUrl)
-                                .placeholder(R.drawable.default_profile_picture) // Placeholder for loading
-                                .error(R.drawable.default_profile_picture) // Fallback if loading fails
+                                .placeholder(R.drawable.default_profile_picture)
+                                .error(R.drawable.default_profile_picture)
                                 .into(profileImageView)
-                        } ?: run {
-                            Toast.makeText(this@MainHomeScreen, "Profile picture URL not found", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        Toast.makeText(this@MainHomeScreen, "Profile picture data does not exist", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -155,7 +151,6 @@ class MainHomeScreen : AppCompatActivity() {
                 }
             })
     }
-
 
     private fun fetchAndDisplayUsername() {
         val userId = auth.currentUser?.uid
@@ -166,7 +161,6 @@ class MainHomeScreen : AppCompatActivity() {
             return
         }
 
-        // Change the path to point to profile/name
         database.child(userId).child("profile").child("name").addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -174,11 +168,7 @@ class MainHomeScreen : AppCompatActivity() {
                     val name = dataSnapshot.getValue(String::class.java)
                     name?.let {
                         usernameTextView.text = "Welcome, $name"
-                    } ?: run {
-                        Toast.makeText(this@MainHomeScreen, "Name not found", Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    Toast.makeText(this@MainHomeScreen, "Data does not exist", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -188,7 +178,6 @@ class MainHomeScreen : AppCompatActivity() {
         })
     }
 
-
     private fun navigateToLogin() {
         val intent = Intent(this, LoginPageActivity::class.java)
         startActivity(intent)
@@ -197,16 +186,14 @@ class MainHomeScreen : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-
         if (backPressedOnce) {
-            super.onBackPressed() // If back was pressed once, exit the app
+            super.onBackPressed()
             return
         }
 
         this.backPressedOnce = true
         Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
 
-        // Reset the backPressedOnce flag after 2 seconds
         Handler(Looper.getMainLooper()).postDelayed({
             backPressedOnce = false
         }, 2000)
@@ -214,8 +201,91 @@ class MainHomeScreen : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.no_selection // Reset selection
+        bottomNavigationView.selectedItemId = R.id.no_selection
     }
 
+    // Entry animations for components
+    private fun applyEntryAnimations() {
+        ObjectAnimator.ofFloat(usernameTextView, "translationY", -200f, 0f).apply {
+            duration = 800
+            start()
+        }
+
+        ObjectAnimator.ofFloat(app_name_on_cardview, "translationY", -200f, 0f).apply {
+            duration = 800
+            start()
+        }
+
+        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 0.5f, 1f, 0.95f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 0.5f, 1f, 0.95f, 1f)
+        ObjectAnimator.ofPropertyValuesHolder(profileImageView, scaleX, scaleY).apply {
+            duration = 1000
+            start()
+        }
+    }
+
+    private fun animateSectionCards() {
+        val sections = listOf(
+            findViewById<LinearLayout>(R.id.tap_on_fruits),
+            findViewById<LinearLayout>(R.id.tap_on_vegetables),
+            findViewById<LinearLayout>(R.id.tap_on_supplements)
+        )
+        var delay = 0L
+
+        for (section in sections) {
+            section.scaleX = 0.8f
+            section.scaleY = 0.8f
+            ViewCompat.animate(section)
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .translationY(0f)
+                .setStartDelay(delay)
+                .setDuration(700)
+                .start()
+            delay += 200
+        }
+    }
+
+    private fun addPulsingEffectToRecommendedDietPlan() {
+        val recommendedDietPlanText = findViewById<TextView>(R.id.recommendedDietPlanText)
+        val pulseX = PropertyValuesHolder.ofFloat("scaleX", 1f, 1.1f, 1f)
+        val pulseY = PropertyValuesHolder.ofFloat("scaleY", 1f, 1.1f, 1f)
+        ObjectAnimator.ofPropertyValuesHolder(recommendedDietPlanText, pulseX, pulseY).apply {
+            duration = 1000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+            start()
+        }
+    }
+
+    private fun addTouchAnimationToSections() {
+        val sections = listOf(
+            findViewById<LinearLayout>(R.id.tap_on_fruits),
+            findViewById<LinearLayout>(R.id.tap_on_vegetables),
+            findViewById<LinearLayout>(R.id.tap_on_supplements)
+        )
+
+        for (section in sections) {
+            section.setOnTouchListener { view, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // Scale down the section
+                        section.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100).start()
+                        true // Indicate the event is handled
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        // Scale back to normal size
+                        section.animate().scaleX(1f).scaleY(1f).setDuration(100).start()
+
+                        // Call performClick to handle accessibility actions
+                        view.performClick()
+
+                        true // Indicate the event is handled
+                    }
+                    else -> false
+                }
+            }
+        }
+    }
 }
