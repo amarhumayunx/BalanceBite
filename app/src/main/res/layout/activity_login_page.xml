@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="0dp">
+            android:padding="10dp">
 
             <!-- First image (child image) -->
             <LinearLayout
@@ -67,17 +67,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="38dp"
-                app:cardElevation="18dp"
+                app:cardElevation="4dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
-                android:padding="10dp">
+                android:padding="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:background="@color/white"
-                    android:padding="25dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:id="@+id/app_name_card_view"
@@ -156,18 +156,19 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp">
 
-                        <ProgressBar
-                            android:id="@+id/progressBar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:visibility="gone"
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/progressIndicator"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:indeterminate="true"
-                            android:indeterminateTint="@color/green"
-                            android:background="@color/white"
+                            app:indicatorSize="48dp"
+                            app:indicatorColor="@color/green"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
-
-                            />
 
                     </RelativeLayout>
 

@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.MenuItem
 import android.view.MotionEvent
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -204,22 +205,26 @@ class MainHomeScreen : AppCompatActivity() {
         bottomNavigationView.selectedItemId = R.id.no_selection
     }
 
-    // Entry animations for components
     private fun applyEntryAnimations() {
-        ObjectAnimator.ofFloat(usernameTextView, "translationY", -200f, 0f).apply {
-            duration = 800
-            start()
+        // Username and app name slide in with a fade
+        val fadeSlideIn = listOf(usernameTextView, app_name_on_cardview)
+        fadeSlideIn.forEach { view ->
+            ObjectAnimator.ofFloat(view, "translationY", -200f, 0f).apply {
+                duration = 1000
+                start()
+            }
+            ObjectAnimator.ofFloat(view, "alpha", 0f, 1f).apply {
+                duration = 1000
+                start()
+            }
         }
 
-        ObjectAnimator.ofFloat(app_name_on_cardview, "translationY", -200f, 0f).apply {
-            duration = 800
-            start()
-        }
-
-        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 0.5f, 1f, 0.95f, 1f)
-        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 0.5f, 1f, 0.95f, 1f)
-        ObjectAnimator.ofPropertyValuesHolder(profileImageView, scaleX, scaleY).apply {
-            duration = 1000
+        // Profile picture with bounce and rotation
+        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 0.5f, 1.2f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 0.5f, 1.2f, 1f)
+        val rotation = PropertyValuesHolder.ofFloat("rotation", 0f, 360f)
+        ObjectAnimator.ofPropertyValuesHolder(profileImageView, scaleX, scaleY, rotation).apply {
+            duration = 1200
             start()
         }
     }
@@ -235,28 +240,41 @@ class MainHomeScreen : AppCompatActivity() {
         for (section in sections) {
             section.scaleX = 0.8f
             section.scaleY = 0.8f
+            section.alpha = 0f
+
             ViewCompat.animate(section)
                 .alpha(1f)
                 .scaleX(1f)
                 .scaleY(1f)
                 .translationY(0f)
                 .setStartDelay(delay)
-                .setDuration(700)
+                .setDuration(800)
                 .start()
-            delay += 200
+            delay += 300
         }
     }
 
     private fun addPulsingEffectToRecommendedDietPlan() {
         val recommendedDietPlanText = findViewById<TextView>(R.id.recommendedDietPlanText)
-        val pulseX = PropertyValuesHolder.ofFloat("scaleX", 1f, 1.1f, 1f)
-        val pulseY = PropertyValuesHolder.ofFloat("scaleY", 1f, 1.1f, 1f)
+        val pulseX = PropertyValuesHolder.ofFloat("scaleX", 1f, 1.15f, 1f)
+        val pulseY = PropertyValuesHolder.ofFloat("scaleY", 1f, 1.15f, 1f)
+        val colorChange = ObjectAnimator.ofArgb(
+            recommendedDietPlanText,
+            "textColor",
+            ContextCompat.getColor(this, R.color.white),
+            ContextCompat.getColor(this, R.color.light_white)
+        )
+        colorChange.duration = 1000
+        colorChange.repeatCount = ObjectAnimator.INFINITE
+        colorChange.repeatMode = ObjectAnimator.REVERSE
+
         ObjectAnimator.ofPropertyValuesHolder(recommendedDietPlanText, pulseX, pulseY).apply {
             duration = 1000
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
             start()
         }
+        colorChange.start()
     }
 
     private fun addTouchAnimationToSections() {
@@ -270,18 +288,15 @@ class MainHomeScreen : AppCompatActivity() {
             section.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        // Scale down the section
-                        section.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100).start()
-                        true // Indicate the event is handled
+                        // Elevate and darken the background
+                        view.animate().scaleX(0.95f).scaleY(0.95f).translationZ(10f).setDuration(100).start()
+                        true
                     }
                     MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                        // Scale back to normal size
-                        section.animate().scaleX(1f).scaleY(1f).setDuration(100).start()
-
-                        // Call performClick to handle accessibility actions
+                        // Reset scale and elevation
+                        view.animate().scaleX(1f).scaleY(1f).translationZ(0f).setDuration(100).start()
                         view.performClick()
-
-                        true // Indicate the event is handled
+                        true
                     }
                     else -> false
                 }

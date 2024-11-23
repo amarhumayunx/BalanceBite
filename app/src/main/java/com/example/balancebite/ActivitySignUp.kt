@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -11,7 +12,6 @@ import com.example.balancebite.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-@Suppress("DEPRECATION")
 class ActivitySignUP : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var auth: FirebaseAuth
@@ -20,20 +20,19 @@ class ActivitySignUP : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.green)
-
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize FirebaseAuth
         auth = FirebaseAuth.getInstance()
 
-        // Set up the Sign-Up button click listener
+        applyEntryAnimations()
+
         binding.buttonOnCardView.setOnClickListener {
+            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_bounce))
             signUpNewUser()
         }
     }
 
-    // Function to sign up a new user
     private fun signUpNewUser() {
         val email = binding.emailAddressIdOnCardViewForEnterEmail.text.toString().trim()
         val password = binding.passwordIdOnCardViewForEnterPassword.text.toString().trim()
@@ -45,79 +44,61 @@ class ActivitySignUP : AppCompatActivity() {
             return
         }
 
-        // Check if the email format is valid
         if (!isValidEmail(email)) {
             Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Show the ProgressBar and toast message
         binding.progressBar.visibility = View.VISIBLE
-        Toast.makeText(this, "Signing up...", Toast.LENGTH_SHORT).show()
 
-        // Create a new user with Firebase Authentication
+        // Create user with email and password
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
-                binding.progressBar.visibility = View.GONE // Hide ProgressBar when done
+                binding.progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
-                    val userId = auth.currentUser?.uid
-                    if (userId != null) {
-                        // Save the user information in Firebase Realtime Database
-                        saveBasicUserInfo(userId, username, email)
-                    } else {
-                        Toast.makeText(this, "Failed to get user ID", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    handleSignUpFailure(task.exception)
-                }
-            }
-    }
+                    // Send verification email
+                    sendVerificationEmail()
 
-    // Function to save basic user information to Firebase Realtime Database
-    private fun saveBasicUserInfo(userId: String, username: String, email: String) {
-        val database = FirebaseDatabase.getInstance().getReference("Users")
+                    Toast.makeText(
+                        this,
+                        "Account created. Verification email sent to $email",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-        // Create a map with username and email to store in the database
-        val userProfile = mapOf(
-            "username" to username,
-            "email" to email
-        )
-
-        // Save the user profile under the current user's ID
-        database.child(userId).child("profile").setValue(userProfile)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "Sign-Up successful! Please enter your personal information.", Toast.LENGTH_SHORT).show()
-                    // Move to UserInfoActivity to enter additional details
-                    val intent = Intent(this, UserInfoActivity::class.java)
+                    // Optionally redirect user to login page
+                    val intent = Intent(this, LoginPageActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Failed to save user profile: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Sign-Up failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    // Function to handle sign-up failure
-    private fun handleSignUpFailure(exception: Exception?) {
-        if (exception != null) {
-            if (exception.message?.contains("Email address is already in use") == true) {
-                Toast.makeText(this, "Email already in use. Redirecting to sign-in page...", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, LoginPageActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Sign-Up failed: ${exception.message}", Toast.LENGTH_SHORT).show()
+    private fun sendVerificationEmail() {
+        val user = auth.currentUser
+        user?.sendEmailVerification()
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(
+                        this,
+                        "Verification email sent successfully. Please check your inbox.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Failed to send verification email: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 
-    // Function to validate the email format
     private fun isValidEmail(email: String): Boolean {
         return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    // Handle the back button press to navigate back to the activity after splash screen
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
@@ -125,10 +106,14 @@ class ActivitySignUP : AppCompatActivity() {
         navigateBackToActivityAfterSplashScreen()
     }
 
-    // Function to navigate back to the activity after splash screen
     private fun navigateBackToActivityAfterSplashScreen() {
         val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private fun applyEntryAnimations() {
+        binding.root.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
+        binding.cardView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_up))
     }
 }

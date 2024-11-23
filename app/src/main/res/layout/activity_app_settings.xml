@@ -57,11 +57,21 @@
                 <!-- Header Section with App Name and Profile Picture -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:padding="16dp"
                     android:gravity="center_vertical"
                     android:layout_marginTop="5dp">
+
+                    <!-- App Logo -->
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/appimage"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/app_logo_description"
+                        android:layout_marginEnd="16dp"
+                        />
 
                     <!-- App Name -->
                     <TextView
@@ -71,7 +81,7 @@
                         android:layout_weight="1"
                         android:text="@string/app_name"
                         android:textColor="@color/green"
-                        android:textSize="38sp"
+                        android:textSize="26sp"
                         android:textStyle="bold|italic"
                         tools:ignore="TextSizeCheck,TextContrastCheck" />
 

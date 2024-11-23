@@ -17,6 +17,10 @@
     <color name="light_green_three">#81C784</color>
     <color name="neutral_gray">#E0E0E0</color>
     <color name="purple">#CE93D8</color>
+    <color name="progress_start">#76C7C0</color>
+    <color name="progress_center">#3BAEA0</color>
+    <color name="progress_end">#005B4F</color>
+
 
 
 

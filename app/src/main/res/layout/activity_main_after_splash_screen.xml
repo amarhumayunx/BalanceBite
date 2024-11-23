@@ -15,103 +15,106 @@
         android:layout_height="180dp"
         android:contentDescription="@string/wave_one"
         android:src="@drawable/wave_for_layout"
-        android:padding="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@android:color/transparent"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- CardView for App Name and User Name -->
     <androidx.cardview.widget.CardView
         android:id="@+id/splash_screen_card_view"
         android:layout_width="0dp"
-        android:layout_height="660dp"
+        android:layout_height="500dp"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintTop_toBottomOf="@id/wave_one"
         app:layout_constraintBottom_toTopOf="@id/wave_two"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/white"
-        android:layout_margin="16dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="30dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Content Inside CardView -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:background="@color/white"
             android:layout_margin="10dp"
-            android:padding="20dp"
-            >
+            android:padding="20dp">
 
-            <TextView
-                android:id="@+id/app_name_on_activity_after_splash_screen"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:text="@string/app_name"
-                android:textColor="@color/green"
-                android:textSize="36sp"
+                android:orientation="horizontal"
                 android:padding="10dp"
-                android:textStyle="bold"
-                tools:ignore="TextSizeCheck,TextContrastCheck" />
+                android:gravity="center_vertical"
+                android:layout_marginTop="0dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/appimage"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/app_logo_description"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <!-- App Name -->
+                <TextView
+                    android:id="@+id/app_name_on_main_activity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/app_name"
+                    android:textColor="@color/green"
+                    android:textSize="30sp"
+                    android:textStyle="italic|bold"
+                    tools:ignore="TextSizeCheck,TextContrastCheck" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/image_on_activity_after_splash_screen"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/image_for_screen"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:padding="10dp"
-                android:contentDescription="@string/image_content_on_splash_screen"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:contentDescription="@string/image_content_on_splash_screen" />
 
             <TextView
                 android:id="@+id/text_view_activity_after_splash_screen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:padding="10dp"
                 android:text="@string/label_on_screen_after_splash_screen"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/line_on_activity_after_splash_screen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/line_on_splash_screen"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textColor="@color/black" />
 
-            <!-- Button to move to LoginPageActivity -->
             <Button
                 android:id="@+id/buttonGetStarted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/green"
                 android:text="@string/get_started_button"
-                android:padding="10dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                tools:ignore="TextContrastCheck" />
+                android:textColor="@color/white" />
 
-            <!-- TextView to move to LoginPageActivity -->
             <TextView
                 android:id="@+id/textViewSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:padding="10dp"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:text="@string/sign_up_line_on_login_page"
-                android:textColor="@color/green"
-                tools:ignore="TextContrastCheck" />
-
+                android:textColor="@color/green" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -122,11 +125,8 @@
         android:layout_height="235dp"
         android:contentDescription="@string/wave_two"
         android:src="@drawable/wave"
-        android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@android:color/transparent"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,19 +32,24 @@ class LoginPageActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference.child("Users")
 
         // Initialize ProgressBar
-        progressBar = binding.progressBar
+        progressBar = binding.progressIndicator
         progressBar.visibility = View.GONE
+
+        // Apply entry animations
+        applyEntryAnimations()
 
         // Check if the user is already logged in
         checkLoginStatus()
 
-        // Set up sign-in button click listener
+        // Set up sign-in button click listener with bounce animation
         binding.buttonOnCardView.setOnClickListener {
+            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_bounce))
             signInUser()
         }
 
-        // Set up sign-up button click listener
+        // Set up sign-up button click listener with bounce animation
         binding.textViewSignUp.setOnClickListener {
+            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_bounce))
             navigateToSignUp()
         }
     }
@@ -92,7 +98,6 @@ class LoginPageActivity : AppCompatActivity() {
                     handleSignInFailure(errorMessage)
                 }
             }
-
     }
 
     // Check if the user's personal information exists in the database
@@ -135,7 +140,6 @@ class LoginPageActivity : AppCompatActivity() {
         }
     }
 
-
     // Navigate to the dashboard activity
     private fun navigateToDashboard(name: String) {
         val intent = Intent(this, MainHomeScreen::class.java)
@@ -166,6 +170,12 @@ class LoginPageActivity : AppCompatActivity() {
         val intent = Intent(this, ActivitySignUP::class.java)
         startActivity(intent)
         finish()
+    }
+
+    // Apply animations for entry and views
+    private fun applyEntryAnimations() {
+        binding.root.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
+        binding.cardView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_up))
     }
 
     // Handle back button press
