@@ -33,7 +33,6 @@ class LoginPageActivity : AppCompatActivity() {
 
         // Initialize ProgressBar
         progressBar = binding.progressIndicator
-        progressBar.visibility = View.GONE
 
         // Apply entry animations
         applyEntryAnimations()

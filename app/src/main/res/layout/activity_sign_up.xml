@@ -165,23 +165,24 @@
                         android:textColorHint="#757575"
                         tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
-                    <RelativeLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:ignore="UselessLeaf">
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp">
 
-                        <ProgressBar
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
                             android:id="@+id/progressBar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:visibility="gone"
-                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
                             android:indeterminate="true"
-                            android:indeterminateTint="@color/green"
-
-                            />
-                    </RelativeLayout>
+                            android:visibility="gone"
+                            app:indicatorColor="@color/green"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_on_card_view"
