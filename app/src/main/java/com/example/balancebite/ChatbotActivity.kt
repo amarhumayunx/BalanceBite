@@ -16,11 +16,11 @@ import com.google.firebase.database.*
 
 
 data class DietPlanDay(
-    val Breakfast: String = "",
-    val Lunch: String = "",
-    val Dinner: String = "",
-    val Snack: String = "",
-    val Snack2: String = ""
+    val breakfast: String = "",
+    val lunch: String = "",
+    val dinner: String = "",
+    val snack: String = "",
+    val snack2: String = ""
 )
 
 data class ChatMessage(
@@ -614,11 +614,11 @@ class ChatbotActivity : AppCompatActivity() {
 
     private fun showDietPlan(dietPlanDay: DietPlanDay) {
         val planMessage = """
-            Breakfast: ${dietPlanDay.Breakfast}
-            Lunch: ${dietPlanDay.Lunch}
-            Dinner: ${dietPlanDay.Dinner}
-            Snack 1: ${dietPlanDay.Snack}
-            Snack 2: ${dietPlanDay.Snack2}
+            Breakfast: ${dietPlanDay.breakfast}
+            Lunch: ${dietPlanDay.lunch}
+            Dinner: ${dietPlanDay.dinner}
+            Snack 1: ${dietPlanDay.snack}
+            Snack 2: ${dietPlanDay.snack2}
         """.trimIndent()
 
         chatbotReply(planMessage)
