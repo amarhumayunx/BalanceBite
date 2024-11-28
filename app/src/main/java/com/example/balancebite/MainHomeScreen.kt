@@ -104,8 +104,8 @@ class MainHomeScreen : AppCompatActivity() {
 
     private fun handleBottomNavigation(item: MenuItem) {
         when (item.itemId) {
-            R.id.nav_diet_plan -> {
-                val intent = Intent(this, PlanSelectionActivity::class.java)
+            R.id.nav_exercise_plan -> {
+                val intent = Intent(this, ExercisePlanActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_chat_bot -> {

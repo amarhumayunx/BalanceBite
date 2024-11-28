@@ -10,27 +10,27 @@
 
 
     <item
-        android:id="@+id/nav_diet_plan"
-        android:icon="@drawable/diet_plan_icon"
-        android:title="@string/diet_plans"
+        android:id="@+id/nav_exercise_plan"
+        android:icon="@drawable/dumbbell"
+        android:title="@string/exercise_plans"
         />
 
     <item
         android:id="@+id/nav_chat_bot"
-        android:icon="@drawable/chat_icon"
+        android:icon="@drawable/chatbot"
         android:title="@string/chat"
         />
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/person_icon"
+        android:icon="@drawable/user"
         android:iconTint="@color/gray"
         android:title="@string/profile"
         />
 
     <item
         android:id="@+id/nav_settings"
-        android:icon="@drawable/settings_icon"
+        android:icon="@drawable/setting"
         android:title="@string/settings"
         />
 
