@@ -27,7 +27,18 @@ class ExercisePlanActivity : AppCompatActivity() {
         // Initialize Firebase Database reference
         database = FirebaseDatabase.getInstance().reference
 
+        // Initialize UI components
+        ageEditText = findViewById(R.id.ageEditText)
+        bmiSpinner = findViewById(R.id.bmiSpinner)
+        fitnessLevelGroup = findViewById(R.id.fitnessLevelGroup)
         exerciseTypeSpinner = findViewById(R.id.exerciseTypeSpinner)
+        generatePlanButton = findViewById(R.id.generatePlanButton)
+
+        // Set up BMI Spinner with a placeholder
+        val bmiOptions = arrayOf("Select BMI", "Underweight", "Normal", "Overweight", "Obese")
+        val bmiAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bmiOptions)
+        bmiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        bmiSpinner.adapter = bmiAdapter
 
         // Set up the exercise type spinner with options
         val exerciseTypes = listOf(
@@ -45,20 +56,6 @@ class ExercisePlanActivity : AppCompatActivity() {
         )
         exerciseTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         exerciseTypeSpinner.adapter = exerciseTypeAdapter
-
-        // Initialize UI components
-        ageEditText = findViewById(R.id.ageEditText)
-        bmiSpinner = findViewById(R.id.bmiSpinner)
-        fitnessLevelGroup = findViewById(R.id.fitnessLevelGroup)
-        exerciseTypeSpinner = findViewById(R.id.exerciseTypeSpinner)
-        generatePlanButton = findViewById(R.id.generatePlanButton)
-
-        // Set up BMI Spinner with predefined options
-        val bmiOptions = arrayOf("Underweight", "Normal", "Overweight", "Obese")
-        val bmiAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bmiOptions)
-        bmiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bmiSpinner.adapter = bmiAdapter
-        bmiSpinner.isEnabled = false // Prevent user from changing pre-filled BMI
 
         // Fetch and display user data from Firebase
         fetchUserData()
@@ -89,26 +86,29 @@ class ExercisePlanActivity : AppCompatActivity() {
                     val height = snapshot.child("height").getValue(Double::class.java) ?: 0.0
                     val weight = snapshot.child("weight").getValue(Double::class.java) ?: 0.0
 
-                    // Calculate BMI
-                    val bmi = calculateBMI(weight, height)
+                    if (height > 0 && weight > 0) {
+                        // Calculate BMI
+                        val bmi = calculateBMI(weight, height)
+                        val bmiCategory = getBMICategory(bmi)
 
-                    // Set the fetched values into the UI components
-                    ageEditText.setText(age.toString())
-
-                    // Set the BMI category based on the calculated BMI
-                    val bmiCategory = getBMICategory(bmi)
-                    val bmiIndex = when (bmiCategory) {
-                        "Underweight" -> 0
-                        "Normal" -> 1
-                        "Overweight" -> 2
-                        "Obese" -> 3
-                        else -> -1
-                    }
-                    if (bmiIndex != -1) {
+                        // Set the BMI category based on the calculated BMI
+                        val bmiIndex = when (bmiCategory) {
+                            "Underweight" -> 1
+                            "Normal" -> 2
+                            "Overweight" -> 3
+                            "Obese" -> 4
+                            else -> 0 // Default to "Select BMI"
+                        }
                         bmiSpinner.setSelection(bmiIndex)
+                    } else {
+                        bmiSpinner.setSelection(0) // Default to "Select BMI"
                     }
+
+                    // Set the fetched age value
+                    ageEditText.setText(age.toString())
                 } else {
                     Toast.makeText(this@ExercisePlanActivity, "User profile not found", Toast.LENGTH_SHORT).show()
+                    bmiSpinner.setSelection(0) // Default to "Select BMI"
                 }
             }
 

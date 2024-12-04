@@ -53,5 +53,5 @@
         app:layout_constraintTop_toBottomOf="@id/image_one"
         android:background="@android:color/transparent"
         app:layout_constraintWidth_percent="1"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck,VisualLintBounds" />
 </androidx.constraintlayout.widget.ConstraintLayout>

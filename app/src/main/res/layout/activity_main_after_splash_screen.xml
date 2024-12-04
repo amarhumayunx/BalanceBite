@@ -15,9 +15,10 @@
         android:layout_height="180dp"
         android:contentDescription="@string/wave_one"
         android:src="@drawable/wave_for_layout"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <!-- CardView for App Name and User Name -->
     <androidx.cardview.widget.CardView
@@ -26,38 +27,39 @@
         android:layout_height="500dp"
         android:layout_margin="16dp"
         android:background="@color/white"
-        app:cardElevation="8dp"
         app:cardCornerRadius="30dp"
-        app:layout_constraintTop_toBottomOf="@id/wave_one"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toTopOf="@id/wave_two"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/wave_one"
+        tools:ignore="TextSizeCheck">
 
         <!-- Content Inside CardView -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:layout_margin="10dp"
             android:padding="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp"
+                android:layout_marginTop="0dp"
                 android:gravity="center_vertical"
-                android:layout_marginTop="0dp">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/appimage"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/app_logo_description"
                     android:layout_marginEnd="16dp"
-                    />
+                    android:contentDescription="@string/app_logo_description"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/appimage"
+                    tools:ignore="ImageContrastCheck" />
 
                 <!-- App Name -->
                 <TextView
@@ -76,9 +78,9 @@
                 android:id="@+id/image_on_activity_after_splash_screen"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/image_for_screen"
                 android:layout_marginBottom="20dp"
-                android:contentDescription="@string/image_content_on_splash_screen" />
+                android:contentDescription="@string/image_content_on_splash_screen"
+                android:src="@drawable/image_for_screen" />
 
             <TextView
                 android:id="@+id/text_view_activity_after_splash_screen"
@@ -95,8 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/line_on_splash_screen"
-                android:textSize="15sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/buttonGetStarted"
@@ -105,16 +107,18 @@
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/green"
                 android:text="@string/get_started_button"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/textViewSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textSize="15sp"
                 android:text="@string/sign_up_line_on_login_page"
-                android:textColor="@color/green" />
+                android:textColor="@color/green"
+                android:textSize="15sp"
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -126,7 +130,8 @@
         android:contentDescription="@string/wave_two"
         android:src="@drawable/wave"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,108 +32,136 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="16dp">
 
-        <LinearLayout
+        <!-- ScrollView added here -->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginTop="0dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/appimage"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/app_logo_description"
-                    android:layout_marginEnd="16dp"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp">
 
-                <!-- App Name -->
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/appimage"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/app_logo_description"
+                        android:layout_marginEnd="16dp" />
+
+                    <!-- App Name -->
+                    <TextView
+                        android:id="@+id/app_name_on_main_activity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/green"
+                        android:textSize="36sp"
+                        android:padding="16dp"
+                        android:textStyle="bold|italic"
+                        android:layout_gravity="center_horizontal"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+                </LinearLayout>
+
+                <!-- Title -->
                 <TextView
-                    android:id="@+id/app_name_on_main_activity"
+                    android:id="@+id/titleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/green"
-                    android:textSize="36sp"
-                    android:padding="16dp"
+                    android:text="@string/your_exercise_plan"
+                    android:textSize="24sp"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
                     android:textStyle="bold|italic"
-                    android:layout_gravity="center_horizontal"
-                    tools:ignore="TextSizeCheck,TextContrastCheck" />
+                    android:textColor="@color/green"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center" />
+
+                <!-- Age -->
+                <TextView
+                    android:id="@+id/ageTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_exercise"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- BMI -->
+                <TextView
+                    android:id="@+id/bmiTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bmi_exercise"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Fitness Level -->
+                <TextView
+                    android:id="@+id/fitnessLevelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fitness_level"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Exercise Type -->
+                <TextView
+                    android:id="@+id/exerciseTypeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise_type"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/exerciseplanshow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise_plan"
+                    android:textSize="24sp"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/green"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    />
+
+                <!-- Plan Description -->
+                <TextView
+                    android:id="@+id/planDescriptionTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plan_details_your_custom_exercise_plan_is_tailored_for_your_age_bmi_and_fitness_level"
+                    android:textSize="16sp"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="16dp"
+                    android:lineSpacingExtra="4dp" />
+
             </LinearLayout>
+        </ScrollView>
+        <!-- End of ScrollView -->
 
-            <!-- Title -->
-            <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/your_exercise_plan"
-                android:textSize="24sp"
-                android:layout_gravity="center"
-                android:textStyle="bold|italic"
-                android:textColor="@color/black"
-                android:layout_marginBottom="16dp"
-                android:gravity="center" />
-
-            <!-- Age -->
-            <TextView
-                android:id="@+id/ageTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age_exercise"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
-
-            <!-- BMI -->
-            <TextView
-                android:id="@+id/bmiTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bmi_exercise"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Fitness Level -->
-            <TextView
-                android:id="@+id/fitnessLevelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fitness_level"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Exercise Type -->
-            <TextView
-                android:id="@+id/exerciseTypeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exercise_type"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Plan Description -->
-            <TextView
-                android:id="@+id/planDescriptionTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/plan_details_your_custom_exercise_plan_is_tailored_for_your_age_bmi_and_fitness_level"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="16dp"
-                android:lineSpacingExtra="4dp" />
-
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <!-- Bottom Wave Image -->

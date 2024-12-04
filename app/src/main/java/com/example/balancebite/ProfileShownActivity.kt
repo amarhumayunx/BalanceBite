@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,7 +11,6 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileShownActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -101,6 +101,7 @@ class ProfileShownActivity : AppCompatActivity() {
 
         // Access the nested 'profile' node for the user
         database.child(userId).child("profile").addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val name = dataSnapshot.child("name").getValue(String::class.java) ?: "Name not available"

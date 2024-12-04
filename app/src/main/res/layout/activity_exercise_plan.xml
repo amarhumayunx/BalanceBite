@@ -22,59 +22,59 @@
         android:id="@+id/cardview_user_info"
         android:layout_width="match_parent"
         android:layout_height="760dp"
-        app:cardCornerRadius="36dp"
-        app:cardElevation="8dp"
         android:layout_margin="10dp"
         android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        android:padding="16dp"
+        app:cardCornerRadius="36dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck">
 
         <!-- ScrollView wraps the LinearLayout -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true"
-            android:scrollbarThumbVertical="@color/white"
-            >
+            android:scrollbarThumbVertical="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/white"
+                android:orientation="vertical"
                 android:padding="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="0dp">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/appimage"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="@string/app_logo_description"
                         android:layout_marginEnd="16dp"
-                        />
+                        android:contentDescription="@string/app_logo_description"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/appimage"
+                        tools:ignore="ImageContrastCheck" />
 
                     <!-- App Name -->
                     <TextView
                         android:id="@+id/app_name_on_main_activity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="16dp"
                         android:text="@string/app_name"
                         android:textColor="@color/green"
                         android:textSize="36sp"
-                        android:padding="16dp"
                         android:textStyle="bold|italic"
-                        android:layout_gravity="center_horizontal"
                         tools:ignore="TextSizeCheck,TextContrastCheck" />
                 </LinearLayout>
 
@@ -83,13 +83,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/create_your_exercise_plan"
-                    android:textSize="24sp"
-                    android:textColor="#212121"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="24dp"
                     android:fontFamily="sans-serif-medium"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="24dp"/>
+                    android:text="@string/create_your_exercise_plan"
+                    android:textColor="#212121"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <!-- Age Input -->
                 <EditText
@@ -108,7 +108,8 @@
                     android:paddingBottom="8dp"
                     android:textColor="#212121"
                     android:textColorHint="#757575"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:ignore="VisualLintTextFieldSize" />
 
                 <!-- BMI Input Spinner -->
                 <Spinner
@@ -116,85 +117,85 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:minHeight="56dp"
                     android:background="@drawable/spinner_bg"
-                    android:popupBackground="@android:color/white"
+                    android:minHeight="56dp"
                     android:paddingStart="16dp"
-                    android:paddingEnd="16dp"/>
+                    android:paddingEnd="16dp"
+                    android:popupBackground="@android:color/white" />
 
                 <!-- Fitness Level Section -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/select_your_fitness_level"
                     android:textColor="#212121"
-                    android:layout_gravity="center"
                     android:textSize="16sp"
-                    android:layout_marginBottom="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:id="@+id/fitnessLevelGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginBottom="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingStart="16dp">
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
 
                     <RadioButton
                         android:id="@+id/fitnessLevelBeginner"
-                        android:text="@string/beginner"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:textColor="#212121"
-                        android:textSize="16sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
                         android:padding="8dp"
-                        android:layout_marginEnd="8dp"/>
+                        android:text="@string/beginner"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/fitnessLevelIntermediate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp"
                         android:text="@string/intermediate"
                         android:textColor="#212121"
-                        android:textSize="16sp"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:padding="8dp"
-                        android:layout_marginEnd="8dp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/fitnessLevelAdvanced"
-                        android:text="@string/advanced"
-                        android:textColor="#212121"
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"/>
+                        android:padding="8dp"
+                        android:text="@string/advanced"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
                 </RadioGroup>
 
                 <!-- Exercise Type Selection Spinner -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/choose_your_preferred_exercise_type"
                     android:textColor="#212121"
-                    android:layout_gravity="center"
                     android:textSize="16sp"
-                    android:layout_marginBottom="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/exerciseTypeSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
-                    android:minHeight="56dp"
+                    android:background="@drawable/spinner_bg"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="@drawable/spinner_bg"
-                    android:popupBackground="@android:color/white"
+                    android:minHeight="56dp"
                     android:paddingStart="16dp"
-                    android:paddingEnd="16dp"/>
+                    android:paddingEnd="16dp"
+                    android:popupBackground="@android:color/white" />
 
                 <Button
                     android:id="@+id/generatePlanButton"

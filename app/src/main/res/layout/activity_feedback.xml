@@ -62,12 +62,12 @@
                 android:id="@+id/feedback_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string_feedback_title"
-                android:textColor="@color/green"
                 android:layout_gravity="center_horizontal"
-                android:textSize="20sp"
-                android:padding="10dp"
                 android:layout_marginTop="16dp"
+                android:padding="10dp"
+                android:text="@string/string_feedback_title"
+                android:textColor="#689F38"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <!-- Feedback Input -->
@@ -90,12 +90,12 @@
                 android:id="@+id/rating_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/rate_us"
-                android:textColor="@color/green"
-                android:padding="10dp"
                 android:layout_gravity="center_horizontal"
-                android:textSize="20sp"
                 android:layout_marginTop="16dp"
+                android:padding="10dp"
+                android:text="@string/rate_us"
+                android:textColor="#689F38"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <RatingBar

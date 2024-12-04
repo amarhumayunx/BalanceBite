@@ -94,12 +94,12 @@
                 android:id="@+id/dietplanshow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/diet_plan"
-                android:textSize="18sp"
-                android:padding="10dp"
-                android:textColor="@color/green"
                 android:layout_gravity="center_horizontal"
-                />
+                android:padding="10dp"
+                android:text="@string/diet_plan"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
             <!-- Scrollable Diet Plan Section -->
             <ScrollView

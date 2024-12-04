@@ -58,11 +58,11 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/appimage"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="@string/app_logo_description"
                         android:layout_marginEnd="16dp"
-                        />
+                        android:contentDescription="@string/app_logo_description"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/appimage"
+                        tools:ignore="ImageContrastCheck" />
 
                     <!-- App Name -->
                     <TextView
@@ -235,7 +235,8 @@
         android:contentDescription="@string/wave_two"
         android:src="@drawable/wave"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

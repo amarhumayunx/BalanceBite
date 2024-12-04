@@ -1,6 +1,9 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.balancebite
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
@@ -103,6 +106,7 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun calculateBMI() {
         val heightInMeters = userHeight?.let { it.toDouble() / 100 } ?: return
         val weight = userWeight ?: return
@@ -199,6 +203,7 @@ class RecommendedDietPlanActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun fetchDietPlan(disease: String) {
         val dietPlanRef = database.child("disease_diet_plans").child(disease).child("plan")
 

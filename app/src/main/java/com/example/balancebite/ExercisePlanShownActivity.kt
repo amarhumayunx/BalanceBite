@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.balancebite
 
 import android.annotation.SuppressLint

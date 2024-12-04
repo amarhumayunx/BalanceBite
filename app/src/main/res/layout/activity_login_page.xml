@@ -140,16 +140,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="Password"
-                        android:textAlignment="center"
+                        android:background="@drawable/custom_edittext_round"
                         android:drawableEnd="@drawable/password_real_icon"
                         android:drawableTint="@color/gray"
                         android:hint="@string/password_hint_string"
-                        android:background="@drawable/custom_edittext_round"
                         android:inputType="textPassword"
-                        android:padding="10dp"
                         android:minHeight="48dp"
+                        android:padding="10dp"
+                        android:textAlignment="center"
                         android:textColorHint="#757575"
-                        tools:ignore="VisualLintTextFieldSize" />
+                        tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -171,20 +171,19 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_on_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
+                        android:layout_margin="5dp"
                         android:backgroundTint="@color/green"
-                        android:text="@string/sign_in_button_string"
-                        android:textColor="@color/white"
                         android:drawableEnd="@drawable/done_icon"
                         android:drawableTint="@color/white"
+                        android:text="@string/sign_in_button_string"
+                        android:textColor="@color/white"
                         android:textSize="29sp"
                         app:cornerRadius="32dp"
-                        android:layout_margin="5dp"
-                        tools:ignore="VisualLintButtonSize" />
+                        tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/textViewSignUp"

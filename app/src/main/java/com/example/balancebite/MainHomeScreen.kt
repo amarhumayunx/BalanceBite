@@ -9,7 +9,6 @@ import android.os.Handler
 import android.os.Looper
 import android.view.MenuItem
 import android.view.MotionEvent
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
