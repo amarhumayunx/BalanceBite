@@ -11,19 +11,19 @@
 
     <item
         android:id="@+id/nav_exercise_plan"
-        android:icon="@drawable/dumbbell"
+        android:icon="@drawable/shoes"
         android:title="@string/exercise_plans"
         />
 
     <item
         android:id="@+id/nav_chat_bot"
-        android:icon="@drawable/chatbot"
+        android:icon="@drawable/generative"
         android:title="@string/chat"
         />
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/user"
+        android:icon="@drawable/profile"
         android:iconTint="@color/gray"
         android:title="@string/profile"
         />

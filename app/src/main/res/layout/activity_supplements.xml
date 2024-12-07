@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/green"
     tools:context=".SupplementActivity">
 
     <!-- CardView to hold the RecyclerView and center it -->
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:padding="16dp" />
+            android:layout_margin="1dp"/>
 
     </androidx.cardview.widget.CardView>
 
