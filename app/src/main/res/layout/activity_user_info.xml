@@ -14,6 +14,7 @@
         android:layout_height="180dp"
         android:contentDescription="@string/wave_one"
         android:src="@drawable/wave_for_layout"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -234,6 +235,7 @@
         android:layout_height="235dp"
         android:contentDescription="@string/wave_two"
         android:src="@drawable/wave"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

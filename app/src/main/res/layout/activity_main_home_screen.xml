@@ -39,6 +39,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
+                    android:scaleType="fitXY"
                     android:contentDescription="@string/wave_on_home_screen_image_description"
                     android:src="@drawable/wave_on_home_screen"
                     tools:ignore="ImageContrastCheck" />

@@ -13,6 +13,7 @@
         android:id="@+id/Wave_on_login_page"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
+        android:scaleType="fitXY"
         android:contentDescription="@string/wave_on_login"
         android:src="@drawable/wave__1_"
         tools:ignore="ImageContrastCheck"
