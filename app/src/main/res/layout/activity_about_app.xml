@@ -2,106 +2,370 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".AboutAppActivity">
 
+    <!-- Top Wave Image -->
     <ImageView
         android:id="@+id/wave_one"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:scaleType="fitXY"
         android:contentDescription="@string/wave_one"
         android:src="@drawable/wave_for_layout"
+        android:padding="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="fitXY"
         app:layout_constraintWidth_percent="1"
-        android:padding="0dp"
         android:background="@android:color/transparent"
         tools:ignore="ImageContrastCheck" />
 
-    <!-- CardView for buttons and EditText -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
+        android:id="@+id/cardview_user_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/wave_one"
-        app:layout_constraintBottom_toTopOf="@id/wave_two"
+        app:cardCornerRadius="36dp"
+        app:cardElevation="8dp"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        android:background="@color/white"
-        app:cardElevation="8dp"
-        android:padding="10dp"
-        app:cardCornerRadius="30dp">
+        android:padding="16dp">
 
-        <LinearLayout
+        <!-- ScrollView wraps the LinearLayout -->
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp"
-            android:padding="16dp">
+            android:fillViewport="true"
+            android:scrollbarThumbVertical="@color/white"
+            >
 
-            <TextView
-                android:id="@+id/app_name_on_main_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/string_on_about_app_label"
-                android:textColor="@color/green"
-                android:textSize="35sp"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal"
-                tools:ignore="TextSizeCheck,TextContrastCheck" />
-
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:id="@+id/name_about_app"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/name_about_app"
-                android:padding="10dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="16dp" />
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/developer_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/developer_name"
-                android:textSize="20sp"
-                android:textStyle="italic"
-                android:padding="10dp"
-                android:layout_gravity="center_horizontal"
-                />
+                <!-- App Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="0dp">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="16dp" />
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/app_logo_description"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/appimage"
+                        tools:ignore="ImageContrastCheck" />
 
-            <TextView
-                android:id="@+id/TextView_for_app_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/app_version"
-                android:layout_gravity="center_horizontal"
-                android:padding="10dp"/>
+                    <!-- App Name -->
+                    <TextView
+                        android:id="@+id/app_name_on_main_activity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/app_name"
+                        android:textColor="@color/green"
+                        android:textSize="38sp"
+                        android:textStyle="italic|bold"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                </LinearLayout>
 
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/key_features_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/feature"
+                            android:contentDescription="@string/feature_icon"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/key_features"
+                            android:textSize="16sp"
+                            android:textStyle="bold|italic"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <!-- Feature 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginEnd="8dp"
+                            android:contentDescription="@string/feature_icon"
+                            android:src="@drawable/arrow"
+                            tools:ignore="ImageContrastCheck" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/feature_1"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <!-- Feature 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/application"
+                            android:contentDescription="@string/feature_icon"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/feature_2"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <!-- Feature 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/graph"
+                            android:contentDescription="@string/feature_icon"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/feature_3"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/privacypolicy"
+                        android:contentDescription="@string/developericon"
+                        tools:ignore="ImageContrastCheck"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/privacy_policy"
+                        android:textSize="16sp"
+                        android:textStyle="bold|italic"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/privacy_policy_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/contactus"
+                        android:contentDescription="@string/developericon"
+                        tools:ignore="ImageContrastCheck"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_us"
+                        android:textStyle="bold|italic"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_us_details"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_version_and_developed"
+                        android:textSize="16sp"
+                        android:textStyle="bold|italic"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+
+                <!-- Developer Info with Icon -->
+                <LinearLayout
+                    android:id="@+id/developerinfowithicon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/developer"
+                        android:contentDescription="@string/developericon"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/developer_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:text="@string/developer_name"
+                        android:textSize="18sp"
+                        android:layout_marginStart="8dp"
+                        android:padding="10dp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <!-- Version Info with Icon -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/versiondescription"
+                        android:src="@drawable/version"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/TextView_for_app_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="@string/app_version"
+                        android:padding="10dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </androidx.cardview.widget.CardView>
 
+    <!-- Bottom Wave Image -->
     <ImageView
         android:id="@+id/wave_two"
         android:layout_width="match_parent"
@@ -109,7 +373,6 @@
         android:contentDescription="@string/wave_two"
         android:src="@drawable/wave"
         android:scaleType="fitXY"
-        android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -79,6 +79,8 @@
                         android:id="@+id/profileImageView"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/green"
                         android:layout_marginStart="16dp"
                         android:src="@drawable/default_profile_picture"
                         android:contentDescription="@string/profile_image_description" />
@@ -206,7 +208,7 @@
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
 
-                <!-- Favorites Section -->
+                <!-- Nutrition Section -->
                 <TextView
                     android:id="@+id/chooseFavoritesText"
                     android:layout_width="wrap_content"
@@ -222,88 +224,175 @@
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="3"
-                    android:rowCount="1"
-                    android:padding="10dp"
+                    android:columnCount="2"
+                    android:rowCount="2"
+                    android:padding="15dp"
                     android:layout_marginBottom="16dp">
 
-                    <LinearLayout
-                        android:id="@+id/tap_on_fruits"
-                        android:layout_width="0dp"
+                    <!-- Card for Fruits -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        tools:ignore="UseCompoundDrawables">
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp"
+                        android:background="?android:attr/selectableItemBackground">
 
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/fruit_image_desc"
-                            android:src="@drawable/fruit_salad" />
+                        <LinearLayout
+                            android:id="@+id/tap_on_fruits"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            tools:ignore="UseCompoundDrawables">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_fruits"
-                            android:padding="5dp"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:contentDescription="@string/fruit_image_desc"
+                                android:src="@drawable/fruit_salad"
+                                tools:ignore="ImageContrastCheck" />
 
-                    <LinearLayout
-                        android:id="@+id/tap_on_vegetables"
-                        android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_fruits"
+                                android:padding="5dp"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card for Vegetables -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        tools:ignore="UseCompoundDrawables">
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp"
+                        android:background="?android:attr/selectableItemBackground">
 
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/vegetable_image_desc"
-                            android:src="@drawable/vegetables" />
+                        <LinearLayout
+                            android:id="@+id/tap_on_vegetables"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            tools:ignore="UseCompoundDrawables">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_vegetables"
-                            android:padding="5dp"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:contentDescription="@string/vegetable_image_desc"
+                                android:src="@drawable/vegetables"
+                                tools:ignore="ImageContrastCheck" />
 
-                    <LinearLayout
-                        android:id="@+id/tap_on_supplements"
-                        android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_vegetables"
+                                android:padding="5dp"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card for Supplements -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        tools:ignore="UseCompoundDrawables">
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp"
+                        android:background="?android:attr/selectableItemBackground">
 
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:padding="0dp"
-                            android:contentDescription="@string/supplement_image_desc"
-                            android:src="@drawable/pills" />
+                        <LinearLayout
+                            android:id="@+id/tap_on_supplements"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            tools:ignore="UseCompoundDrawables">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_supplements"
-                            android:padding="3dp"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:contentDescription="@string/supplement_image_desc"
+                                android:padding="0dp"
+                                android:src="@drawable/pills"
+                                tools:ignore="ImageContrastCheck" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_supplements"
+                                android:padding="3dp"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card for Recipes -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp"
+                        android:background="?android:attr/selectableItemBackground">
+
+                        <LinearLayout
+                            android:id="@+id/tap_on_recipes"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:contentDescription="@string/supplement_image_desc"
+                                android:padding="0dp"
+                                android:src="@drawable/recipe"
+                                tools:ignore="ImageContrastCheck" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/Recipes"
+                                android:padding="3dp"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </GridLayout>
+
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>

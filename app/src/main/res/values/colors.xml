@@ -20,6 +20,8 @@
     <color name="progress_start">#76C7C0</color>
     <color name="progress_center">#3BAEA0</color>
     <color name="progress_end">#005B4F</color>
+    <color name="icon_color">#000000</color> <!-- Black icon color -->
+    <color name="dark">#232D36</color>
 
 
 

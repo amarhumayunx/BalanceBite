@@ -92,6 +92,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginStart="16dp"
+                        app:civ_border_color="@color/green"
+                        app:civ_border_width="1dp"
                         android:src="@drawable/default_profile_picture"
                         android:contentDescription="@string/profile_image_description" />
                 </LinearLayout>
@@ -134,7 +136,6 @@
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
-
                 <!-- Delete Profile Button -->
                 <Button
                     android:id="@+id/buttonDeleteProfile"
@@ -145,8 +146,6 @@
                     android:text="@string/string_on_delete_profile_button"
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
-
-
 
                 <!-- FeedBack Button -->
                 <Button

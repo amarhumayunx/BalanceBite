@@ -87,7 +87,7 @@
                     android:src="@drawable/default_profile_picture"
                     android:layout_marginTop="16dp"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/gray" />
+                    app:civ_border_color="@color/green" />
 
                 <TextView
                     android:layout_width="wrap_content"

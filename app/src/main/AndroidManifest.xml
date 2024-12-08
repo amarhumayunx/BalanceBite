@@ -15,11 +15,17 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="34">
         <activity
-            android:name=".ExercisePlanShownActivity"
+            android:name=".RecipesActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             tools:ignore="DiscouragedApi,LockedOrientationActivity"/>
+        <activity
+            android:name=".ExercisePlanShownActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".ExercisePlanActivity"
             android:exported="false"

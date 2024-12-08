@@ -41,7 +41,7 @@
     <string name="rate_us">Rate Us</string>
     <string name="submit_feedback">Submit Feedback</string>
     <string name="name_about_app">Idea By Hafiz Bilal Shahid</string>
-    <string name="developer_name">Developer Humayun Amar</string>
+    <string name="developer_name">Developer: Humayun Amar</string>
     <string name="app_version">Version: </string>
     <string name="title_admin_dashboard">Admin Dashboard</string>
     <string name="button_feedback">Feedback</string>
@@ -159,6 +159,29 @@
     <string name="generate_plan">Generate Plan</string>
     <string name="exercise_plans">Exercise Plan</string>
     <string name="exercise_plan">Your Exercise Plans</string>
+    <string name="about_app">About App</string>
+    <string name="versiondescription">versiondescription</string>
+    <string name="floatingbutton">floatingbutton</string>
+    <string name="your_health_companion_for_a_balanced_lifestyle">Your Trusted Health Companion for a Balanced and Fulfilling Lifestyle</string>
+    <string name="developericon">developericon</string>
+    <string name="version_text">Version: %1$s</string>
+    <string name="version_not_found">Version: Not Available</string>
+    <string name="app_features">Key Features</string>
+    <string name="feature_1">Feature 1: Easy Registration and Login for Seamless Access to Your Health Dashboard</string>
+    <string name="feature_2">Feature 2: Personalized Diet and Exercise Plans Tailored to Your Health Goals</string>
+    <string name="feature_3">Feature 3: AI-Driven Health Insights and Progress Tracking for Optimal Wellness</string>
+    <string name="feature_icon">Feature Icon</string>
+    <string name="key_features">Key Features:</string>
+    <string name="app_version_and_developed">App version and Developed:</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_content">Your privacy is of utmost importance to us. We are committed to ensuring the security and confidentiality of your personal information. Rest assured, your data will never be shared without your consent.</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="contact_us_details">For inquiries or support, please contact us at <b>amarhumayun@outlook.com</b>. We are here to assist you.</string>
+    <string name="label_recipes">Move to Next Recipe</string>
+    <string name="recipe_image">recipeimage</string>
+    <string name="preparation">Preparation:</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="Recipes">Recipes</string>
 
 
 </resources>

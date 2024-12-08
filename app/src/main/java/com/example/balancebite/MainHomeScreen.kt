@@ -6,6 +6,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.IBinder
 import android.os.Looper
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -85,6 +86,12 @@ class MainHomeScreen : AppCompatActivity() {
         val tapOnSupplements = findViewById<LinearLayout>(R.id.tap_on_supplements)
         tapOnSupplements.setOnClickListener {
             val intent = Intent(this, SupplementActivity::class.java)
+            startActivity(intent)
+        }
+
+        val tapOnRecipes = findViewById<LinearLayout>(R.id.tap_on_recipes)
+        tapOnRecipes.setOnClickListener{
+            val intent = Intent(this, RecipesActivity::class.java)
             startActivity(intent)
         }
 

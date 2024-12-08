@@ -48,6 +48,12 @@ class MainActivity : AppCompatActivity() {
         val logoImageView = findViewById<ImageView>(R.id.image_one)
         val mainLayout = findViewById<ConstraintLayout>(R.id.main)
 
+        val logoSlideInAnim = AnimationUtils.loadAnimation(this, R.anim.logo_slide_in)
+
+        // Apply the animation to the logo image
+        logoImageView.startAnimation(logoSlideInAnim)
+
+
         // Start the fade-in animation on the logo
         logoImageView.startAnimation(fadeInLogoAnim)
 

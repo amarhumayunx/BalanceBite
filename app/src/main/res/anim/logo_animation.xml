@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Translate animation to move the logo from top to center -->
+    <translate
+        android:fromYDelta="-200dp"
+        android:toYDelta="0dp"
+        android:duration="1000"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+
+    <!-- Alpha animation to fade the logo in -->
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1"
+        android:duration="1000" />
+</set>

@@ -2,11 +2,13 @@
 agp = "8.7.3"
 appcompatVersion = "1.7.0"
 circleimageview = "3.1.0"
+compiler = "4.15.1"
 converterGson = "2.9.0"
 drawerlayout = "1.2.0"
 firebaseBom = "33.5.1"
 firebaseStorage = "21.0.1"
 glide = "4.11.0"
+glideVersion = "4.15.1"
 googleServices = "4.4.2"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
@@ -15,6 +17,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 lottie = "5.2.0"
+lottieVersion = "6.0.0"
 material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.1.4"
@@ -41,11 +44,13 @@ androidx-drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorage" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-v4151 = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -53,6 +58,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 #noinspection SimilarGradleDependency
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+lottie-v600 = { module = "com.airbnb.android:lottie", version.ref = "lottieVersion" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
