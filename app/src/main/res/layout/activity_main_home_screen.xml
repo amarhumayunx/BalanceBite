@@ -256,7 +256,7 @@
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:contentDescription="@string/fruit_image_desc"
-                                android:src="@drawable/fruit_salad"
+                                android:src="@drawable/fruitsone"
                                 tools:ignore="ImageContrastCheck" />
 
                             <TextView
@@ -296,7 +296,7 @@
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:contentDescription="@string/vegetable_image_desc"
-                                android:src="@drawable/vegetables"
+                                android:src="@drawable/vegetableone"
                                 tools:ignore="ImageContrastCheck" />
 
                             <TextView
