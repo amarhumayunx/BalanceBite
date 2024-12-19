@@ -171,6 +171,12 @@ class LoginPageActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun navigateToGetStarted(){
+        val intent = Intent(this, MainActivityAfterSplashScreen::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     // Apply animations for entry and views
     private fun applyEntryAnimations() {
         binding.root.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
@@ -181,7 +187,6 @@ class LoginPageActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
-        Toast.makeText(this, "Back to Sign Up Page", Toast.LENGTH_SHORT).show()
-        navigateToSignUp()
+        navigateToGetStarted()
     }
 }

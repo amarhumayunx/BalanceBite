@@ -13,16 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:contentDescription="@string/wave_one"
-        android:src="@drawable/wave_for_layout"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/wave_for_layout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_user_info"
         android:layout_width="match_parent"
-        android:layout_height="760dp"
+        android:layout_height="620dp"
         app:cardCornerRadius="36dp"
         app:cardElevation="8dp"
         android:layout_margin="10dp"

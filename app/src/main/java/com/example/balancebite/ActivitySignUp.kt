@@ -102,7 +102,6 @@ class ActivitySignUP : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
-        Toast.makeText(this, "Back to Get Started Activity", Toast.LENGTH_SHORT).show()
         navigateBackToActivityAfterSplashScreen()
     }
 

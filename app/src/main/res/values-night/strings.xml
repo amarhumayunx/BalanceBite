@@ -182,6 +182,8 @@
     <string name="preparation">Preparation:</string>
     <string name="ingredients">Ingredients:</string>
     <string name="Recipes">Recipes</string>
+    <string name="noconnection">Unable to connect.</string>
+    <string name="line_no_on_connection">Please check your internet connection.</string>
 
 
 </resources>

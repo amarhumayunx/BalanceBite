@@ -90,7 +90,9 @@ class MainActivity : AppCompatActivity() {
     // Check if the user is authenticated and has the required data in Firebase
     private fun checkUserStatusAndNavigate() {
         if (!isInternetAvailable()) {
-            showToast("No internet connection. Please check your connection.")
+            val intent = Intent(this, NoInternetActivity::class.java)
+            startActivity(intent)
+            finish()
             return // Exit the method if there's no internet
         }
 
