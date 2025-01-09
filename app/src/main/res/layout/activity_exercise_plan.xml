@@ -92,6 +92,17 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/age"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    />
+
                 <!-- Age Input -->
                 <EditText
                     android:id="@+id/ageEditText"
@@ -111,6 +122,17 @@
                     android:textColorHint="#757575"
                     android:textSize="16sp"
                     tools:ignore="VisualLintTextFieldSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/bmi_category"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    />
 
                 <!-- BMI Input Spinner -->
                 <Spinner

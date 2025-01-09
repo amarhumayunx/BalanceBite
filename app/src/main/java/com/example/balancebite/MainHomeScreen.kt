@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.bumptech.glide.Glide
@@ -53,6 +54,13 @@ class MainHomeScreen : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             handleBottomNavigation(item)
             true
+        }
+
+        val usernameTap = findViewById<CardView>(R.id.usernameCardView)
+        usernameTap.setOnClickListener{
+            // Start The Profile Activity to Show User Profile
+            val intent = Intent(this,ProfileShownActivity::class.java)
+            startActivity(intent)
         }
 
         val recommendeddietplanText = findViewById<TextView>(R.id.recommendedDietPlanText)
