@@ -192,6 +192,7 @@
     <string name="height_icon_desc">height_icon_desc</string>
     <string name="gender_icon_desc">gender_icon_desc</string>
     <string name="age_icon_desc">age_icon_desc</string>
+    <string name="calories_recipes">Calories:</string>
 
 
 </resources>

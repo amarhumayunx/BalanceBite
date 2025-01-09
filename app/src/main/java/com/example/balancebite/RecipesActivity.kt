@@ -18,10 +18,11 @@ class RecipesActivity : AppCompatActivity() {
     private lateinit var recipeTitleView: TextView
     private lateinit var recipeIngredientsView: TextView
     private lateinit var recipePreparationView: TextView
+    private lateinit var recipescaloriesView: TextView
     private lateinit var nextRecipeButton: Button
 
     private lateinit var database: DatabaseReference
-    private var recipeList: List<Map<String, String>> = mutableListOf()
+    private var recipeList: List<Map<String, Any>> = mutableListOf()
     private var currentRecipeIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,7 @@ class RecipesActivity : AppCompatActivity() {
         recipeTitleView = findViewById(R.id.recipeTitle)
         recipeIngredientsView = findViewById(R.id.recipeIngredients)
         recipePreparationView = findViewById(R.id.recipePreparation)
+        recipescaloriesView = findViewById(R.id.recipecalories)
         nextRecipeButton = findViewById(R.id.nextRecipeButton)
 
         // Initialize Firebase database reference
@@ -60,13 +62,16 @@ class RecipesActivity : AppCompatActivity() {
         database.get().addOnSuccessListener { snapshot ->
             if (snapshot.exists()) {
                 val recipes = snapshot.children.mapNotNull { childSnapshot ->
-                    val recipeData = childSnapshot.value as? Map<String, String>
+                    val recipeData = childSnapshot.value as? Map<String, Any>
                     recipeData?.toMutableMap()?.apply {
                         this["title"] = childSnapshot.key ?: "Untitled Recipe"
+                        // Retrieve and parse the total_calories field as an integer
+                        val totalCalories = recipeData["total_calories"]?.toString()?.toIntOrNull() ?: 0
+                        this["total_calories"] = totalCalories
                     }
                 }
                 recipeList = recipes
-                // Load the first recipe
+                // Load the first recipe if there are any recipes
                 if (recipeList.isNotEmpty()) {
                     loadRecipeWithAnimation(recipeList[currentRecipeIndex])
                 }
@@ -76,11 +81,12 @@ class RecipesActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadRecipeWithAnimation(recipe: Map<String, String>) {
-        val title = recipe["title"] ?: "Untitled Recipe"
-        val imageUrl = recipe["image"] ?: ""
-        val ingredients = recipe["ingredients"] ?: "No ingredients found"
-        val preparation = recipe["preparation"] ?: "No preparation steps found"
+    private fun loadRecipeWithAnimation(recipe: Map<String, Any>) {
+        val title = recipe["title"]?.toString() ?: "Untitled Recipe"
+        val imageUrl = recipe["image"]?.toString() ?: ""
+        val ingredients = recipe["ingredients"]?.toString() ?: "No ingredients found"
+        val preparation = recipe["preparation"]?.toString() ?: "No preparation steps found"
+        val calories = recipe["total_calories"]?.toString() ?: "0" // Total calories as integer
 
         // Set title
         recipeTitleView.text = title
@@ -95,12 +101,14 @@ class RecipesActivity : AppCompatActivity() {
         // Set ingredients and preparation
         recipeIngredientsView.text = ingredients
         recipePreparationView.text = preparation
+        recipescaloriesView.text = "$calories kcal"  // Display total calories with "kcal"
 
         // Apply fade-in animation
         applyFadeInAnimation(recipeImageView)
         applyFadeInAnimation(recipeTitleView)
         applyFadeInAnimation(recipeIngredientsView)
         applyFadeInAnimation(recipePreparationView)
+        applyFadeInAnimation(recipescaloriesView)
 
         // Apply slide-in animation to the button
         applySlideInAnimation(nextRecipeButton)
