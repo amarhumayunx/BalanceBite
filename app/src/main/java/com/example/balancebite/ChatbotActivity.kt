@@ -1,8 +1,12 @@
 package com.example.balancebite
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -11,8 +15,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 data class DietPlanDay(
@@ -34,8 +41,13 @@ data class NaiveBayesModel(
 ) {
     private val classProbabilities: MutableMap<String, Double> = mutableMapOf()
     private val wordProbabilities: MutableMap<String, MutableMap<String, Double>> = mutableMapOf()
+    private val totalWordsInClass: MutableMap<String, Double> = mutableMapOf()
+    private val vocabSize: Double
 
     init {
+        // Get the total number of unique words (vocabulary size)
+        val allWords = trainingData.keys.flatMap { it.split(" ") }.distinct()
+        vocabSize = allWords.size.toDouble()
         train()
     }
 
@@ -44,8 +56,11 @@ data class NaiveBayesModel(
 
         trainingData.forEach { (input, response) ->
             val words = input.split(" ")
+
+            // Update class probabilities
             classProbabilities[response] = classProbabilities.getOrDefault(response, 0.0) + 1.0
 
+            // Update word probabilities
             words.forEach { word ->
                 if (word !in wordProbabilities) {
                     wordProbabilities[word] = mutableMapOf()
@@ -54,13 +69,23 @@ data class NaiveBayesModel(
             }
         }
 
+        // Normalize class probabilities
         classProbabilities.forEach { (key, value) ->
             classProbabilities[key] = value / totalMessages
         }
 
+        // Calculate total words in each class
+        classProbabilities.forEach { (response, _) ->
+            val totalWords = trainingData.filter { it.value == response }
+                .flatMap { it.key.split(" ") }
+                .size.toDouble()
+            totalWordsInClass[response] = totalWords
+        }
+
+        // Normalize word probabilities
         wordProbabilities.forEach { (word, responses) ->
             responses.forEach { (response, count) ->
-                wordProbabilities[word]!![response] = count / classProbabilities[response]!!
+                wordProbabilities[word]!![response] = (count + 1) / (totalWordsInClass[response]!! + vocabSize)
             }
         }
     }
@@ -73,8 +98,9 @@ data class NaiveBayesModel(
             var score = classProb
 
             words.forEach { word ->
-                val wordProb = wordProbabilities[word]?.get(response) ?: 0.0
-                score *= (wordProb + 1e-10)
+                val wordProb = wordProbabilities[word]?.get(response)
+                    ?: (1.0 / (totalWordsInClass[response]!! + vocabSize))
+                score *= wordProb
             }
 
             responseScores[response] = score
@@ -88,6 +114,7 @@ data class NaiveBayesModel(
         return responseScores.maxByOrNull { it.value }?.key ?: "I don't understand."
     }
 }
+
 
 class ChatbotActivity : AppCompatActivity() {
 
@@ -229,7 +256,10 @@ class ChatbotActivity : AppCompatActivity() {
             "What are the benefits of eating seasonal fruits and vegetables?" to "Seasonal produce is often fresher, tastier, and more nutritious, " +
                     "plus it's usually more affordable.",
             "How can I maintain a balanced diet while traveling?" to "Plan ahead by packing healthy snacks and researching restaurants that offer nutritious options.",
-            "What is the importance of portion control?" to "Portion control helps manage caloric intake and can aid in maintaining a healthy weight."
+            "What is the importance of portion control?" to "Portion control helps manage caloric" +
+                    " intake and can aid in maintaining a healthy weight.",
+            "How are you?" to "I'm Chatbot i don't have feelings... So, you just ask to me about " +
+                    "diet plans."
         )
 
 
@@ -264,7 +294,9 @@ class ChatbotActivity : AppCompatActivity() {
             if (userMessage.isNotEmpty())
             {
                 displayUserMessage(userMessage)
-                handleUserInput(userMessage)
+                lifecycleScope.launch {
+                    handleUserInput(userMessage)
+                }
                 chatbotInput.text.clear()
             }
         }
@@ -309,7 +341,7 @@ class ChatbotActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleUserInput(input: String) {
+    private suspend fun handleUserInput(input: String) {
         // Convert input to lower case for easier matching
         val caseInput = input.uppercase()
 
@@ -322,7 +354,9 @@ class ChatbotActivity : AppCompatActivity() {
 
         // Check for user profile request
         if (caseInput.contains("profile",ignoreCase = true)) {
+            chatbotReply("Fetching your Profile...")
             fetchUserProfile()
+            chatbotReply("Here's your data")
             return
         }
 
@@ -467,19 +501,29 @@ class ChatbotActivity : AppCompatActivity() {
                 chatbotReply("Hello! How can I assist you today?")
                 return
             }
-            caseInput.contains("bye",ignoreCase = true) || caseInput.contains("exit",ignoreCase = true) -> {
+            caseInput.contains("bye",ignoreCase = true) -> {
+                val intent = Intent(this, MainHomeScreen::class.java)
                 chatbotReply("Goodbye! Have a great day!")
+                delay(3000)
+                startActivity(intent)
                 return
             }
             caseInput.contains("thank you",ignoreCase = true) -> {
                 chatbotReply("You're welcome! If you have more questions, feel free to ask.")
                 return
             }
+            caseInput.contains("exit",ignoreCase = true) -> {
+                val intent = Intent(this, MainHomeScreen::class.java)
+                chatbotReply("Goodbye! Have a great day! " +
+                             "Moving you to Dashboard.")
+                delay(3000)
+                startActivity(intent)
+            }
             // Default response for unrecognized queries
             else -> {
                 chatbotReply("Sorry, I'm the BalanceBite Chatbot. " +
                         "I can only assist with diet-related queries. " +
-                        "Please try asking about diet plans, your profile, or exercise.")
+                        "Please try asking about diet plans, your profile.")
             }
         }
     }
@@ -589,6 +633,15 @@ class ChatbotActivity : AppCompatActivity() {
         val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
         messageContainer.addView(cardView)
 
+        // Apply animation to the card view (fade in + slide from the right)
+        cardView.alpha = 0f // Start with invisible view
+        cardView.translationX = 500f // Initially off-screen (you can adjust the distance)
+        cardView.animate()
+            .alpha(1f) // Fade in
+            .translationX(0f) // Slide to its final position
+            .setDuration(500) // Animation duration
+            .start()
+
         // Scroll to the latest message
         val scrollView = findViewById<ScrollView>(R.id.scrollView)
         scrollView.post { scrollView.smoothScrollTo(0, messageContainer.bottom) }
@@ -626,37 +679,71 @@ class ChatbotActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun chatbotReply(message: String) {
-        // Create a CardView for the chatbot message bubble
-        val cardView = CardView(this).apply {
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,  // Adjusts dynamically to message length
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                setMargins(10, 10, 10, 10)  // Add margin around bubbles
-                gravity = Gravity.START  // Align chatbot messages to the left
+        // Add a delay before showing the chatbot's reply
+        val delayMillis: Long = 1000 // Delay in milliseconds (e.g., 1 second)
+
+        // Use Handler to post a delayed task on the main thread
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Create a CardView for the chatbot message bubble
+            val cardView = CardView(this).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,  // Adjusts dynamically to message length
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(10, 10, 10, 10)  // Add margin around bubbles
+                    gravity = Gravity.START  // Align chatbot messages to the left
+                }
+                cardElevation = 8f
+                radius = 24f  // Rounded corners for a smooth look
+                setCardBackgroundColor(ContextCompat.getColor(this@ChatbotActivity, R.color.white))
+            // Assuming blue for chatbot messages
             }
-            cardElevation = 8f
-            radius = 24f  // Rounded corners for a smooth look
-            setCardBackgroundColor(ContextCompat.getColor(this@ChatbotActivity, R.color.green))
-        }
 
-        // Create a TextView for the message content
-        val messageTextView = TextView(this).apply {
-            text = message
-            setTextColor(ContextCompat.getColor(this@ChatbotActivity, R.color.white))
-            textSize = 16f
-            setPadding(24, 16, 24, 16)  // Padding inside the bubble
-        }
+            // Create a TextView for the message content
+            val messageTextView = TextView(this).apply {
+                text = message
+                setTextColor(ContextCompat.getColor(this@ChatbotActivity, R.color.green))
+                textSize = 16f
+                setPadding(24, 16, 24, 16)  // Padding inside the bubble
+            }
 
-        // Add the TextView to the CardView
-        cardView.addView(messageTextView)
+            // Add the TextView to the CardView
+            cardView.addView(messageTextView)
 
-        // Add the message bubble to the message container
-        val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
-        messageContainer.addView(cardView)
+            // Add the message bubble to the message container
+            val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
+            messageContainer.addView(cardView)
 
-        // Scroll to the latest message
-        val scrollView = findViewById<ScrollView>(R.id.scrollView)
-        scrollView.post { scrollView.smoothScrollTo(0, messageContainer.bottom) }
+            // Apply animation (scale with a bounce effect)
+            cardView.scaleX = 0f  // Start with the cardView scaled down to 0% width
+            cardView.scaleY = 0f  // Start with the cardView scaled down to 0% height
+
+            cardView.animate()
+                .scaleX(1f)  // Scale to 100% width
+                .scaleY(1f)  // Scale to 100% height
+                .setDuration(300)  // Animation duration
+                .setInterpolator(AccelerateDecelerateInterpolator())  // Smooth acceleration and deceleration
+                .withEndAction {
+                    // Apply a slight bounce effect after the scaling
+                    cardView.animate()
+                        .scaleX(1.1f) // Slightly scale up
+                        .scaleY(1.1f) // Slightly scale up
+                        .setDuration(100)
+                        .withEndAction {
+                            // Return to original size after bounce
+                            cardView.animate()
+                                .scaleX(1f)
+                                .scaleY(1f)
+                                .setDuration(100)
+                                .start()
+                        }
+                        .start()
+                }
+                .start()
+
+            // Scroll to the latest message
+            val scrollView = findViewById<ScrollView>(R.id.scrollView)
+            scrollView.post { scrollView.smoothScrollTo(0, messageContainer.bottom) }
+        }, delayMillis) // The message will appear after the specified delay
     }
 }

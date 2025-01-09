@@ -112,7 +112,7 @@ class ProfileShownActivity : AppCompatActivity() {
                     val healthInfo = dataSnapshot.child("healthInfo").getValue(String::class.java) ?: "Health Info not available"
 
                     // Set the data to TextViews
-                    nameTextView.text = "Name: $name"
+                    nameTextView.text = name
                     ageTextView.text = "Age: $age"
                     genderTextView.text = "Gender: $gender"
                     heightTextView.text = "Height: ${heightCm ?: "N/A"} cm"

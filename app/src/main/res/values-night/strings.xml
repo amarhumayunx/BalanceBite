@@ -84,7 +84,7 @@
     <string name="age_label">Age: </string>
     <string name="height_label">Height: </string>
     <string name="weight_label">Weight: </string>
-    <string name="health_info_label">Health Information: </string>
+    <string name="health_info_label">Health Info: </string>
     <string name="daily_progress_label">Daily Progress</string>
     <string name="day_label">Enter Day (e.g., Monday, Tuesday, etc.)</string>
     <string name="calories_label">Intake Calories of this day: </string>
@@ -127,7 +127,7 @@
     <string name="any_problem_then_mail_me">Any Problem than Mail me</string>
     <string name="email_me_string">Email: amarhumayun@outlook.com</string>
     <string name="button_contact_us">Contact Us</string>
-    <string name="body_mass_index_label">Body Mass Index (BMI):</string>
+    <string name="body_mass_index_label">BMI:</string>
     <string name="gender_icon">Enter Gender</string>
     <string name="gender_label">Gender:</string>
     <string name="wave_bottom_desc">End Image on Recommended Diet Plan Activity</string>
@@ -184,6 +184,14 @@
     <string name="Recipes">Recipes</string>
     <string name="noconnection">Unable to connect.</string>
     <string name="line_no_on_connection">Please check your internet connection.</string>
+    <string name="exercise_age">Age:</string>
+    <string name="name">name</string>
+    <string name="bmi_icon_desc">bmi_icon_desc</string>
+    <string name="health_info_icon_desc">health_info_icon_desc</string>
+    <string name="weight_icon_desc">weight_icon_desc</string>
+    <string name="height_icon_desc">height_icon_desc</string>
+    <string name="gender_icon_desc">gender_icon_desc</string>
+    <string name="age_icon_desc">age_icon_desc</string>
 
 
 </resources>

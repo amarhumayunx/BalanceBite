@@ -16,6 +16,7 @@
         app:cardCornerRadius="38dp"
         android:layout_margin="10dp"
         app:cardElevation="4dp"
+        android:elevation="8dp"
         app:cardBackgroundColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
@@ -80,6 +81,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         app:civ_border_width="2dp"
+                        android:focusableInTouchMode="true"
                         app:civ_border_color="@color/green"
                         android:layout_marginStart="16dp"
                         android:src="@drawable/default_profile_picture"
@@ -92,6 +94,9 @@
                     android:layout_height="match_parent"
                     app:cardCornerRadius="60dp"
                     android:layout_margin="16dp"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:elevation="8dp"
                     android:id="@+id/usernameCardView"
                     app:cardElevation="8dp"
                     app:cardBackgroundColor="@color/green">
@@ -134,8 +139,11 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:focusable="true"
+                        android:clickable="true"
                         app:cardCornerRadius="60dp"
                         android:layout_margin="16dp"
+                        android:elevation="8dp"
                         app:cardElevation="8dp"
                         app:cardBackgroundColor="@color/green">
 
@@ -172,6 +180,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="10dp"
+                        android:focusable="true"
+                        android:clickable="true"
                         android:backgroundTint="@color/green"
                         android:text="@string/read_now_button_text_on_dashboard"
                         tools:ignore="TextContrastCheck" />
@@ -202,6 +212,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:focusable="true"
+                        android:clickable="true"
                         android:backgroundTint="@color/green"
                         android:padding="10dp"
                         android:text="@string/track_button"
@@ -226,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:columnCount="2"
                     android:rowCount="2"
-                    android:padding="15dp"
+                    android:padding="5dp"
                     android:layout_marginBottom="16dp">
 
                     <!-- Card for Fruits -->
@@ -236,6 +248,7 @@
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp"
+                        android:elevation="8dp"
                         android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="12dp"
@@ -274,6 +287,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_rowWeight="1"
+
+                        android:elevation="8dp"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp"
                         android:clickable="true"
@@ -314,12 +329,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_rowWeight="1"
+
+                        android:elevation="8dp"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp"
                         android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="4dp"
+                        app:cardElevation="2dp"
                         android:background="?android:attr/selectableItemBackground">
 
                         <LinearLayout
@@ -359,8 +376,10 @@
                         android:layout_margin="8dp"
                         android:clickable="true"
                         android:focusable="true"
+
+                        android:elevation="8dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="4dp"
+                        app:cardElevation="2dp"
                         android:background="?android:attr/selectableItemBackground">
 
                         <LinearLayout

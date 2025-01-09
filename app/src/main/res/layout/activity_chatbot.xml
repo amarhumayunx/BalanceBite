@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
+
     <!-- ScrollView to hold the messages -->
     <ScrollView
         android:id="@+id/scrollView"
