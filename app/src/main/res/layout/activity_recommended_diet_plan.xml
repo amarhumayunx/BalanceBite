@@ -95,7 +95,7 @@
                 android:text="@string/your_bmi"
                 android:textSize="18sp"
                 android:padding="10dp"
-                android:textColor="@color/light_green"
+                android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp" />
 
@@ -106,7 +106,7 @@
                 android:text="@string/bmi_category"
                 android:textSize="18sp"
                 android:padding="10dp"
-                android:textColor="@color/light_green"
+                android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp" />
 

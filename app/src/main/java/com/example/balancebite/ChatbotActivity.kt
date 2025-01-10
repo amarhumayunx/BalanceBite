@@ -274,18 +274,16 @@ class ChatbotActivity : AppCompatActivity() {
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         dietPlanRef = firebaseDatabase.getReference("dietPlans")
-        userProfileRef = firebaseDatabase.getReference("Users") // Adjust the path as per your database structure
+        userProfileRef = firebaseDatabase.getReference("Users")
 
         auth = FirebaseAuth.getInstance()
 
         val userId = auth.currentUser?.uid
         if (userId == null) {
-            // Handle user not logged in (optional)
-            finish() // Close activity or navigate to login
+            finish()
             return
         }
 
-        // Initialize Firebase Database reference for the user
         val firebaseDatabase = FirebaseDatabase.getInstance()
         chatMessagesRef = firebaseDatabase.getReference("chatbotInteractionText").child(userId)
 
@@ -508,7 +506,11 @@ class ChatbotActivity : AppCompatActivity() {
                 startActivity(intent)
                 return
             }
-            caseInput.contains("thank you",ignoreCase = true) -> {
+            caseInput.contains("Thank you",ignoreCase = true) -> {
+                chatbotReply("You're welcome! If you have more questions, feel free to ask.")
+                return
+            }
+            caseInput.contains("Thanks",ignoreCase = true) -> {
                 chatbotReply("You're welcome! If you have more questions, feel free to ask.")
                 return
             }
@@ -528,7 +530,6 @@ class ChatbotActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getResponseFromTrainingData(input: String): String? {
         // Normalize the input string
         val normalizedInput = input.trim().lowercase()
@@ -547,7 +548,6 @@ class ChatbotActivity : AppCompatActivity() {
         println("No match found for: '$normalizedInput'")
         return null // Return null if no match found
     }
-
 
     private fun determineAgeGroup(age: Int): String {
         return when (age) {

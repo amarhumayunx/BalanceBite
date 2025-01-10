@@ -1,5 +1,6 @@
 package com.example.balancebite
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -53,12 +54,14 @@ class MainActivity : AppCompatActivity() {
         // Apply the animation to the logo image
         logoImageView.startAnimation(logoSlideInAnim)
 
-
         // Start the fade-in animation on the logo
         logoImageView.startAnimation(fadeInLogoAnim)
 
         // Optionally animate the whole layout (main layout)
         mainLayout.startAnimation(fadeInAnim)
+
+        // Add the bounce-in animation to the image
+        applyBounceInAnimation(logoImageView)
 
         // If necessary, request permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
@@ -69,6 +72,13 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             checkUserStatusAndNavigate()
         }, 1000)
+    }
+
+    // Function to apply bounce-in animation to image_one
+    private fun applyBounceInAnimation(imageView: ImageView) {
+        val bounceAnim = ObjectAnimator.ofFloat(imageView, "translationY", 0f, -50f, 0f)
+        bounceAnim.duration = 1000 // Duration of the bounce
+        bounceAnim.start()
     }
 
     // Function to check internet connectivity

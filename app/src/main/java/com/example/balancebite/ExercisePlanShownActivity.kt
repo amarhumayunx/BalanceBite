@@ -53,6 +53,9 @@ class ExercisePlanShownActivity : AppCompatActivity() {
             return
         }
 
+        // Normalize the fitness level to lowercase to ensure case-insensitive comparison
+        val normalizedFitnessLevel = fitnessLevel?.lowercase(Locale.ROOT)
+
         // Accessing Firebase data for the specific exercise type
         val exerciseRef = database.child("exercises").child(exerciseType.lowercase(Locale.ROOT))
 
@@ -73,8 +76,11 @@ class ExercisePlanShownActivity : AppCompatActivity() {
                         val sets = exerciseSnapshot.child("sets").getValue(Int::class.java)
                         val reps = exerciseSnapshot.child("reps").getValue(Int::class.java)
 
+                        // Debugging: Print fetched exercise details
+                        println("Fetched exercise: $name, Level: $level")
+
                         // Filter exercises based on the user's fitness level (if provided)
-                        if (fitnessLevel != null && level != null && (level == fitnessLevel || level == "all")) {
+                        if (normalizedFitnessLevel != null && level != null && (level.equals(normalizedFitnessLevel, ignoreCase = true) || level.equals("all", ignoreCase = true))) {
                             // Add the exercise details to the string builder
                             exerciseDetails.append("Exercise: $name\n")
                             exerciseDetails.append("Level: $level\n")

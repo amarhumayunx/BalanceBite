@@ -3,9 +3,11 @@ package com.example.balancebite
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -16,6 +18,7 @@ class ExercisePlanActivity : AppCompatActivity() {
     private lateinit var fitnessLevelGroup: RadioGroup
     private lateinit var exerciseTypeSpinner: Spinner
     private lateinit var generatePlanButton: Button
+    private lateinit var progressBar: LinearProgressIndicator
 
     private lateinit var database: DatabaseReference
 
@@ -26,6 +29,9 @@ class ExercisePlanActivity : AppCompatActivity() {
 
         // Initialize Firebase Database reference
         database = FirebaseDatabase.getInstance().reference
+
+        // Initialize ProgressBar
+        progressBar = findViewById(R.id.progressIndicator)
 
         // Initialize UI components
         ageEditText = findViewById(R.id.ageEditText)
@@ -140,10 +146,10 @@ class ExercisePlanActivity : AppCompatActivity() {
     // Function to update available exercise types based on the selected fitness level
     private fun updateExerciseTypeOptions(fitnessLevel: String) {
         val allExerciseTypes = listOf("Cardio", "Strength", "Flexibility", "Low Impact", "High Intensity", "Recovery")
-        val filteredExerciseTypes = when (fitnessLevel) {
-            "Beginner" -> listOf("Cardio", "Low Impact", "Recovery")
-            "Intermediate" -> listOf("Cardio", "Strength", "Flexibility", "Low Impact")
-            "Advanced" -> listOf("Strength", "High Intensity")
+        val filteredExerciseTypes = when {
+            fitnessLevel.equals("Beginner", ignoreCase = true) -> listOf("Cardio", "Low Impact", "Recovery")
+            fitnessLevel.equals("Intermediate", ignoreCase = true) -> listOf("Cardio", "Strength", "Flexibility", "Low Impact")
+            fitnessLevel.equals("Advanced", ignoreCase = true) -> listOf("Strength", "High Intensity")
             else -> allExerciseTypes
         }
 
@@ -155,6 +161,9 @@ class ExercisePlanActivity : AppCompatActivity() {
         )
         exerciseTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         exerciseTypeSpinner.adapter = exerciseTypeAdapter
+
+        // Debugging output to check the available options
+        println("Filtered exercise types: $filteredExerciseTypes")
     }
 
     // Function to generate exercise plan based on user inputs
@@ -171,6 +180,9 @@ class ExercisePlanActivity : AppCompatActivity() {
             return
         }
 
+        // Show progress bar before generating the plan
+        progressBar.visibility = View.VISIBLE
+
         // Create an Intent to pass data
         val intent = Intent(this, ExercisePlanShownActivity::class.java)
         intent.putExtra("age", age)
@@ -178,6 +190,8 @@ class ExercisePlanActivity : AppCompatActivity() {
         intent.putExtra("fitnessLevel", fitnessLevel)
         intent.putExtra("exerciseType", exerciseType)
 
+        // Start the activity and hide the progress bar
         startActivity(intent)
+        progressBar.visibility = View.GONE
     }
 }
