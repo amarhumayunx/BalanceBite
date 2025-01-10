@@ -29,7 +29,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="600dp"
+        android:layout_height="700dp"
         app:layout_constraintTop_toBottomOf="@id/wave_one"
         app:layout_constraintBottom_toTopOf="@id/wave_two"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +104,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:drawableEnd="@drawable/password_real_icon"
+                    android:drawableTint="@color/light_green"
                     android:background="@drawable/custom_edittext_background"
                     android:autofillHints="Change Password"
                     android:textAlignment="center"
@@ -190,8 +192,6 @@
                     android:text="@string/string_on_logout_button"
                     android:textColor="@color/white"
                     tools:ignore="VisualLintButtonSize,TextContrastCheck" />
-
-
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>

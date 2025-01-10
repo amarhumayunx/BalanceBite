@@ -316,9 +316,9 @@
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/developer"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:src="@drawable/developericon"
                         android:contentDescription="@string/developericon"
                         tools:ignore="ImageContrastCheck" />
 

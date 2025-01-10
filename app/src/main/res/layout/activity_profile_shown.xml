@@ -25,10 +25,10 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_profile_info"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="800dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="12dp"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,9 +57,9 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="46dp"
                     android:contentDescription="@string/app_logo_description"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitXY"
                     android:src="@drawable/appimage"
                     tools:ignore="ImageContrastCheck" />
 
@@ -80,6 +80,7 @@
                     android:id="@+id/profileImageView"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:elevation="@dimen/cardview_default_radius"
                     android:layout_marginStart="16dp"
                     android:src="@drawable/default_profile_picture"
                     app:civ_border_width="2dp"
@@ -92,13 +93,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="6dp"
                 android:padding="10dp"
                 android:text="@string/profile_info_label"
                 android:textAlignment="center"
                 android:textColor="@color/green"
-                android:textSize="20sp"
-                android:textStyle="italic"
+                android:textSize="24sp"
+                android:textStyle="normal"
                 tools:ignore="TextContrastCheck" />
 
 
@@ -119,27 +120,28 @@
                     android:id="@+id/usernameActualTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:layout_marginBottom="8dp"
                     android:hint="@string/name"
+                    android:padding="10dp"
+                    android:textFontWeight="10"
                     android:textSize="18sp"
                     android:textStyle="normal"
-                    android:textFontWeight="10"
-                    android:layout_gravity="center"
-                    android:padding="10dp"
-                    android:layout_margin="16dp"
-                    android:layout_marginBottom="8dp" />
+                    tools:ignore="TextContrastCheck" />
 
             </androidx.cardview.widget.CardView>
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="10dp">
 
                     <!-- Age Card -->
                     <androidx.cardview.widget.CardView
@@ -147,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground">
@@ -156,8 +158,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_vertical"
+                            tools:ignore="UseCompoundDrawables">
 
                             <!-- Drawable/Image for Age -->
                             <ImageView
@@ -186,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground">
@@ -195,17 +198,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_vertical"
+                            tools:ignore="UseCompoundDrawables">
 
                             <!-- Drawable/Image for Gender -->
                             <ImageView
                                 android:id="@+id/genderIcon"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
-                                android:src="@drawable/gender"
+                                android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/gender_icon_desc"
-                                android:layout_marginEnd="8dp"/>
+                                android:src="@drawable/gender"
+                                tools:ignore="ImageContrastCheck" />
 
                             <!-- Gender Text -->
                             <TextView
@@ -225,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground">
@@ -234,17 +239,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_vertical"
+                            tools:ignore="UseCompoundDrawables">
 
                             <!-- Drawable/Image for Height -->
                             <ImageView
                                 android:id="@+id/heightIcon"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
-                                android:src="@drawable/height"
+                                android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/height_icon_desc"
-                                android:layout_marginEnd="8dp"/>
+                                android:src="@drawable/height"
+                                tools:ignore="ImageContrastCheck" />
 
                             <!-- Height Text -->
                             <TextView
@@ -264,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground">
@@ -273,17 +280,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_vertical"
+                            tools:ignore="UseCompoundDrawables">
 
                             <!-- Drawable/Image for Weight -->
                             <ImageView
                                 android:id="@+id/weightIcon"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
-                                android:src="@drawable/weight"
+                                android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/weight_icon_desc"
-                                android:layout_marginEnd="8dp"/>
+                                android:src="@drawable/weight"
+                                tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
                             <!-- Weight Text -->
                             <TextView
@@ -303,7 +312,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground">
@@ -312,17 +321,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_vertical"
+                            tools:ignore="UseCompoundDrawables">
 
                             <!-- Drawable/Image for Health Information -->
                             <ImageView
                                 android:id="@+id/healthInfoIcon"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
-                                android:src="@drawable/healthinfo"
+                                android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/health_info_icon_desc"
-                                android:layout_marginEnd="8dp"/>
+                                android:src="@drawable/healthinfo"
+                                tools:ignore="ImageContrastCheck" />
 
                             <!-- Health Information Text -->
                             <TextView
@@ -342,7 +353,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground">
@@ -351,8 +362,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_vertical"
+                            tools:ignore="UseCompoundDrawables">
 
                             <!-- Drawable/Image for BMI -->
                             <ImageView

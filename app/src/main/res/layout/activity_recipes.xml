@@ -126,7 +126,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="6dp"
-                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:fontFamily="monospace"
                 android:padding="10dp"
                 android:textColor="@android:color/black"
                 tools:text="Recipes Calories" />

@@ -54,7 +54,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="36dp"
                     android:contentDescription="@string/app_logo_description"
                     android:scaleType="centerCrop"
                     android:src="@drawable/appimage"
@@ -95,7 +95,7 @@
                 android:text="@string/your_bmi"
                 android:textSize="18sp"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/light_green"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp" />
 
@@ -106,7 +106,7 @@
                 android:text="@string/bmi_category"
                 android:textSize="18sp"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/light_green"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp" />
 
