@@ -11,13 +11,13 @@
 
     <item
         android:id="@+id/nav_exercise_plan"
-        android:icon="@drawable/shoes"
+        android:icon="@drawable/excercise"
         android:title="@string/exercise_plans"
         />
 
     <item
         android:id="@+id/nav_chat_bot"
-        android:icon="@drawable/generative"
+        android:icon="@drawable/sparkling"
         android:title="@string/chat"
         />
 
