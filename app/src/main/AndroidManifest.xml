@@ -16,7 +16,10 @@
         tools:targetApi="34">
         <activity
             android:name=".NoInternetActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".RecipesActivity"
             android:exported="false"
@@ -169,7 +172,6 @@
             tools:ignore="DiscouragedApi,LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

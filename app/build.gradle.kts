@@ -14,8 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.balancebite"
-        minSdk = 28
-        //noinspection OldTargetApi
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -43,7 +42,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -75,8 +73,4 @@ dependencies {
     implementation (libs.androidx.work.runtime.ktx)
     implementation (libs.lottie)
     implementation (libs.glide)
-
-
-
-
 }
